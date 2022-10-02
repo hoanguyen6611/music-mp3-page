@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './styles/root';
+@import './styles/scroll-bar';
+@import './styles/page';
+@import './styles/utilities';
+@import './styles/global';
+@import './styles/tabs';
+@import './styles/tooltips';
+@import './styles/spin';
+@import './styles/dragula';
+@import './styles/form';

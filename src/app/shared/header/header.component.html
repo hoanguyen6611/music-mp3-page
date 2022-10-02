@@ -1,1 +1,29 @@
-<p>header works!</p>
+<div class="page-header">
+  <nz-breadcrumb>
+    <nz-breadcrumb-item *ngFor="let item of breadcrumbs">
+      <a *ngIf="item.path; else noPath" [routerLink]="item.path">{{
+        item.name | translate
+      }}</a>
+      <<ng-template #noPath>
+        {{ item.name | translate }}
+      </ng-template>
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <div nz-row>
+    <nz-page-header
+      class="w-100 p-0"
+      [nzBackIcon]="hasBackIcon ? back : null"
+      (nzBack)="onBack()"
+    >
+      <nz-page-header-title *ngIf="headerTitle">
+        {{ headerTitle | translate }}
+      </nz-page-header-title>
+    </nz-page-header>
+    <nz-page-header-extra>
+      <ng-content select="[slot=actions]"></ng-content>
+    </nz-page-header-extra>
+  </div>
+</div>
+<ng-template #back>
+  <em nz-icon [nzType]="backIconClassName" [routerLink]="backPath"></em>
+</ng-template>

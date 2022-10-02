@@ -1,0 +1,105 @@
+@import '../../../node_modules/ng-zorro-antd/ng-zorro-antd.variable.less';
+
+@import '../custom/_drawer.less';
+@import '../custom/_tag.less';
+@import '../custom/_alert.less';
+@import '../_common.less';
+
+// menu 
+@menu-item-boundary-margin: 0px;
+@menu-item-vertical-margin: 0px;
+
+@tree-node-selected-bg: @item-active-bg;
+
+//tabs
+@tabs-hover-color: @primary-color;
+@tabs-active-color: @primary-color;
+@tabs-highlight-color: @primary-color;
+
+@drawer-height-level-1: calc(100vh - 64px);
+@drawer-height-level-2: calc(100vh - 64px - 55px);
+
+@progress-default-color: @secondary-color;
+@progress-success-color: @primary-color;
+@progress-error-color: @red-6;
+
+@secondary-color: #722ed1;
+@secondary-1: color(~`colorPalette('@{secondary-color}', 1) `);
+@secondary-2: color(~`colorPalette('@{secondary-color}', 2) `);
+@secondary-3: color(~`colorPalette('@{secondary-color}', 3) `);
+@secondary-4: color(~`colorPalette('@{secondary-color}', 4) `);
+@secondary-5: color(~`colorPalette('@{secondary-color}', 5) `);
+@secondary-6: @secondary-color;
+@secondary-7: color(~`colorPalette('@{secondary-color}', 7) `);
+@secondary-8: color(~`colorPalette('@{secondary-color}', 8) `);
+@secondary-9: color(~`colorPalette('@{secondary-color}', 9) `);
+@secondary-10: color(~`colorPalette('@{secondary-color}', 10) `);
+
+@gray-1: #ffffff;
+@gray-2: #fafafa;
+@gray-3: #f5f5f5;
+@gray-4: #f0f0f0;
+@gray-5: #d9d9d9;
+@gray-6: #bfbfbf;
+@gray-7: #8c8c8c;
+@gray-8: #595959;
+@gray-9: #434343;
+@gray-10: #262626;
+@gray-11: #1f1f1f;
+@gray-12: #141414;
+@gray-13: #000000;
+
+@{html-selector} {
+  --@{ant-prefix}-secondary-color: @secondary-color;
+  --@{ant-prefix}-secondary-1: @secondary-1;
+  --@{ant-prefix}-secondary-2: @secondary-2;
+  --@{ant-prefix}-secondary-3: @secondary-3;
+  --@{ant-prefix}-secondary-4: @secondary-4;
+  --@{ant-prefix}-secondary-5: @secondary-5;
+  --@{ant-prefix}-secondary-6: @secondary-6;
+  --@{ant-prefix}-secondary-7: @secondary-7;
+  --@{ant-prefix}-secondary-8: @secondary-8;
+  --@{ant-prefix}-secondary-9: @secondary-9;
+  --@{ant-prefix}-secondary-10: @secondary-10;
+
+  --@{ant-prefix}-item-hover-bg: @item-hover-bg;
+
+  --@{ant-prefix}-gray-1: @gray-1;
+  --@{ant-prefix}-gray-2: @gray-2;
+  --@{ant-prefix}-gray-3: @gray-3;
+  --@{ant-prefix}-gray-4: @gray-4;
+  --@{ant-prefix}-gray-5: @gray-5;
+  --@{ant-prefix}-gray-6: @gray-6;
+  --@{ant-prefix}-gray-7: @gray-7;
+  --@{ant-prefix}-gray-8: @gray-8;
+  --@{ant-prefix}-gray-9: @gray-9;
+  --@{ant-prefix}-gray-10: @gray-10;
+  --@{ant-prefix}-gray-11: @gray-11;
+  --@{ant-prefix}-gray-12: @gray-12;
+  --@{ant-prefix}-gray-13: @gray-13;
+
+  --@{ant-prefix}-red-1: @red-1;
+  --@{ant-prefix}-red-2: @red-2;
+  --@{ant-prefix}-red-3: @red-3;
+  --@{ant-prefix}-red-4: @red-4;
+  --@{ant-prefix}-red-5: @red-5;
+  --@{ant-prefix}-red-6: @red-6;
+  --@{ant-prefix}-red-7: @red-7;
+  --@{ant-prefix}-red-8: @red-8;
+  --@{ant-prefix}-red-9: @red-9;
+  --@{ant-prefix}-red-10: @red-10;
+
+  --@{ant-prefix}-item-active-bg: @item-active-bg;
+  --@{ant-prefix}-item-hover-bg: @item-hover-bg;
+
+  --@{ant-prefix}-progress-default-color: @progress-default-color;
+  --@{ant-prefix}-progress-success-color: @progress-success-color;
+  --@{ant-prefix}-progress-error-color: @progress-error-color;
+
+  --@{ant-prefix}-drawer-height-level-1: @drawer-height-level-1;
+  --@{ant-prefix}-drawer-height-level-2: @drawer-height-level-2;
+
+  // --@{ant-prefix}-tabs-hover-color: @tabs-hover-color;
+  // --@{ant-prefix}-tabs-active-color: @tabs-active-color;
+  // --@{ant-prefix}-tabs-highlight-color: @tabs-highlight-color;
+}

@@ -1,0 +1,12 @@
+.themeMixin(@rules) {
+  html {
+    &.smartlog {
+      @import './smartlog.less';
+      @rules();
+    }
+    &.deliveree {
+      @import './deliveree.less';
+      @rules();
+    }
+  }
+}

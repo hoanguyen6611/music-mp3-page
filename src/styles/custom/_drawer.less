@@ -1,0 +1,36 @@
+.ant-drawer-body {
+  overflow: overlay;
+
+  .ant-layout {
+    background-color: @component-background;
+  }
+
+  .ant-layout-sider {
+    border-right: 1px solid @border-color-split;
+  }
+
+  .ant-menu-inline,
+  .ant-menu-vertical,
+  .ant-menu-vertical-left {
+    border-right-width: 0;
+  }
+}
+
+.ant-drawer-header {
+  .ant-drawer-close {
+    order: 1; // to right
+    margin-right: 0;
+    padding-right: 0;
+  }
+}
+
+.ant-drawer-footer {
+  padding: 8px 24px;
+}
+
+.strong-title-drawer {
+  .ant-drawer-title {
+    font-weight: 700;
+    line-height: 24px;
+  }
+}

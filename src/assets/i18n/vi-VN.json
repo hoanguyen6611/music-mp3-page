@@ -1,0 +1,33 @@
+{
+  "MESSAGE": {
+    "REQUIRED": "Trường {{field}} là bắt buộc!",
+    "INPUT_PLACEHOLDER": "Vui lòng nhập"
+  },
+  "LOGIN_FORM": {
+    "EMAIL": "Email",
+    "PASSWORD": "Mật khẩu",
+    "FORGOT_PASSWORD": "Quên mật khẩu",
+    "FACEBOOK": "CONTINUE WITH FACEBOOK",
+    "GOOGLE": "CONTINUE WITH GOOGLE"
+  },
+  "SIGN_UP_FORM": {
+    "FACEBOOK": "Sign up with Facebook",
+    "GOOGLE": "Sign up with Google",
+    "USERNAME": "Tên đăng nhập",
+    "PASSWORD": "Mật khẩu",
+    "FULLNAME": "Họ và tên",
+    "EMAIL": "Email",
+    "ADDRESS": "Địa chỉ",
+    "PHONE_NUMBER": "Số điện thoại"
+  },
+  "MENU": {
+    "DASHBOARD":"Tổng quan",
+    "HOME": "Trang chủ",
+    "MUSIC":{
+      "TITLE": "Bài hát"
+    },
+    "USER": {
+      "TITLE": "Người dùng"
+    }
+  }
+}

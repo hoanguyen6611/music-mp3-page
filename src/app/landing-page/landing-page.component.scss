@@ -1,0 +1,73 @@
+.layout {
+  min-height: 100vh;
+}
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px; /* margin is -0.5 * dimension */
+  margin-top: -25px;
+}​
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+}
+
+nz-header {
+  position: absolute;
+  width: 100%;
+  height: 97px;
+  background: none !important;
+  > * {
+    background: none !important;
+  }
+}
+
+[nz-menu] {
+  line-height: 64px;
+}
+
+.bg-footer {
+  padding-top: 24px;
+  background-size: cover;
+}
+
+nz-footer {
+  padding: 0px;
+  // text-align: center;
+}
+
+.text {
+  color: #fff!important;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.title {
+  display: flex;
+  font-weight: 700;
+  font-size: 18px;
+  height: 57px;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.padding-bottom-16 {
+  padding-bottom: 16px;
+  border-bottom: none;
+}
+
+.margin-top-16 {
+  margin-top: 16px;
+}
+.content-left {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.float-right {
+  float: right;
+}
+

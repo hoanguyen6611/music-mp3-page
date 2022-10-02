@@ -1,0 +1,6 @@
+.ant-form-item-label > label .ant-form-item-tooltip {
+  color: var(--ant-gray-8);
+  &:hover {
+    color: var(--ant-gray-12);
+  }
+}
