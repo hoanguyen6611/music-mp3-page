@@ -21,13 +21,8 @@
     "PHONE_NUMBER": "Số điện thoại"
   },
   "MENU": {
-    "DASHBOARD":"Tổng quan",
-    "HOME": "Trang chủ",
-    "MUSIC":{
-      "TITLE": "Bài hát"
-    },
-    "USER": {
-      "TITLE": "Người dùng"
-    }
+    "PERSONAL": "Cá nhân",
+    "DISCOVER": "Khám phá",
+    "FOLLOW": "Theo dõi"
   }
 }

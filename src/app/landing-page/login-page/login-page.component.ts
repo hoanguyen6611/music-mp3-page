@@ -27,18 +27,17 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {}
   loginUser() {
     if (this.formGroup.valid) {
-      console.log(this.formGroup.value)
       this.authService.login(this.formGroup.value).subscribe(res => {
-        console.log(res);
-        // this.responsedata = res;
-        // if (this.responsedata.result) {
-        //   localStorage.setItem('token', this.responsedata.data.token);
-        //   localStorage.setItem('name', this.responsedata.data.username);
-        //   this.message.success(this.responsedata.message);
-        //   this.route.navigate(['/main/home']);
-        // } else {
-        //   this.message.error(this.responsedata.message);
-        // }
+        console.log(res)
+        this.responsedata = res;
+        if (this.responsedata.result) {
+          localStorage.setItem('token', this.responsedata.token);
+          // localStorage.setItem('name', this.responsedata.data.username);
+          this.message.success(this.responsedata.message);
+          this.route.navigate(['/main/home']);
+        } else {
+          this.message.error(this.responsedata.message);
+        }
       });
     }
   }

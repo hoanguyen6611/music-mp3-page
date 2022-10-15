@@ -16,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BusyOverlayModule } from '../shared/busy-overlay/busy-overlay.module';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 const nzModules = [
   NzLayoutModule,
@@ -28,7 +29,8 @@ const nzModules = [
   NzToolTipModule,
   NzSpinModule,
   NzSliderModule,
-  NzBreadCrumbModule
+  NzBreadCrumbModule,
+  NzSpaceModule,
 ]
 
 

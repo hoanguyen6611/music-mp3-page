@@ -16,6 +16,10 @@ export class MainPageComponent implements OnInit {
 
   constructor( private readonly authTestService : AuthTestService, private readonly route: Router ) { }
 
+  isCollapsed = false;
+
+  status = localStorage.getItem('token');
+
   ngOnInit(): void {
   }
 
@@ -23,7 +27,7 @@ export class MainPageComponent implements OnInit {
     {
       menus: [
         {
-          display: 'MENU.HOME',
+          display: 'MENU.PERSONAL',
           icon: 'home',
           path: '/main/home',
         },
@@ -32,7 +36,7 @@ export class MainPageComponent implements OnInit {
     {
       menus: [
         {
-          display: 'MENU.DASHBOARD',
+          display: 'MENU.DISCOVER',
           icon: 'dashboard',
           path: '/main/dashboard',
         },
@@ -41,18 +45,9 @@ export class MainPageComponent implements OnInit {
     {
       menus: [
         {
-          display: 'MENU.MUSIC.TITLE',
+          display: 'MENU.FOLLOW',
           icon: 'bulb',
           path: '/main/music-page',
-        },
-      ],
-    },
-    {
-      menus: [
-        {
-          display: 'MENU.USER.TITLE',
-          icon: 'user',
-          path: '/main/user-page',
         },
       ],
     },
@@ -125,16 +120,5 @@ export class MainPageComponent implements OnInit {
         this.route.navigate([''])
       }
     )
-  }
-
-  test() {
-    var loggintoken=localStorage.getItem('token')||'';
-    console.log('token' + localStorage.getItem('token'));
-    var _extractedtoken=loggintoken.split('.')[1];
-    console.log(_extractedtoken);
-    var _atobdata=atob(_extractedtoken);
-    console.log(_atobdata)
-    var _finaldata=JSON.parse(_atobdata);
-    console.log(_finaldata)
   }
 }

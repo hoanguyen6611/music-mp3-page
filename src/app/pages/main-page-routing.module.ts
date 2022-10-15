@@ -33,7 +33,7 @@ const routes: Routes = [
           .UserPageModule,
       }
     ],
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   }
 ];
 
