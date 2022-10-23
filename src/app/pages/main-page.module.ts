@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BusyOverlayModule } from '../shared/busy-overlay/busy-overlay.module';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NowPlayingModule } from '../shared/now-playing/now-playing.module';
 
 const nzModules = [
   NzLayoutModule,
@@ -42,6 +43,7 @@ const nzModules = [
     BusyOverlayModule,
     TranslateModule,
     ReactiveFormsModule,
+    NowPlayingModule,
     ...nzModules
   ]
 })

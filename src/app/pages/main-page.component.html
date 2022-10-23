@@ -8,92 +8,35 @@
     [nzTrigger]="null"
   >
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
+      <a href="/main/home" target="_blank">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
         <h1>Music MP3</h1>
       </a>
     </div>
-    <!-- <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngFor="let groupMenu of groupMenus">
-      <li nz-submenu nzOpen nzTitle="{{ groupMenu.name }}">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Monitor</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
-          </li>
-        </ul>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngFor="let menu of groupMenus">
+      <li nz-menu-item nzMatchRouter *ngIf="!menu.children; else children">
+        <a [routerLink]="menu.path" nz-tooltip nzTooltipPlacement="topLeft">
+          <span nz-icon nzType="{{menu.icon}}" nzTheme="outline"></span>
+          <span>{{ menu.display | translate }}</span>
+        </a>
       </li>
-    </ul> -->
-    <ul nz-menu nzMode="inline" *ngFor="let groupMenu of groupMenus">
-      <li class="menu-group-name" *ngIf="groupMenu.name">
-        <span class="fw-bold">
-          {{ groupMenu.name | translate | uppercase }}
-        </span>
-      </li>
-      <ng-container *ngFor="let menu of groupMenu.menus">
-        <li
-          *ngIf="
-            menu.children && menu.children.length > 0;
-            else menuItemTemplate
-          "
-          nz-submenu
-        >
-          <span title>
-            <span
-              nz-icon
-              *ngIf="menu.icon"
-              [nzType]="menu.icon"
-              nz-tooltip
-              nzTooltipPlacement="topLeft"
-            >
-            </span>
-            <span
-              nz-icon
-              *ngIf="menu.iconFont"
-              [nzIconfont]="menu.iconFont"
-              nz-tooltip
-              nzTooltipPlacement="topLeft"
-            >
-            </span>
-            <span>{{ menu.display | translate }}</span>
-          </span>
-          <ul>
-            <ng-container *ngFor="let item of menu.children">
-              <li
-                *appPermission="item.requiredPolicy"
-                nz-menu-item
-                nzMatchRouter
-              >
-                <a [routerLink]="item.path">{{ item.display | translate }}</a>
+      <ng-template #children>
+        <li nz-submenu nzOpen nzIcon="{{menu.icon}}" nzTitle="{{menu.display | translate}}">
+          <div *ngIf="menu.children">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="/welcome">Welcome</a>
               </li>
-            </ng-container>
-          </ul>
+              <li nz-menu-item nzMatchRouter>
+                <a>Monitor</a>
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                <a>Workplace</a>
+              </li>
+            </ul>
+          </div>
         </li>
-        <ng-template #menuItemTemplate>
-          <li nz-menu-item nzMatchRouter>
-            <a [routerLink]="menu.path" nz-tooltip nzTooltipPlacement="topLeft">
-              <span
-                nz-icon
-                *ngIf="menu.icon"
-                nzTooltipPlacement="topLeft"
-                [nzType]="menu.icon"
-              ></span>
-              <span
-                nz-icon
-                *ngIf="menu.iconFont"
-                nzTooltipPlacement="topLeft"
-                [nzIconfont]="menu.iconFont"
-              >
-              </span>
-              <span>{{ menu.display | translate }}</span>
-            </a>
-          </li>
-        </ng-template>
-      </ng-container>
+      </ng-template>
     </ul>
   </nz-sider>
   <nz-layout>
@@ -113,6 +56,6 @@
         <router-outlet></router-outlet>
       </div>
     </nz-content>
-    <nz-footer></nz-footer>
+    <app-now-playing></app-now-playing>
   </nz-layout>
 </nz-layout>

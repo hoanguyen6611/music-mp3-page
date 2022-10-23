@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../core/guards/auth.guard';
 import { MainPageComponent } from './main-page.component';
 
 const routes: Routes = [
@@ -9,31 +8,30 @@ const routes: Routes = [
     component: MainPageComponent,
     children: [
       {
-        path: 'music-page',
-        loadChildren: async () =>
-        (await import('./music-page/music-page.module'))
-          .MusicPageModule,
-      },
-      {
         path: 'home',
         loadChildren: async () =>
         (await import('./home-page/home-page.module'))
           .HomePageModule,
       },
       {
-        path: 'dashboard',
+        path: 'account-me',
         loadChildren: async () =>
-        (await import('./dashboard-page/dashboard-page.module'))
-          .DashboardPageModule,
+        (await import('./account/account.module'))
+          .AccountModule,
       },
       {
-        path: 'user-page',
+        path: 'playlists',
         loadChildren: async () =>
-        (await import('./user-page/user-page.module'))
-          .UserPageModule,
-      }
+        (await import('./playlists/playlists.module'))
+          .PlaylistsModule,
+      },
+      {
+        path: 'search',
+        loadChildren: async () =>
+        (await import('./search/search.module'))
+          .SearchModule,
+      },
     ],
-    // canActivate: [AuthGuard]
   }
 ];
 

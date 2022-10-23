@@ -21,8 +21,8 @@
     "PHONE_NUMBER": "Số điện thoại"
   },
   "MENU": {
-    "PERSONAL": "Cá nhân",
-    "DISCOVER": "Khám phá",
-    "FOLLOW": "Theo dõi"
+    "HOME": "Trang chủ",
+    "SEARCH": "Tìm kiếm",
+    "YOUR_LIBRARY": "Cá nhân"
   }
 }

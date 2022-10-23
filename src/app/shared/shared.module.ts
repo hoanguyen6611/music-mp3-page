@@ -33,6 +33,11 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NowPlayingComponent } from './now-playing/now-playing.component';
+import { SongComponent } from './song/song.component';
+import { PlaylistComponent } from './playlist/playlist.component';
+import { ArtistComponent } from './artist/artist.component';
+import { CategoryComponent } from './category/category.component';
 
 const nzModules = [
   NzBreadCrumbModule,

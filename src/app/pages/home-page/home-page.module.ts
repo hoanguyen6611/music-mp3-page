@@ -8,6 +8,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { SongModule } from 'src/app/shared/song';
+import { PlaylistModule } from 'src/app/shared/playlist';
 
 const nzModules = [
   NzGridModule,
@@ -23,6 +25,8 @@ const nzModules = [
     CommonModule,
     HomePageRoutingModule,
     HeaderModule,
+    SongModule,
+    PlaylistModule,
     ...nzModules
   ]
 })

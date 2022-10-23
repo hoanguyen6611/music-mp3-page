@@ -1,0 +1,24 @@
+:host {
+  grid-area: now-playing-bar;
+  background-color: #181818;
+  width: 100%;
+  z-index: 4;
+  @apply flex items-center;
+}
+
+.now-playing-container {
+  min-width: 620px;
+  background-color: rgba(0,21,41,.35);
+  border-top: 1px solid #282828;
+  // display: grid;
+  // grid-template-columns: minmax(180px, 30%) minmax(40%, 722px) minmax(180px, 30%);
+  // @apply px-4 items-center h-nowPlayingBar;
+}
+
+.track-cover {
+  width: 40px;
+  display: flex;
+  flex-shrink: 0;
+  user-select: none;
+  @apply mr-4;
+}

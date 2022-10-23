@@ -8,9 +8,5 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HomePageComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
