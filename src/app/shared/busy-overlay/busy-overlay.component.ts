@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-busy-overlay',
   templateUrl: './busy-overlay.component.html',
-  styleUrls: ['./busy-overlay.component.scss']
+  styleUrls: ['./busy-overlay.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BusyOverlayComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class BusyOverlayComponent {
+  @Input() isBusy = false;
 }

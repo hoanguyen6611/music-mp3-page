@@ -1,1 +1,13 @@
-<p>busy-overlay works!</p>
+<ng-content></ng-content>
+<nz-modal
+  nzWrapClassName="busy-overlay-custom"
+  nzCentered
+  [nzVisible]="isBusy"
+  [nzMaskClosable]="false"
+  [nzClosable]="false"
+  [nzFooter]="null"
+>
+  <ng-container *nzModalContent>
+    <nz-spin [nzSpinning]="isBusy"> </nz-spin>
+  </ng-container>
+</nz-modal>

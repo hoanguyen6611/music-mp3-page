@@ -1,0 +1,172 @@
+<nz-layout>
+  <nz-header>
+  </nz-header>
+  <nz-content class="mt-6 flex justify-center">
+    <div nz-col nzSpan="24" class="h-full p-[20px] max-w-[800px]">
+      <h3 class="text-center font-semibold">Sign up for free to start listening</h3>
+      <button
+        class="w-full bg-[#1877f2] text-white rounded-full mt-5 font-semibold"
+        nz-button
+        nzType="default"
+        nzSize="large"
+      >
+        <span nz-icon nzType="facebook" nzTheme="outline"></span>
+        {{ 'SIGN_UP_FORM.FACEBOOK' | translate }}
+      </button>
+      <button
+        class="w-full text-[#6a6a6a] rounded-full mt-5 font-semibold"
+        nz-button
+        nzType="default"
+        nzSize="large"
+      >
+        <span nz-icon nzType="google" nzTheme="outline"></span>
+        {{ 'SIGN_UP_FORM.GOOGLE' | translate }}
+      </button>
+      <nz-divider nzText="OR"></nz-divider>
+      <nz-spin [nzSpinning]="false">
+        <form
+          nz-form
+          [formGroup]="formGroup"
+          [nzLayout]="'vertical'"
+          className="form-login"
+        >
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'customerFullName'" class="font-semibold text-xl">
+                  {{ 'SIGN_UP_FORM.FULLNAME' | translate }}
+                </nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{
+                    'MESSAGE.REQUIRED'
+                      | translate: { field: 'SIGN_UP_FORM.FULLNAME' | translate }
+                  }}"
+                >
+                  <input
+                    type="text"
+                    formControlName="customerFullName"
+                    id="customerFullName"
+                    nz-input
+                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                    maxLength="50"
+                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'address'" class="font-semibold text-xl">
+                  {{ 'SIGN_UP_FORM.ADDRESS' | translate }}
+                </nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{
+                    'MESSAGE.REQUIRED'
+                      | translate: { field: 'SIGN_UP_FORM.ADDRESS' | translate }
+                  }}"
+                >
+                  <input
+                    type="text"
+                    formControlName="address"
+                    id="address"
+                    nz-input
+                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                    maxLength="50"
+                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'customerUsername'" class="font-semibold text-xl">
+                  {{ 'SIGN_UP_FORM.USERNAME' | translate }}
+                </nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{
+                    'MESSAGE.REQUIRED'
+                      | translate: { field: 'SIGN_UP_FORM.USERNAME' | translate }
+                  }}"
+                >
+                  <input
+                    type="text"
+                    formControlName="customerUsername"
+                    id="customerUsername"
+                    nz-input
+                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                    maxLength="50"
+                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'customerPassword'" class="font-semibold text-xl">
+                  {{ 'SIGN_UP_FORM.PASSWORD' | translate }}
+                </nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{
+                    'MESSAGE.REQUIRED'
+                      | translate: { field: 'SIGN_UP_FORM.PASSWORD' | translate }
+                  }}"
+                >
+                  <input
+                    type="password"
+                    formControlName="customerPassword"
+                    id="customerPassword"
+                    nz-input
+                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                    maxLength="50"
+                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'customerPhone'" class="font-semibold text-xl">
+                  {{ 'SIGN_UP_FORM.PHONE_NUMBER' | translate }}
+                </nz-form-label>
+                <nz-form-control
+                >
+                  <input
+                    type="phone"
+                    formControlName="customerPhone"
+                    id="customerPhone"
+                    nz-input
+                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                    maxLength="50"
+                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </form>
+      </nz-spin>
+      <div class="flex justify-center">
+        <button
+          class="bg-[#1fdf64] text-black rounded-lg mt-5 font-semibold"
+          nzSize="large"
+          nz-button
+          (click)="register()"
+        >
+          Đăng ký
+        </button>
+      </div>
+      <div class="flex justify-center mt-5">
+        <h3 class="text-lg">Have an account?</h3>
+        <a class="text-lg" routerLink="/login">Log in.</a>
+      </div>
+    </div>
+  </nz-content>
+</nz-layout>

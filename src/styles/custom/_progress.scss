@@ -1,0 +1,24 @@
+.ant-progress-inner:not(.ant-progress-circle-gradient)
+  .ant-progress-circle-path {
+  stroke: var(--ant-progress-default-color);
+}
+
+.ant-progress-circle.ant-progress-status-success .ant-progress-text {
+  color: var(--ant-progress-success-color);
+}
+
+.ant-progress-status-success
+  .ant-progress-inner:not(.ant-progress-circle-gradient)
+  .ant-progress-circle-path {
+  stroke: var(--ant-progress-success-color);
+}
+
+.ant-progress-circle.ant-progress-status-exception .ant-progress-text {
+  color: var(--ant-progress-error-color);
+}
+
+.ant-progress-status-exception
+  .ant-progress-inner:not(.ant-progress-circle-gradient)
+  .ant-progress-circle-path {
+  stroke: var(--ant-progress-error-color);
+}

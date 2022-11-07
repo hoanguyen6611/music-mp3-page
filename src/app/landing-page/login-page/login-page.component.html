@@ -1,0 +1,126 @@
+<nz-layout>
+  <nz-header>
+  </nz-header>
+  <nz-content class="mt-6 flex justify-center">
+    <div nz-col nzSpan="24" class="h-[100vh] p-[20px] max-w-[800px]">
+      <h3 class="text-center font-semibold">To continue, log in to App</h3>
+      <button
+        class="w-full bg-[#1877f2] text-white rounded-full mt-5 font-semibold btn-apply"
+        nz-button
+        nzType="default"
+        nzSize="large"
+      >
+        <span nz-icon nzType="facebook" nzTheme="outline"></span>
+        {{ 'LOGIN_FORM.FACEBOOK' | translate }}
+      </button>
+      <button
+        class="w-full text-[#6a6a6a] rounded-full mt-5 font-semibold btn-apply"
+        nz-button
+        nzType="default"
+        nzSize="large"
+      >
+        <span nz-icon nzType="google" nzTheme="outline"></span>
+        {{ 'LOGIN_FORM.GOOGLE' | translate }}
+      </button>
+      <nz-divider nzText="OR"></nz-divider>
+      <nz-spin [nzSpinning]="false">
+        <form
+          nz-form
+          [formGroup]="formGroup"
+          [nzLayout]="'vertical'"
+          className="form-login"
+        >
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'email'" class="font-semibold text-xl">
+                  {{ 'LOGIN_FORM.EMAIL' | translate }}
+                </nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{
+                    'MESSAGE.REQUIRED'
+                      | translate: { field: 'LOGIN_FORM.EMAIL' | translate }
+                  }}"
+                >
+                  <input
+                    type="email"
+                    formControlName="email"
+                    id="email"
+                    nz-input
+                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                    maxLength="50"
+                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'password'" class="font-semibold text-xl">
+                  {{ 'LOGIN_FORM.PASSWORD' | translate }}
+                </nz-form-label>
+                <nz-form-control
+                  nzErrorTip="{{
+                    'MESSAGE.REQUIRED'
+                      | translate: { field: 'LOGIN_FORM.PASSWORD' | translate }
+                  }}"
+                >
+                  <input
+                    type="password"
+                    formControlName="password"
+                    id="password"
+                    nz-input
+                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                    maxLength="50"
+                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col [nzSpan]="20">
+              <a
+                routerLink="/forget-password"
+                nz-button
+                nzType="link"
+                class="text-black text-base"
+                >{{ 'LOGIN_FORM.FORGOT_PASSWORD' | translate }}</a
+              >
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16" class="mt-5">
+            <div nz-col [nzSpan]="12">
+              <label nz-checkbox>
+                <span>Remember me</span>
+              </label>
+            </div>
+          </div>
+        </form>
+      </nz-spin>
+      <div class="flex justify-end">
+        <button
+          class="bg-[#1fdf64] text-black rounded-lg mt-5 font-semibold"
+          nzSize="large"
+          nz-button
+          (click)="loginUser()"
+        >
+          Đăng nhập
+        </button>
+      </div>
+      <nz-divider></nz-divider>
+      <h3 class="text-center font-semibold text-lg">Don't have an account?</h3>
+      <button
+        class="w-full text-[#6a6a6a] rounded-full mt-5 font-semibold"
+        nz-button
+        nzType="default"
+        nzSize="large"
+        routerLink="/register"
+      >
+        SIGN UP FOR APP
+      </button>
+    </div>
+  </nz-content>
+</nz-layout>

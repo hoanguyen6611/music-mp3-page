@@ -1,0 +1,40 @@
+.ant-picker-header>button:hover {
+  color: var(--ant-primary-6);
+}
+
+.ant-picker-time-panel {
+  .ant-picker-time-panel-column {
+    overflow: overlay;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    background: unset;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+
+// swap button select month and year
+.ant-picker-dropdown {
+  .ant-picker-date-panel {
+    date-header {
+      .ant-picker-header-view {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+  
+        .ant-picker-header-month-btn {
+          order: 1;
+        }
+  
+        .ant-picker-header-year-btn {
+          margin-left: 8px;
+          order: 2;
+        }
+      }
+    }
+  }
+}

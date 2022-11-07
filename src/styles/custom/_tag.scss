@@ -1,0 +1,59 @@
+nz-tag.custom-clickable {
+  &:not(.ant-tag-checkable-checked) {
+    background-color: #c7d1dc;
+
+    &.ant-tag-default {
+      color: black;
+    }
+  }
+
+  &.ant-tag-default {
+    border: 1px solid #d9d9d9;
+
+    &.ant-tag-checkable-checked {
+      background-color: #fafafa;
+      color: black;
+    }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: rgba(0, 0, 0, 0.25);
+  }
+}
+
+nz-tag {
+  &.ant-tag-orange {
+    color: #fa8c16;
+  }
+
+  &.ant-tag-geekblue {
+    color: #2f54eb;
+  }
+
+  &.ant-tag-red {
+    color: #f5222d;
+  }
+
+  &.ant-tag-green {
+    color: #52c41a;
+  }
+
+  &.ant-tag-magenta {
+    color: #eb2f96;
+  }
+
+  // custom for order new status
+  &.ant-tag-cyan {
+    color: black;
+
+    &.ant-tag-checkable-checked {
+      color: #BFBFBF;
+
+      .text,
+      i.anticon {
+        color: rgb(0, 0, 0) !important;
+      }
+    }
+  }
+}

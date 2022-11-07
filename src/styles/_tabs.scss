@@ -1,0 +1,27 @@
+.ant-tabs-left {
+  .ant-tabs-tab {
+    &:hover {
+      background-color: var(--ant-item-hover-bg);
+    }
+
+    &.ant-tabs-tab-active {
+      background-color: var(--ant-item-active-bg);
+    }
+  }
+
+  .ant-tabs-tabpane.ant-tabs-tabpane-active {
+    padding: 16px !important;
+  }
+}
+
+.ant-tabs-top {
+  .ant-tabs-tab {
+    &:hover {
+      background-color: transparent;
+    }
+
+    &.ant-tabs-tab-active {
+      background-color: transparent;
+    }
+  }
+}

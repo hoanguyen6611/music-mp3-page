@@ -1,0 +1,30 @@
+.list-notifications {
+  max-width: 420px;
+  max-height: 50vh;
+  overflow: auto;
+}
+
+li.notification:hover {
+  background-color: var(--ant-item-hover-bg);
+}
+
+// [nz-icon] {
+  // color: #FFF;
+  // font-size: 24px;
+// }
+
+:host::ng-deep {
+  svg {
+    stroke: var(--ant-gray-6);
+  }
+  svg:hover {
+    stroke: var(--ant-primary-6);
+  }
+  .ant-badge-count {
+    box-shadow: unset;
+    top: -4px;
+    right: -2px;
+    height: 18px;
+    line-height: 18px;
+  }
+}
