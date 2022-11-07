@@ -1,0 +1,20 @@
+<div
+  aria-roledescription="button"
+  [title]="isPlaying ? 'Pause' : 'Play'"
+  [ngClass]="buttonClass"
+  (click)="togglePlay.emit(isPlaying!)"
+>
+  <span
+    class="play-icon"
+    nz-icon
+    [nzType]="isPlaying ? 'pause-circle' : 'play-circle'"
+    nzTheme="outline"
+  ></span>
+  <span
+    class="volume-icon"
+    nz-icon
+    nzType="snippets"
+    nzTheme="outline"
+    *ngIf="isShowVolumeIcon"
+  ></span>
+</div>

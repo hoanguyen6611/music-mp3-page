@@ -23,19 +23,6 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  groupMenus: MenuItem[] = [
-    {
-      display: 'MENU.HOME',
-      icon: 'home',
-      path: '/main/home'
-    },
-    {
-      display: 'MENU.SEARCH',
-      icon: 'search',
-      path: '/main/search'
-    },
-  ]
-
   logout() {
     this.authTestService.logout().subscribe(result =>
       {

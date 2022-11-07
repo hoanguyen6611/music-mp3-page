@@ -18,6 +18,11 @@ import { BusyOverlayModule } from '../shared/busy-overlay/busy-overlay.module';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NowPlayingModule } from '../shared/now-playing/now-playing.module';
+import { LayoutModule } from '../core/layout/layout.module';
+import { NotificationsModule } from '../containers/notifications/notifications.module';
+import { NavBarModule } from '../shared/nav-bar/nav-bar.module';
+import { HeaderBarModule } from '../shared/header-bar/header-bar.module';
+import { ViewModule } from '../shared/view/view.module';
 
 const nzModules = [
   NzLayoutModule,
@@ -44,6 +49,11 @@ const nzModules = [
     TranslateModule,
     ReactiveFormsModule,
     NowPlayingModule,
+    LayoutModule,
+    NotificationsModule,
+    NavBarModule,
+    HeaderBarModule,
+    ViewModule,
     ...nzModules
   ]
 })

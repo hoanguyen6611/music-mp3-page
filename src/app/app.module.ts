@@ -21,7 +21,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { IAuthService } from './core/authentication/auth.service.interface';
 import { AuthService } from './core/authentication';
-
 registerLocaleData(en);
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -59,7 +58,11 @@ export function createTranslateLoader(http: HttpClient) {
       defaultLanguage: 'vi-VN',
     }),
   ],
-  providers: [...interceptorProviders, { provide: IAuthService, useClass: AuthService }, { provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    ...interceptorProviders,
+    { provide: IAuthService, useClass: AuthService },
+    { provide: NZ_I18N, useValue: en_US },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

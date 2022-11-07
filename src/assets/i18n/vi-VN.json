@@ -23,6 +23,8 @@
   "MENU": {
     "HOME": "Trang chủ",
     "SEARCH": "Tìm kiếm",
-    "YOUR_LIBRARY": "Cá nhân"
+    "MY_PLAYLISTS": "Cá nhân",
+    "CREATE_PLAYLIST": "Tạo playlist",
+    "LIKED_SONG": "Bài hát yêu thích"
   }
 }

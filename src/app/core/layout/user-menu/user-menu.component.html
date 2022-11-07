@@ -1,0 +1,29 @@
+<ng-container *ngIf="status; else loginTemplate">
+  <ng-container *ngIf="name">
+    <div nz-dropdown [nzDropdownMenu]="menu" class="wrap">
+      <nz-avatar nzIcon="user" class="mr-5"></nz-avatar>
+      <span>
+        {{ name }}
+      </span>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #loginTemplate>
+  <button (click)="login()" nz-button nzType="link" nzShape="round">
+    <i nz-icon nzType="login"></i>Login
+  </button>
+</ng-template>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu nzSelectable>
+    <li nz-menu-item nzMatchRouter routerLink="/main/setting">
+      <span nz-icon nzType="setting" class="mr-5"></span>
+      {{ 'USER_MENU.SETTING' | translate }}
+    </li>
+    <li nz-menu-item nzMatchRouter nzDanger (click)="logout()">
+      <span nz-icon nzType="logout" class="mr-5"></span>
+      {{ 'USER_MENU.LOGOUT' | translate }}
+    </li>
+  </ul>
+</nz-dropdown-menu>

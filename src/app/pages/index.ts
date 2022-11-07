@@ -11,3 +11,10 @@ export interface MenuItem {
   children?: MenuItem[];
   requiredPolicy?: string[];
 }
+
+export interface NavItem {
+  label: string;
+  path: string;
+  icon?: string;
+  exact?: boolean;
+}

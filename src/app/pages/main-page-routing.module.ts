@@ -8,6 +8,11 @@ const routes: Routes = [
     component: MainPageComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
         path: 'home',
         loadChildren: async () =>
         (await import('./home-page/home-page.module'))
@@ -30,6 +35,12 @@ const routes: Routes = [
         loadChildren: async () =>
         (await import('./search/search.module'))
           .SearchModule,
+      },
+      {
+        path: 'my-playlists',
+        loadChildren: async () =>
+        (await import('./my-playlists/my-playlists.module'))
+          .MyPlaylistsModule,
       },
     ],
   }

@@ -1,24 +1,23 @@
 :host {
   grid-area: now-playing-bar;
-  background-color: #181818;
+  background-color: rgba(0,21,41,.35);
   width: 100%;
-  z-index: 4;
-  @apply flex items-center;
+  // z-index: 4;
+  display: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .now-playing-container {
   min-width: 620px;
-  background-color: rgba(0,21,41,.35);
+  background-color: #181818;
   border-top: 1px solid #282828;
-  // display: grid;
-  // grid-template-columns: minmax(180px, 30%) minmax(40%, 722px) minmax(180px, 30%);
+  display: grid;
+  grid-template-columns: minmax(180px, 30%) minmax(40%, 722px) minmax(180px, 30%);
+  @apply px-4 items-center ;
   // @apply px-4 items-center h-nowPlayingBar;
 }
-
-.track-cover {
-  width: 40px;
-  display: flex;
-  flex-shrink: 0;
-  user-select: none;
-  @apply mr-4;
+.control-button {
+  color: red;
 }

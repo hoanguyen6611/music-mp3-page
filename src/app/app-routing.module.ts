@@ -14,7 +14,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/main-page.module').then(m => m.MainPageModule),
   },
-  { path: '**', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', redirectTo: 'main', pathMatch: 'full' },
 ];
 
 @NgModule({

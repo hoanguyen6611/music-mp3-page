@@ -1,0 +1,11 @@
+:host {
+  @apply flex items-center justify-center mx-4;
+}
+.timer-duration {
+  transition: all 0.2s;
+  @apply text-xs text-white text-opacity-60;
+}
+.playback-slider {
+  max-width: 700px;;
+  min-width: 700px;
+}

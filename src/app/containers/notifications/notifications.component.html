@@ -1,1 +1,58 @@
-<p>notifications works!</p>
+<div nzTrigger="click"
+     nz-dropdown
+     [nzDropdownMenu]="notificationRef"
+     nz-tooltip nzTooltipTitle="Thông báo">
+  <nz-badge>
+    <span nz-icon nzType="bell" nzTheme="outline"></span>
+  </nz-badge>
+
+  <nz-dropdown-menu #notificationRef="nzDropdownMenu">
+    <ul #notificationLists
+        class="list-notifications"
+        nz-menu
+        nzSelectable>
+      <li>
+        <h3 class="px-3 py-3">
+          {{ 'NOTIFICATIONS.TITLE' | translate }}
+        </h3>
+
+        <nz-divider class="my-0"></nz-divider>
+      </li>
+
+      <!-- <ng-container *ngIf="notifications$ | async as notifications">
+        <ng-container *ngIf="notifications.length || (areNotificationsLoading$ | async); else emptyNotifications">
+          <ng-container *ngFor="let item of notifications">
+            <ng-container [ngSwitch]="item.Type">
+              <li *ngSwitchCase="notificationType.Booking_ConfirmReimbursements"
+                  class="notification">
+                <app-reimbursement [reimbursement]="$any(item)"
+                                   [isBusy]="(markingNotificationAsReadIdsDict$ | async)![item.ID]"
+                                   (markAsSeen)="handleMarkAsSeen(item)"></app-reimbursement>
+                <nz-divider class="my-0"></nz-divider>
+              </li>
+              <li *ngSwitchDefault>
+                <app-notification-item [item]="item"
+                                       [isBusy]="(markingNotificationAsReadIdsDict$ | async)![item.ID]"
+                                       (markAsSeen)="handleMarkAsSeen(item)"></app-notification-item>
+                <nz-divider class="my-0"></nz-divider>
+              </li>
+            </ng-container>
+          </ng-container>
+
+          <li *ngIf="areNotificationsLoading$ | async"
+              class="text-center py-3">
+            <span nz-icon
+               nzType="loading"
+               class="loading-icon"></span>
+          </li>
+        </ng-container>
+      </ng-container> -->
+    </ul>
+  </nz-dropdown-menu>
+</div>
+
+<ng-template #emptyNotifications>
+  <nz-empty class="pt-2"
+            [nzNotFoundContent]="'NOTIFICATION_SYSTEM.NO_CONTENT' | translate">
+  </nz-empty>
+</ng-template>

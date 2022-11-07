@@ -1,0 +1,18 @@
+.wrap {
+  cursor: pointer;
+  // display: inline;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flag {
+  width: 16px;
+  margin-left: 8px;
+}
+
+.flag-item {
+  width: 16px;
+  margin-right: 8px;
+}

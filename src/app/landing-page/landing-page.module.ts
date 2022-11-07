@@ -22,6 +22,7 @@ import { ForgetPasswordPageComponent } from './forget-password-page/forget-passw
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { AuthService } from '../core/authentication';
+import { PlayButtonModule } from '../shared/play-button/play-button.module';
 
 const NzModules = [
   NzLayoutModule,
@@ -48,6 +49,7 @@ const NzModules = [
     ReactiveFormsModule,
     TranslateModule,
     LandingPageRoutingModule,
+    PlayButtonModule
   ],
   providers: [AuthService]
 })
