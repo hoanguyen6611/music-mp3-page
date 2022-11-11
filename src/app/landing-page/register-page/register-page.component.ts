@@ -17,16 +17,24 @@ export class RegisterPageComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly route: Router,
     private message: NzMessageService,
-    private readonly translateService: TranslateService
+    private readonly translateService: TranslateService,
   ) {}
 
   ngOnInit(): void {}
 
   readonly formGroup: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.email, Validators.required]),
-    role: new FormControl('user')
+    password: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}',
+      ),
+    ]),
+    email: new FormControl('', [
+      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+      Validators.required,
+    ]),
+    role: new FormControl('user'),
   });
   register() {
     if (this.formGroup.valid) {
@@ -34,10 +42,12 @@ export class RegisterPageComponent implements OnInit {
         this.responsedata = res;
         console.log(res);
         if (this.responsedata.email) {
-          this.message.success(this.translateService.instant('MESSAGE.REGISTER_SUCCESS'));
+          this.message.success(
+            this.translateService.instant('MESSAGE.REGISTER_SUCCESS'),
+          );
           this.route.navigate(['/login']);
         } else {
-          this.message.error(this.responsedata.message)
+          this.message.error(this.responsedata.message);
         }
       });
     }

@@ -4,7 +4,9 @@
     "INPUT_PLACEHOLDER": "Vui lòng nhập",
     "LOGIN_SUCCESS": "Đăng nhập thành công",
     "LOGOUT_SUCCES": "Đăng xuất",
-    "REGISTER_SUCCESS": "Tạo tài khoản thành công"
+    "REGISTER_SUCCESS": "Tạo tài khoản thành công",
+    "VALIDATOR_PASSWORD": "Mật khẩu chưa đúng định dạng",
+    "VALIDATOR_EMAIL": "Email chưa đúng định dạng"
   },
   "LOGIN_FORM": {
     "EMAIL": "Email",

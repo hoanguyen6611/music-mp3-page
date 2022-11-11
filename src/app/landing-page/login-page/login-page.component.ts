@@ -13,8 +13,16 @@ import { TranslateService } from '@ngx-translate/core';
 export class LoginPageComponent implements OnInit {
   responsedata: any;
   readonly formGroup: FormGroup = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+    email: new FormControl('', [
+      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+      Validators.required,
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}',
+      ),
+    ])
   });
   constructor(
     private readonly authService: AuthService,
