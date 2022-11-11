@@ -29,15 +29,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
 }
-// registerLocaleData(getLocaleData(getCurrentLang()));
-
-// export const createTranslateLoader = (httpBackend: HttpBackend) =>
-//   new TranslateHttpLoader(
-//     new HttpClient(httpBackend),
-//     `${window.location.origin}/assets/i18n/`,
-//     '.json',
-//   );
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -61,7 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     ...interceptorProviders,
     { provide: IAuthService, useClass: AuthService },
-    { provide: NZ_I18N, useValue: en_US },
+    { provide: NZ_I18N, useValue: en_US }
   ],
   bootstrap: [AppComponent],
 })

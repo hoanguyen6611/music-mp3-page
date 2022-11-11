@@ -1,11 +1,5 @@
-<div class="grid grid-cols-8 gap-10">
-  <app-playlist></app-playlist>
-  <app-playlist></app-playlist>
-  <app-playlist></app-playlist>
-  <app-playlist></app-playlist>
-  <app-playlist></app-playlist>
-  <app-playlist></app-playlist>
-  <app-playlist></app-playlist>
-  <app-playlist></app-playlist>
-  <app-playlist></app-playlist>
+<div class="grid grid-cols-8 gap-10" *ngIf="song$ | async as songs">
+  <ng-container *ngFor="let item of songs">
+    <app-playlist [title]="item.name" [imageUrl]="item.image" [description]="item.author"></app-playlist>
+  </ng-container>
 </div>

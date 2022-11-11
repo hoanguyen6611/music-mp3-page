@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { PlaylistsService } from 'src/app/core/services/playlists/playlists.service';
+import { SongsService } from 'src/app/core/services/songs/songs.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,5 +10,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HomePageComponent {
 
-
+  constructor(private readonly songsService: SongsService, private readonly playlistService: PlaylistsService) {}
+  readonly song$ = this.songsService.getAllSong();
+  readonly data$ = this.playlistService.getAllUserPlaylist();
 }

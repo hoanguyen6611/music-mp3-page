@@ -23,6 +23,8 @@ import { NotificationsModule } from '../containers/notifications/notifications.m
 import { NavBarModule } from '../shared/nav-bar/nav-bar.module';
 import { HeaderBarModule } from '../shared/header-bar/header-bar.module';
 import { ViewModule } from '../shared/view/view.module';
+import { AdminComponent } from './admin/admin.component';
+import { CategoryComponent } from './category/category.component';
 
 const nzModules = [
   NzLayoutModule,
