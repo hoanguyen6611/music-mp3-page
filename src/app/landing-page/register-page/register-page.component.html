@@ -5,7 +5,7 @@
     <div nz-col nzSpan="24" class="h-full p-[20px] max-w-[800px]">
       <h3 class="text-center font-semibold">Sign up for free to start listening</h3>
       <button
-        class="w-full bg-[#1877f2] text-white rounded-full mt-5 font-semibold"
+        class="w-full bg-[#1877f2] text-white rounded-full mt-5 font-semibold btn-apply"
         nz-button
         nzType="default"
         nzSize="large"
@@ -14,7 +14,7 @@
         {{ 'SIGN_UP_FORM.FACEBOOK' | translate }}
       </button>
       <button
-        class="w-full text-[#6a6a6a] rounded-full mt-5 font-semibold"
+        class="w-full text-[#6a6a6a] rounded-full mt-5 font-semibold btn-apply"
         nz-button
         nzType="default"
         nzSize="large"
@@ -33,7 +33,7 @@
           <div nz-row [nzGutter]="16">
             <div nz-col nzSpan="20">
               <nz-form-item>
-                <nz-form-label nzFor="'customerFullName'" class="font-semibold text-xl">
+                <nz-form-label nzFor="'name'" class="font-semibold text-xl">
                   {{ 'SIGN_UP_FORM.FULLNAME' | translate }}
                 </nz-form-label>
                 <nz-form-control
@@ -44,8 +44,8 @@
                 >
                   <input
                     type="text"
-                    formControlName="customerFullName"
-                    id="customerFullName"
+                    formControlName="name"
+                    id="name"
                     nz-input
                     placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
                     maxLength="50"
@@ -55,22 +55,23 @@
               </nz-form-item>
             </div>
           </div>
+
           <div nz-row [nzGutter]="16">
             <div nz-col nzSpan="20">
               <nz-form-item>
-                <nz-form-label nzFor="'address'" class="font-semibold text-xl">
-                  {{ 'SIGN_UP_FORM.ADDRESS' | translate }}
+                <nz-form-label nzFor="'email'" class="font-semibold text-xl">
+                  {{ 'SIGN_UP_FORM.EMAIL' | translate }}
                 </nz-form-label>
                 <nz-form-control
-                  nzErrorTip="{{
-                    'MESSAGE.REQUIRED'
-                      | translate: { field: 'SIGN_UP_FORM.ADDRESS' | translate }
-                  }}"
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate: { field: 'SIGN_UP_FORM.EMAIL' | translate }
+                }}"
                 >
                   <input
-                    type="text"
-                    formControlName="address"
-                    id="address"
+                    type="email"
+                    formControlName="email"
+                    id="email"
                     nz-input
                     placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
                     maxLength="50"
@@ -83,32 +84,7 @@
           <div nz-row [nzGutter]="16">
             <div nz-col nzSpan="20">
               <nz-form-item>
-                <nz-form-label nzFor="'customerUsername'" class="font-semibold text-xl">
-                  {{ 'SIGN_UP_FORM.USERNAME' | translate }}
-                </nz-form-label>
-                <nz-form-control
-                  nzErrorTip="{{
-                    'MESSAGE.REQUIRED'
-                      | translate: { field: 'SIGN_UP_FORM.USERNAME' | translate }
-                  }}"
-                >
-                  <input
-                    type="text"
-                    formControlName="customerUsername"
-                    id="customerUsername"
-                    nz-input
-                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
-                    maxLength="50"
-                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
-                  />
-                </nz-form-control>
-              </nz-form-item>
-            </div>
-          </div>
-          <div nz-row [nzGutter]="16">
-            <div nz-col nzSpan="20">
-              <nz-form-item>
-                <nz-form-label nzFor="'customerPassword'" class="font-semibold text-xl">
+                <nz-form-label nzFor="'password'" class="font-semibold text-xl">
                   {{ 'SIGN_UP_FORM.PASSWORD' | translate }}
                 </nz-form-label>
                 <nz-form-control
@@ -119,29 +95,8 @@
                 >
                   <input
                     type="password"
-                    formControlName="customerPassword"
-                    id="customerPassword"
-                    nz-input
-                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
-                    maxLength="50"
-                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
-                  />
-                </nz-form-control>
-              </nz-form-item>
-            </div>
-          </div>
-          <div nz-row [nzGutter]="16">
-            <div nz-col nzSpan="20">
-              <nz-form-item>
-                <nz-form-label nzFor="'customerPhone'" class="font-semibold text-xl">
-                  {{ 'SIGN_UP_FORM.PHONE_NUMBER' | translate }}
-                </nz-form-label>
-                <nz-form-control
-                >
-                  <input
-                    type="phone"
-                    formControlName="customerPhone"
-                    id="customerPhone"
+                    formControlName="password"
+                    id="password"
                     nz-input
                     placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
                     maxLength="50"

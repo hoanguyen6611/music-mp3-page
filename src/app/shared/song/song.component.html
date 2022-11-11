@@ -1,1 +1,24 @@
-<p>song works!</p>
+<a [routerLink]="routerUrl" class="flex flex-col flex-1">
+  <div class="media-cover" [class.is-playing]="">
+    <app-media-cover
+      class="mb-4"
+      [imageUrl]="imageUrl"
+      [roundedImage]="roundedImage"
+    ></app-media-cover>
+    <app-play-button
+      class="play-button-overlay"
+      [primary]="true"
+      [large]="true"
+      [isPlaying]=""
+      asClickStopPropagation
+    ></app-play-button>
+  </div>
+  <div class="media-description">
+    <div class="font-bold text-white ellipsis-one-line hover:text-white">
+      {{ title }}
+    </div>
+    <div class="text-description">
+      {{ author }}
+    </div>
+  </div>
+</a>

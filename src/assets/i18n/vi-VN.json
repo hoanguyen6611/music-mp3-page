@@ -1,18 +1,23 @@
 {
   "MESSAGE": {
     "REQUIRED": "Trường {{field}} là bắt buộc!",
-    "INPUT_PLACEHOLDER": "Vui lòng nhập"
+    "INPUT_PLACEHOLDER": "Vui lòng nhập",
+    "LOGIN_SUCCESS": "Đăng nhập thành công",
+    "LOGOUT_SUCCES": "Đăng xuất",
+    "REGISTER_SUCCESS": "Tạo tài khoản thành công"
   },
   "LOGIN_FORM": {
     "EMAIL": "Email",
     "PASSWORD": "Mật khẩu",
     "FORGOT_PASSWORD": "Quên mật khẩu",
-    "FACEBOOK": "CONTINUE WITH FACEBOOK",
-    "GOOGLE": "CONTINUE WITH GOOGLE"
+    "FACEBOOK": "ĐĂNG NHẬP VỚI FACEBOOK",
+    "GOOGLE": "ĐĂNG NHẬP VỚI GOOGLE",
+    "SIGN_UP_FOR_APP": "Đăng ký tài khoản",
+    "SIGN_IN": "Đăng nhập"
   },
   "SIGN_UP_FORM": {
-    "FACEBOOK": "Sign up with Facebook",
-    "GOOGLE": "Sign up with Google",
+    "FACEBOOK": "ĐĂNG NHẬP VỚI FACEBOOK",
+    "GOOGLE": "ĐĂNG NHẬP VỚI GOOGLE",
     "USERNAME": "Tên đăng nhập",
     "PASSWORD": "Mật khẩu",
     "FULLNAME": "Họ và tên",
@@ -26,5 +31,12 @@
     "MY_PLAYLISTS": "Cá nhân",
     "CREATE_PLAYLIST": "Tạo playlist",
     "LIKED_SONG": "Bài hát yêu thích"
+  },
+  "ACTION": {
+    "LOGIN": "Đăng nhập"
+  },
+  "USER_MENU": {
+    "SETTING": "Cài đặt",
+    "LOGOUT": "Đăng xuất"
   }
 }

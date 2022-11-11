@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategorysService } from 'src/app/core/services/categorys/categorys.service';
 
 @Component({
   selector: 'app-search',
@@ -6,4 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
+  constructor(private readonly categoryService: CategorysService) {}
+  readonly categorys$ = this.categoryService.getAllCategory();
 }

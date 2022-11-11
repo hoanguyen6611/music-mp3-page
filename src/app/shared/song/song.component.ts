@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-song',
@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./song.component.scss']
 })
 export class SongComponent implements OnInit {
-
+  @Input() imageUrl: string | undefined;
+  @Input() roundedImage? = false;
+  @Input() title: string = '';
+  @Input() author!: string | null;
+  @Input() routerUrl!: string;
   constructor() { }
 
   ngOnInit(): void {

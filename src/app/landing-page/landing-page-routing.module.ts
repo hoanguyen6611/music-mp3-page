@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CheckLoginGuard } from '../core/guards/check-login.guard';
 import { ForgetPasswordPageComponent } from './forget-password-page/forget-password-page.component';
 import { LandingPageComponent } from './landing-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginPageComponent
+    component: LoginPageComponent,
+    canActivate: [CheckLoginGuard]
   },
   {
     path: 'register',

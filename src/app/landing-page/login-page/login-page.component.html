@@ -107,7 +107,7 @@
           nz-button
           (click)="loginUser()"
         >
-          Đăng nhập
+        {{ 'LOGIN_FORM.SIGN_IN' | translate }}
         </button>
       </div>
       <nz-divider></nz-divider>
@@ -119,7 +119,7 @@
         nzSize="large"
         routerLink="/register"
       >
-        SIGN UP FOR APP
+        {{'LOGIN_FORM.SIGN_UP_FOR_APP' | translate}}
       </button>
     </div>
   </nz-content>

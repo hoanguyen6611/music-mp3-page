@@ -2,7 +2,7 @@
   <ng-container *ngIf="name">
     <div nz-dropdown [nzDropdownMenu]="menu" class="wrap">
       <nz-avatar nzIcon="user" class="mr-5"></nz-avatar>
-      <span>
+      <span class="text-white">
         {{ name }}
       </span>
     </div>
@@ -10,8 +10,9 @@
 </ng-container>
 
 <ng-template #loginTemplate>
-  <button (click)="login()" nz-button nzType="link" nzShape="round">
-    <i nz-icon nzType="login"></i>Login
+  <button class="btn-apply text-white" (click)="login()" nz-button nzType="link" nzShape="round">
+    <i nz-icon nzType="login"></i>
+    {{ 'ACTION.LOGIN' | translate }}
   </button>
 </ng-template>
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../core/guards/auth.guard';
 import { MainPageComponent } from './main-page.component';
 
 const routes: Routes = [
@@ -41,7 +42,20 @@ const routes: Routes = [
         loadChildren: async () =>
         (await import('./my-playlists/my-playlists.module'))
           .MyPlaylistsModule,
+        canActivate: [AuthGuard]
       },
+      {
+        path: 'admin',
+        loadChildren: async () =>
+        (await import('./admin/admin.module'))
+          .AdminModule,
+      },
+      {
+        path: 'category',
+        loadChildren: async () =>
+        (await import('./category/category.module'))
+          .CategoryModule,
+      }
     ],
   }
 ];
