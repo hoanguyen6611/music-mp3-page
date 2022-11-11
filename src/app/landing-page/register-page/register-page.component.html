@@ -63,10 +63,7 @@
                   {{ 'SIGN_UP_FORM.EMAIL' | translate }}
                 </nz-form-label>
                 <nz-form-control
-                nzErrorTip="{{
-                  'MESSAGE.REQUIRED'
-                    | translate: { field: 'SIGN_UP_FORM.EMAIL' | translate }
-                }}"
+                [nzErrorTip]="email"
                 >
                   <input
                     type="email"
@@ -88,10 +85,7 @@
                   {{ 'SIGN_UP_FORM.PASSWORD' | translate }}
                 </nz-form-label>
                 <nz-form-control
-                  nzErrorTip="{{
-                    'MESSAGE.REQUIRED'
-                      | translate: { field: 'SIGN_UP_FORM.PASSWORD' | translate }
-                  }}"
+                  [nzErrorTip]="password"
                 >
                   <input
                     type="password"
@@ -124,4 +118,30 @@
       </div>
     </div>
   </nz-content>
+  <ng-template #password let-control>
+    <ng-container *ngIf="control.hasError('required')">
+      {{
+        'MESSAGE.REQUIRED'
+          | translate: { field: 'SIGN_UP_FORM.PASSWORD' | translate }
+      }}
+    </ng-container>
+    <ng-container *ngIf="control.hasError('pattern')">
+      {{
+        'MESSAGE.VALIDATOR_PASSWORD'| translate
+      }}
+    </ng-container>
+  </ng-template>
+  <ng-template #email let-control>
+    <ng-container *ngIf="control.hasError('required')">
+      {{
+        'MESSAGE.REQUIRED'
+          | translate: { field: 'SIGN_UP_FORM.EMAIL' | translate }
+      }}
+    </ng-container>
+    <ng-container *ngIf="control.hasError('pattern')">
+      {{
+        'MESSAGE.VALIDATOR_EMAIL'| translate
+      }}
+    </ng-container>
+  </ng-template>
 </nz-layout>
