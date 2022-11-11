@@ -38,5 +38,9 @@
   "USER_MENU": {
     "SETTING": "Cài đặt",
     "LOGOUT": "Đăng xuất"
+  },
+  "ME": {
+    "INFO": "Thông tin cá nhân",
+    "CHANGE_PASSWORD": "Đổi mật khẩu"
   }
 }

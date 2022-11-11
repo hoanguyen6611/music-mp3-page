@@ -1,1 +1,21 @@
-<p>account works!</p>
+<h2 class="color-white ellipsis-one-line px-3">Thông tin cá nhân</h2>
+<nz-tabset nzTabPosition="left" class="p-2">
+  <nz-tab [nzTitle]="infoTabTitle">
+    <ng-template #infoTabTitle>
+      <div class="btn-apply text-white">
+        <span nz-icon nzType="user" class="me-1"></span>
+        {{ 'ME.INFO' | translate }}
+      </div>
+    </ng-template>
+    <app-profile></app-profile>
+  </nz-tab>
+  <nz-tab [nzTitle]="changePasswordTablTitle">
+    <ng-template #changePasswordTablTitle>
+      <div class="btn-apply text-white">
+        <span nz-icon nzType="music:lock" class="me-1"></span>
+        {{ 'ME.CHANGE_PASSWORD' | translate }}
+      </div>
+    </ng-template>
+    <app-password-change></app-password-change>
+  </nz-tab>
+</nz-tabset>

@@ -39,18 +39,22 @@ const NzModules = [
   NzCardModule,
   NzDividerModule,
   NzSpaceModule,
-]
+];
 
 @NgModule({
-  declarations: [LandingPageComponent, LoginPageComponent, RegisterPageComponent, ForgetPasswordPageComponent],
+  declarations: [
+    LandingPageComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
+    ForgetPasswordPageComponent,
+  ],
   imports: [
     CommonModule,
-    NzModules,
+    ...NzModules,
     ReactiveFormsModule,
     TranslateModule,
     LandingPageRoutingModule,
-    PlayButtonModule
+    PlayButtonModule,
   ],
-  providers: [AuthService]
 })
-export class LandingPageModule { }
+export class LandingPageModule {}
