@@ -10,7 +10,7 @@ export class MyPlaylistsComponent implements OnInit {
 
   constructor(private readonly songsService: SongsService) { }
 
-  readonly song$ = this.songsService.getAllSong();
+  // readonly song$ = this.songsService.getAllSong();
 
   ngOnInit(): void {
   }

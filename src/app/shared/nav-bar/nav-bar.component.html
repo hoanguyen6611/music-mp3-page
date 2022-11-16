@@ -2,16 +2,18 @@
   <ng-container [ngTemplateOutlet]="logoTmpl"></ng-container>
 </a>
 <ul class="nav-bar-top">
-  <li *ngFor="let item of navItems" class="px-2 nav-link-container">
-    <a
-      [routerLink]="item.path"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: item.exact! }"
-      class="flex items-center px-4 nav-link link-subtle"
-    >
-      {{ item.label | translate }}
-    </a>
-  </li>
+  <div *ngFor="let item of navItems">
+    <li class="px-2 nav-link-container">
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.exact! }"
+        class="flex items-center px-4 nav-link link-subtle"
+      >
+        {{ item.label | translate }}
+      </a>
+    </li>
+  </div>
 </ul>
 <ng-template #logoTmpl>
   <svg viewBox="0 0 1134 340" class="h-10">

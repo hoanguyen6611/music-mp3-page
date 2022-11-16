@@ -33,6 +33,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { AblumComponent } from './ablum/ablum.component';
 
 const nzModules = [
   NzBreadCrumbModule,
@@ -69,7 +70,7 @@ const nzModules = [
 
 @NgModule({
   declarations: [
-    CurrencyPipe,
+    CurrencyPipe
   ],
   imports: [
     CommonModule,

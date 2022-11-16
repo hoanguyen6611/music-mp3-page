@@ -9,7 +9,7 @@ export class CheckLoginGuard implements CanActivate {
   constructor(private service: AuthService, private route: Router) {}
   canActivate() {
     if(this.service.isLoggedIn()) {
-      this.route.navigate(['/main/home'])
+      this.route.navigate(['/main/home']);
       return false;
     } else {
       return true;

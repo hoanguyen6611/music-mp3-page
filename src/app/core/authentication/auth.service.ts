@@ -17,13 +17,18 @@ export class AuthService {
   isLoggedIn() {
     return localStorage.getItem('token') != null;
   }
+  isAdmin() {
+    return localStorage.getItem('role') === 'admin';
+  }
 
   getToken() {
     return localStorage.getItem('token') || '';
   }
 
   logout() {
-    // return this.httpClient.post(`${this.apiUrl}/authentication/logout`);
+    return this.httpClient.post(`${this.apiUrl}/authentication/logout`,
+    {}
+    );
   }
 
   register(user: UserRegister) {

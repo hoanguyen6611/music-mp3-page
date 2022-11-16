@@ -17,4 +17,5 @@ export interface NavItem {
   path: string;
   icon?: string;
   exact?: boolean;
+  roleAdmin?: boolean;
 }

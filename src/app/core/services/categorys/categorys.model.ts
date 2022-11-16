@@ -1,5 +1,3 @@
-export type Categorys = Category[]
-
 export interface Category {
   id: number
   name: string

@@ -1,1 +1,39 @@
-<p>admin works!</p>
+<h2 class="color-white ellipsis-one-line p-3">Trang Quản lý</h2>
+<nz-tabset nzTabPosition="left" class="p-2">
+  <nz-tab [nzTitle]="category">
+    <ng-template #category>
+      <div class="btn-apply text-white">
+        <span nz-icon nzType="user" class="me-1"></span>
+        {{ 'MENU.ADMIN_CATEGORY' | translate }}
+      </div>
+    </ng-template>
+    <app-category></app-category>
+  </nz-tab>
+  <nz-tab [nzTitle]="playlist">
+    <ng-template #playlist>
+      <div class="btn-apply text-white">
+        <span nz-icon nzType="music:lock" class="me-1"></span>
+        {{ 'MENU.ADMIN_PLAYLIST' | translate }}
+      </div>
+    </ng-template>
+    <app-playlist></app-playlist>
+  </nz-tab>
+  <nz-tab [nzTitle]="song">
+    <ng-template #song>
+      <div class="btn-apply text-white">
+        <span nz-icon nzType="music:music" class="me-1"></span>
+        {{ 'MENU.ADMIN_SONG' | translate }}
+      </div>
+    </ng-template>
+    <app-song></app-song>
+  </nz-tab>
+  <nz-tab [nzTitle]="user">
+    <ng-template #user>
+      <div class="btn-apply text-white">
+        <span nz-icon nzType="music:users" class="me-1"></span>
+        {{ 'MENU.ADMIN_USER' | translate }}
+      </div>
+    </ng-template>
+    <app-user></app-user>
+  </nz-tab>
+</nz-tabset>

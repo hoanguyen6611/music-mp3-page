@@ -35,9 +35,11 @@ export class LoginPageComponent implements OnInit {
     if (this.formGroup.valid) {
       this.authService.login(this.formGroup.value).subscribe(res => {
         this.responsedata = res;
+        console.log(res);
         if (this.responsedata.token) {
           localStorage.setItem('token', this.responsedata.token);
-          localStorage.setItem('name', this.responsedata.user.name)
+          localStorage.setItem('name', this.responsedata.user.name);
+          localStorage.setItem('role', this.responsedata.user.role);
           this.message.success(this.translateService.instant('MESSAGE.LOGIN_SUCCESS'));
           this.route.navigate(['/main/home']);
         } else {

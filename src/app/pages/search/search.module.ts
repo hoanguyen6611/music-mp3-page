@@ -9,6 +9,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { CategoryModule } from 'src/app/shared/category/category.module';
 import { SearchComponent } from './search.component';
+import { SearchStore } from './search.store';
 
 const nzModules = [
   NzGridModule,
@@ -25,6 +26,7 @@ const nzModules = [
     SearchRoutingModule,
     CategoryModule,
     ...nzModules,
-  ]
+  ],
+  providers: [SearchStore]
 })
 export class SearchModule { }

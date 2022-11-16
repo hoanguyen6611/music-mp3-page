@@ -43,10 +43,7 @@
               </div>
             </nz-form-label>
             <nz-form-control
-              nzErrorTip="{{
-                'MESSAGE.REQUIRED'
-                  | translate: { field: 'SIGN_UP_FORM.EMAIL' | translate }
-              }}"
+              [nzErrorTip]="email"
             >
               <input
                 type="email"
@@ -102,4 +99,17 @@
   <div nz-col nzSpan="6">
     <nz-avatar [nzSize]="64" nzIcon="user"></nz-avatar>
   </div>
+  <ng-template #email let-control>
+    <ng-container *ngIf="control.hasError('required')">
+      {{
+        'MESSAGE.REQUIRED'
+          | translate: { field: 'SIGN_UP_FORM.EMAIL' | translate }
+      }}
+    </ng-container>
+    <ng-container *ngIf="control.hasError('pattern')">
+      {{
+        'MESSAGE.VALIDATOR_EMAIL'| translate
+      }}
+    </ng-container>
+  </ng-template>
 </div>

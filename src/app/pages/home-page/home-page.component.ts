@@ -1,16 +1,16 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { PlaylistsService } from 'src/app/core/services/playlists/playlists.service';
-import { SongsService } from 'src/app/core/services/songs/songs.service';
+import { HomePageStore } from './home-page.store';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [HomePageStore],
 })
 export class HomePageComponent {
-
-  constructor(private readonly songsService: SongsService, private readonly playlistService: PlaylistsService) {}
-  readonly song$ = this.songsService.getAllSong();
-  readonly data$ = this.playlistService.getAllUserPlaylist();
+  readonly vmSong$ = this.homePageStore.vm$;
+  constructor(
+    private readonly homePageStore: HomePageStore,
+  ) {}
 }

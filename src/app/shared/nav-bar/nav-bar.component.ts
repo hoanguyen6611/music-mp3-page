@@ -7,6 +7,7 @@ import { NavItem } from 'src/app/pages';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+  role = localStorage.getItem('role');
   navItems: NavItem[] = [
     {
       label: 'MENU.HOME',
@@ -27,7 +28,7 @@ export class NavBarComponent implements OnInit {
       label: 'MENU.CREATE_PLAYLIST',
       icon: 'plus',
       path: '/main/playlists'
-    }
+    },
   ]
   constructor() { }
 
