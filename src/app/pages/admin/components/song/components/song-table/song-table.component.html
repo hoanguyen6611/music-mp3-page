@@ -1,5 +1,5 @@
 <div *ngIf="vm$ | async as vm">
-  <nz-table #basicTable [nzData]="vm.Song" [nzLoading]="vm.IsLoading">
+  <nz-table #basicTable [nzData]="vm.Song" [nzLoading]="vm.IsLoadingSong">
     <thead>
       <tr>
         <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>

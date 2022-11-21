@@ -34,4 +34,9 @@ export class AuthService {
   register(user: UserRegister) {
     return this.httpClient.post(`${this.apiUrl}/authentication/register`, user);
   }
+  loginGoogle(token: string) {
+    return this.httpClient.post(`${this.apiUrl}/google-authentication`, {
+      token: token
+    });
+  }
 }

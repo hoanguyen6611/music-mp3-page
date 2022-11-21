@@ -4,6 +4,12 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { TranslateService } from '@ngx-translate/core';
+import {
+  GoogleLoginProvider,
+  SocialAuthService,
+} from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider } from '@abacritt/angularx-social-login';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-login-page',
@@ -12,6 +18,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LoginPageComponent implements OnInit {
   responsedata: any;
+  user: any;
   readonly formGroup: FormGroup = new FormGroup({
     email: new FormControl('', [
       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
@@ -19,33 +26,59 @@ export class LoginPageComponent implements OnInit {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(
-        '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}',
-      ),
-    ])
+      // Validators.pattern(
+      //   '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}',
+      // ),
+    ]),
   });
   constructor(
     private readonly authService: AuthService,
     private readonly route: Router,
     private readonly message: NzMessageService,
-    private readonly translateService: TranslateService
+    private readonly translateService: TranslateService,
+    private readonly authOtherService: SocialAuthService,
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authOtherService.authState.subscribe(user => {
+      this.user = user;
+      console.log(user);
+    });
+  }
+
   loginUser() {
     if (this.formGroup.valid) {
       this.authService.login(this.formGroup.value).subscribe(res => {
         this.responsedata = res;
-        console.log(res);
         if (this.responsedata.token) {
           localStorage.setItem('token', this.responsedata.token);
           localStorage.setItem('name', this.responsedata.user.name);
           localStorage.setItem('role', this.responsedata.user.role);
-          this.message.success(this.translateService.instant('MESSAGE.LOGIN_SUCCESS'));
+          localStorage.setItem('user', JSON.stringify(this.responsedata.user));
+          console.log(this.responsedata.user);
+          this.message.success(
+            this.translateService.instant('MESSAGE.LOGIN_SUCCESS'),
+          );
           this.route.navigate(['/main/home']);
         } else {
+          console.log(res);
           this.message.error(this.responsedata.message);
         }
       });
     }
+  }
+
+  loginGoogle() {
+    console.log('login google');
+    this.authOtherService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
+      console.log(x);
+    });
+  }
+  loginFacebook() {
+    console.log('login facebook');
+    this.authOtherService
+      .signIn(FacebookLoginProvider.PROVIDER_ID)
+      .then(data => {
+        console.log(data);
+      });
   }
 }

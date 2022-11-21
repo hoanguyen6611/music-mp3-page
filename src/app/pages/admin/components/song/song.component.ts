@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminPageStore } from '../../admin.store';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-song',
@@ -10,4 +11,7 @@ export class SongComponent implements OnInit {
   constructor(private readonly store: AdminPageStore) {}
 
   ngOnInit(): void {}
+  showFormSong() {
+    this.store.setFormSong(true);
+  }
 }

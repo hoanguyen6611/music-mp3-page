@@ -33,7 +33,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { AblumComponent } from './ablum/ablum.component';
+import { MediaNumberComponent } from './media-number/media-number.component';
 
 const nzModules = [
   NzBreadCrumbModule,

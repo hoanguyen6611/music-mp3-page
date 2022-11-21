@@ -25,6 +25,7 @@ const routes: Routes = [
         loadChildren: async () =>
         (await import('./account/account.module'))
           .AccountModule,
+        canActivate: [AuthGuard]
       },
       {
         path: 'playlists',
@@ -55,8 +56,20 @@ const routes: Routes = [
       {
         path: 'category',
         loadChildren: async () =>
-        (await import('./category/category.module'))
-          .CategoryModule,
+        (await import('./categorys/categorys.module'))
+          .CategorysModule,
+      },
+      {
+        path: 'album',
+        loadChildren: async () =>
+        (await import('./ablum-detail/ablum-detail.module'))
+          .AblumDetailModule
+      },
+      {
+        path: 'song',
+        loadChildren: async () =>
+        (await import('./song-detail/song-detail.module'))
+          .SongDetailModule
       }
     ],
   }

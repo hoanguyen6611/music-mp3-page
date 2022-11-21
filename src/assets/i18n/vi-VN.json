@@ -29,19 +29,22 @@
   },
   "MENU": {
     "HOME": "Trang chủ",
+    "CATEGORY": "Danh mục",
     "SEARCH": "Tìm kiếm",
     "MY_PLAYLISTS": "Cá nhân",
     "CREATE_PLAYLIST": "Tạo playlist",
     "LIKED_SONG": "Bài hát yêu thích",
     "ADMIN_CATEGORY": "Quản lý thể loại",
-    "ADMIN_PLAYLIST": "Quản lý playlist",
+    "ADMIN_ABLUM": "Quản lý ablum",
     "ADMIN_SONG": "Quản lý bài hát",
     "ADMIN_USER": "Quản lý người dùng"
   },
   "ACTION": {
     "LOGIN": "Đăng nhập",
     "FORGOT_PASSWORD":"Quên mật khẩu",
-    "CREATE": "Tạo mới"
+    "CREATE": "Tạo mới",
+    "SAVE": "Lưu",
+    "CANCEL": "Huỷ"
   },
   "USER_MENU": {
     "SETTING": "Cài đặt",

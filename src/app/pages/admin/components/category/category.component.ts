@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchStore } from 'src/app/pages/search/search.store';
-import { AdminPageStore } from '../../admin.store';
+import { AdminPageStore } from 'src/app/pages/admin/admin.store';
+
 
 @Component({
   selector: 'app-category',
@@ -12,5 +12,7 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onForm() {
+    this.store.setFormCategory(true);
+  }
 }

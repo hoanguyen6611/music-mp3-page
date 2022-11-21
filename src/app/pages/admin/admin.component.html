@@ -9,14 +9,14 @@
     </ng-template>
     <app-category></app-category>
   </nz-tab>
-  <nz-tab [nzTitle]="playlist">
-    <ng-template #playlist>
+  <nz-tab [nzTitle]="album">
+    <ng-template #album>
       <div class="btn-apply text-white">
         <span nz-icon nzType="music:lock" class="me-1"></span>
-        {{ 'MENU.ADMIN_PLAYLIST' | translate }}
+        {{ 'MENU.ADMIN_ABLUM' | translate }}
       </div>
     </ng-template>
-    <app-playlist></app-playlist>
+    <app-album></app-album>
   </nz-tab>
   <nz-tab [nzTitle]="song">
     <ng-template #song>

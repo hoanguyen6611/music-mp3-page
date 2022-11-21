@@ -11,6 +11,7 @@ export class PlaylistComponent implements OnInit {
   @Input() title: string = '';
   @Input() description!: string | null;
   @Input() routerUrl!: string;
+  @Input() playlist: any;
   constructor() { }
 
   ngOnInit(): void {

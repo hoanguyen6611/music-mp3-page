@@ -9,7 +9,7 @@ import { HomePageStore } from './home-page.store';
   providers: [HomePageStore],
 })
 export class HomePageComponent {
-  readonly vmSong$ = this.homePageStore.vm$;
+  readonly vm$ = this.homePageStore.vm$;
   constructor(
     private readonly homePageStore: HomePageStore,
   ) {}

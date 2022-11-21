@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { AlbumComponent } from './components/album/album.component';
 import { CategoryComponent } from './components/category/category.component';
-import { PlaylistComponent } from './components/playlist/playlist.component';
 import { SongComponent } from './components/song/song.component';
 import { UserComponent } from './components/user/user.component';
 
@@ -16,8 +16,8 @@ const routes: Routes = [
         component: CategoryComponent
       },
       {
-        path: 'playlist',
-        component: PlaylistComponent
+        path: 'album',
+        component: AlbumComponent
       },
       {
         path: 'song',

@@ -1,6 +1,13 @@
-<div class="grid grid-cols-8 gap-10 mt-5" *ngIf="vmSong$ | async as vm">
+<h2 class="color-white">Song</h2>
+<div class="grid grid-cols-6 gap-10 mt-5" *ngIf="vm$ | async as vm">
   <ng-container *ngFor="let item of vm.Song">
-    <app-song [title]="item.name" [imageUrl]="item.image" [author]="item.author"></app-song>
+    <app-song [song]="item"></app-song>
+  </ng-container>
+</div>
+<h2 class="color-white">Album</h2>
+<div class="grid grid-cols-6 gap-10 mt-5" *ngIf="vm$ | async as vm">
+  <ng-container *ngFor="let item of vm.Album">
+    <app-ablum [album]="item"></app-ablum>
   </ng-container>
 </div>
 

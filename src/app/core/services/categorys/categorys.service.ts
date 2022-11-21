@@ -16,4 +16,9 @@ export class CategorysService {
       `${this.apiUrl}/category`
     )
   }
+  getCategoryDetail(id: string) {
+    return this.httpClient.get<Category> (
+      `${this.apiUrl}/category/getById/${id}`
+    )
+  }
 }

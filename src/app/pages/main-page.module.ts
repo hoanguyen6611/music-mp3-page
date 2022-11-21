@@ -17,14 +17,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BusyOverlayModule } from '../shared/busy-overlay/busy-overlay.module';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
-import { NowPlayingModule } from '../shared/now-playing/now-playing.module';
 import { LayoutModule } from '../core/layout/layout.module';
 import { NotificationsModule } from '../containers/notifications/notifications.module';
-import { NavBarModule } from '../shared/nav-bar/nav-bar.module';
 import { HeaderBarModule } from '../shared/header-bar/header-bar.module';
 import { ViewModule } from '../shared/view/view.module';
-import { AdminComponent } from './admin/admin.component';
-import { CategoryComponent } from './category/category.component';
+import { NavBarModule } from './nav-bar/nav-bar.module';
+import { NowPlayingModule } from './now-playing/now-playing.module';
+import { SongDetailComponent } from './song-detail/song-detail.component';
 
 const nzModules = [
   NzLayoutModule,

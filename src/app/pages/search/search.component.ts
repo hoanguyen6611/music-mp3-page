@@ -8,6 +8,5 @@ import { SearchStore } from './search.store';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  readonly vm$ = this.searchStore.vm$;
   constructor(private readonly searchStore: SearchStore) {}
 }

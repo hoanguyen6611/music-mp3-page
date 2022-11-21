@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdminRoutingModule } from './admin-routing.module';
 import { SongComponent } from './components/song/song.component';
 import { CategoryComponent } from './components/category/category.component';
-import { PlaylistComponent } from './components/playlist/playlist.component';
 import { UserComponent } from './components/user/user.component';
 import { AdminComponent } from './admin.component';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
@@ -16,24 +14,27 @@ import { SearchStore } from '../search/search.store';
 import { AdminPageStore } from './admin.store';
 import { CategoryTableComponent } from './components/category/components/category-table/category-table.component';
 import { CategoryFormComponent } from './components/category/components/category-form/category-form.component';
-import { PlaylistFormComponent } from './components/playlist/components/playlist-form/playlist-form.component';
-import { PlaylistTableComponent } from './components/playlist/components/playlist-table/playlist-table.component';
 import { SongTableComponent } from './components/song/components/song-table/song-table.component';
 import { SongFormComponent } from './components/song/components/song-form/song-form.component';
+import { AlbumComponent } from './components/album/album.component';
+import { AlbumFormComponent } from './components/album/components/album-form/album-form.component';
+import { AlbumTableComponent } from './components/album/components/album-table/album-table.component';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
     SongComponent,
     CategoryComponent,
-    PlaylistComponent,
     UserComponent,
     AdminComponent,
     CategoryTableComponent,
     CategoryFormComponent,
-    PlaylistFormComponent,
-    PlaylistTableComponent,
     SongTableComponent,
-    SongFormComponent
+    SongFormComponent,
+    AlbumComponent,
+    AlbumFormComponent,
+    AlbumTableComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +43,9 @@ import { SongFormComponent } from './components/song/components/song-form/song-f
     TranslateModule,
     NzIconModule,
     ReactiveFormsModule,
-    NzTableModule
+    NzTableModule,
+    NzDrawerModule,
+    NzButtonModule
   ],
   exports: [AdminComponent],
   providers: [AdminPageStore]

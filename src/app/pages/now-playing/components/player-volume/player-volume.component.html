@@ -1,0 +1,7 @@
+<nz-slider class="flex-1 mx-2 volume-slider"
+[ngModel]="volume"
+[nzMin]="0"
+[nzMax]="1"
+[nzStep]="0.01"
+[nzTooltipVisible]="'never'"
+(ngModelChange)="changeVolume($event)"></nz-slider>

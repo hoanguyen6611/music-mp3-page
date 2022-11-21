@@ -4,8 +4,10 @@
         nz-button
         nzType="default"
         nzSize="large"
+        (click)="showFormSong()"
       >
         {{'ACTION.CREATE' | translate}}
       </button>
 </div>
 <app-song-table></app-song-table>
+<app-song-form></app-song-form>

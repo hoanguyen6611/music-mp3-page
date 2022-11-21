@@ -1,5 +1,5 @@
 export interface Category {
-  id: number
+  id: string
   name: string
   image: string
   description: string
@@ -7,7 +7,7 @@ export interface Category {
 }
 
 export interface Song {
-  id: number
+  id: string
   name: string
   author: string
   link: string

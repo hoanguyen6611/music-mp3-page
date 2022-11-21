@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SongsService } from 'src/app/core/services/songs/songs.service';
+import { MyPlayListStore } from './my-playlists.store';
 
 @Component({
   selector: 'app-my-playlists',
@@ -8,9 +9,9 @@ import { SongsService } from 'src/app/core/services/songs/songs.service';
 })
 export class MyPlaylistsComponent implements OnInit {
 
-  constructor(private readonly songsService: SongsService) { }
+  constructor(private readonly store: MyPlayListStore) { }
 
-  // readonly song$ = this.songsService.getAllSong();
+  readonly vmPlaylist$ = this.store.vm$;
 
   ngOnInit(): void {
   }

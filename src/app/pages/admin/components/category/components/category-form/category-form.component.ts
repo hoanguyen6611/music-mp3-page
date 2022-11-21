@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminPageStore } from 'src/app/pages/admin/admin.store';
 
 @Component({
   selector: 'app-category-form',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-form.component.scss']
 })
 export class CategoryFormComponent implements OnInit {
+  readonly isFormCategory$ = this.store.isFormCategory$;
+  constructor(private readonly store: AdminPageStore) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  onClosed() {
+    this.store.setFormCategory(false);
   }
 
 }

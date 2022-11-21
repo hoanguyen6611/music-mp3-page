@@ -12,7 +12,9 @@ export class PlayButtonComponent implements OnInit {
   @Input() primary = false;
   @HostBinding('class.is-show-volume') @Input() isShowVolumeIcon = false;
   @Output() togglePlay = new EventEmitter<boolean>();
-  constructor() { }
+  constructor() {
+    console.log('isPlaying' + this.isPlaying);
+  }
 
   ngOnInit(): void {
   }

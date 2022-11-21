@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
   constructor() {}
+  user: any = localStorage.getItem('user');
 
   ngOnInit(): void {}
   readonly formGroup: FormGroup = new FormGroup({

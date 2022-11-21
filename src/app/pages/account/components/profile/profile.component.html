@@ -58,33 +58,6 @@
           </nz-form-item>
         </div>
       </div>
-      <div nz-row [nzGutter]="16">
-        <div nz-col nzSpan="20">
-          <nz-form-item>
-            <nz-form-label nzFor="'password'">
-              <div class="text-white">
-                {{ 'SIGN_UP_FORM.PASSWORD' | translate }}
-              </div>
-            </nz-form-label>
-            <nz-form-control
-              nzErrorTip="{{
-                'MESSAGE.REQUIRED'
-                  | translate: { field: 'SIGN_UP_FORM.PASSWORD' | translate }
-              }}"
-            >
-              <input
-                type="password"
-                formControlName="password"
-                id="password"
-                nz-input
-                placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
-                maxLength="50"
-                class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
-              />
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-      </div>
     </form>
     <div class="flex justify-center">
       <button
