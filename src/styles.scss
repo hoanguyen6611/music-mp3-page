@@ -13,7 +13,7 @@
 @import './styles/form';
 @layer components {
   .btn-apply {
-    @apply flex justify-center items-center ;
+    @apply flex justify-center items-center;
   }
   .color-white {
     @apply font-bold text-white hover:text-white;
@@ -60,5 +60,40 @@
 
   &.large {
     @apply w-12 h-12;
+  }
+}
+.img-50 {
+  height: 200px;
+  width: 200px;
+}
+.ant-drawer-header {
+  .ant-drawer-close {
+    order: 1; // to right
+    margin-right: 0;
+    padding-right: 0;
+  }
+}
+// .ant-btn-hover,
+// .ant-btn-focus {
+//   color: var(--ant-primary-color-hover);
+//   border-color: var(--ant-primary-color-hover);
+//   background: #fff;
+// }
+
+.playlist-tracks-grid {
+  display: grid;
+  grid-template-columns: [index] 24px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr);
+  gap: 16px;
+}
+
+.track-row {
+  &:hover {
+    .track-order {
+      display: none;
+    }
+
+    .track-play-button {
+      display: block;
+    }
   }
 }

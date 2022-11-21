@@ -1,0 +1,23 @@
+<nz-drawer
+    [nzVisible]="(isFormCategory$ | async) || false"
+    [nzFooter]="drawFooter"
+    (nzOnClose)="onClosed()"
+    nzPlacement="right"
+    nzWidth="800px"
+    nzTitle="Thêm danh mục"
+  >
+  <ng-template #drawFooter>
+    <nz-button-group class="float-right">
+      <button nz-button nzType="default" (click)="onClosed()">
+        {{ 'ACTION.CANCEL' | translate }}
+      </button>
+      <button
+        nz-button
+        nzType="primary"
+        class="ml-2"
+      >
+        {{ 'ACTION.SAVE' | translate }}
+      </button>
+    </nz-button-group>
+  </ng-template>
+</nz-drawer>

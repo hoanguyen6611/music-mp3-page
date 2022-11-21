@@ -1,0 +1,20 @@
+<ng-container >
+  <div class="cursor-pointer track-cover">
+    <app-media-cover [imageUrl]="song.image"></app-media-cover>
+  </div>
+  <div class="flex flex-col">
+    <div class="text-white ellipsis-one-line">
+      <a class="hover:underline" routerLink="/main/song/{{song.id}}">{{song.name}}</a>
+    </div>
+    <div class="flex">
+      <ng-container>
+        <a
+          class="text-description link-subtle ellipsis-one-line hover:underline"
+          [routerLink]=""
+        >
+          {{song.author}}
+        </a>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

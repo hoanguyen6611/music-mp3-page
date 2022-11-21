@@ -22,6 +22,10 @@
       <span nz-icon nzType="setting" class="mr-5"></span>
       {{ 'USER_MENU.SETTING' | translate }}
     </li>
+    <li *ngIf="role === 'admin'" nz-menu-item nzMatchRouter routerLink="/main/admin">
+      <span nz-icon nzType="music:hammer" class="mr-5"></span>
+      {{ 'USER_MENU.ADMIN' | translate }}
+    </li>
     <li nz-menu-item nzMatchRouter nzDanger (click)="logout()">
       <span nz-icon nzType="logout" class="mr-5"></span>
       {{ 'USER_MENU.LOGOUT' | translate }}

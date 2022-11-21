@@ -3,6 +3,8 @@ export interface Playlist {
   id: number
   name: string
   state: boolean
+  image: string
+  description: string
   user?: User
   listSong: ListSong[]
 }

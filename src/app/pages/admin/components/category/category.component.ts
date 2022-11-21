@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminPageStore } from 'src/app/pages/admin/admin.store';
+
 
 @Component({
   selector: 'app-category',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-
-  constructor() { }
+  constructor(private readonly store: AdminPageStore) { }
 
   ngOnInit(): void {
   }
-
+  onForm() {
+    this.store.setFormCategory(true);
+  }
 }

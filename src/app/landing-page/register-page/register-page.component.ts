@@ -45,6 +45,7 @@ export class RegisterPageComponent implements OnInit {
           this.message.success(
             this.translateService.instant('MESSAGE.REGISTER_SUCCESS'),
           );
+          this.message.warning('Vui lòng truy cập hộp thư để xác thực email để có thể sử dụng tài khoản');
           this.route.navigate(['/login']);
         } else {
           this.message.error(this.responsedata.message);

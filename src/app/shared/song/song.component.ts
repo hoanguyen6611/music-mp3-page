@@ -11,6 +11,7 @@ export class SongComponent implements OnInit {
   @Input() title: string = '';
   @Input() author!: string | null;
   @Input() routerUrl!: string;
+  @Input() song: any;
   constructor() { }
 
   ngOnInit(): void {

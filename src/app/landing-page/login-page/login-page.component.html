@@ -1,16 +1,16 @@
 <nz-layout>
-  <nz-header>
-  </nz-header>
+  <nz-header> </nz-header>
   <nz-content class="mt-6 flex justify-center">
     <div nz-col nzSpan="24" class="h-[100vh] p-[20px] max-w-[800px]">
       <h3 class="text-center font-semibold">To continue, log in to App</h3>
       <button
-        class="w-full bg-[#1877f2] text-white rounded-full mt-5 font-semibold btn-apply"
+        class="w-full text-[#6a6a6a] rounded-full mt-5 font-semibold btn-apply"
         nz-button
         nzType="default"
         nzSize="large"
+        (click)="loginFacebook()"
       >
-        <span nz-icon nzType="facebook" nzTheme="outline"></span>
+        <span nz-icon nzType="music:facebook" nzTheme="outline"></span>
         {{ 'LOGIN_FORM.FACEBOOK' | translate }}
       </button>
       <button
@@ -19,7 +19,7 @@
         nzType="default"
         nzSize="large"
       >
-        <span nz-icon nzType="google" nzTheme="outline"></span>
+        <asl-google-signin-button *ngIf="!user"></asl-google-signin-button>
         {{ 'LOGIN_FORM.GOOGLE' | translate }}
       </button>
       <nz-divider nzText="OR"></nz-divider>
@@ -36,9 +36,7 @@
                 <nz-form-label nzFor="'email'" class="font-semibold text-xl">
                   {{ 'LOGIN_FORM.EMAIL' | translate }}
                 </nz-form-label>
-                <nz-form-control
-                  [nzErrorTip]="email"
-                >
+                <nz-form-control [nzErrorTip]="email">
                   <input
                     type="email"
                     formControlName="email"
@@ -58,9 +56,7 @@
                 <nz-form-label nzFor="'password'" class="font-semibold text-xl">
                   {{ 'LOGIN_FORM.PASSWORD' | translate }}
                 </nz-form-label>
-                <nz-form-control
-                  [nzErrorTip]="password"
-                >
+                <nz-form-control [nzErrorTip]="password">
                   <input
                     type="password"
                     formControlName="password"
@@ -101,7 +97,7 @@
           nz-button
           (click)="loginUser()"
         >
-        {{ 'LOGIN_FORM.SIGN_IN' | translate }}
+          {{ 'LOGIN_FORM.SIGN_IN' | translate }}
         </button>
       </div>
       <nz-divider></nz-divider>
@@ -113,7 +109,7 @@
         nzSize="large"
         routerLink="/register"
       >
-        {{'LOGIN_FORM.SIGN_UP_FOR_APP' | translate}}
+        {{ 'LOGIN_FORM.SIGN_UP_FOR_APP' | translate }}
       </button>
     </div>
   </nz-content>
@@ -125,9 +121,7 @@
       }}
     </ng-container>
     <ng-container *ngIf="control.hasError('pattern')">
-      {{
-        'MESSAGE.VALIDATOR_PASSWORD'| translate
-      }}
+      {{ 'MESSAGE.VALIDATOR_PASSWORD' | translate }}
     </ng-container>
   </ng-template>
   <ng-template #email let-control>
@@ -138,9 +132,7 @@
       }}
     </ng-container>
     <ng-container *ngIf="control.hasError('pattern')">
-      {{
-        'MESSAGE.VALIDATOR_EMAIL'| translate
-      }}
+      {{ 'MESSAGE.VALIDATOR_EMAIL' | translate }}
     </ng-container>
   </ng-template>
 </nz-layout>

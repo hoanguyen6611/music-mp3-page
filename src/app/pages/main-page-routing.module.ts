@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from '../core/guards/admin.guard';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { MainPageComponent } from './main-page.component';
 
@@ -24,6 +25,7 @@ const routes: Routes = [
         loadChildren: async () =>
         (await import('./account/account.module'))
           .AccountModule,
+        canActivate: [AuthGuard]
       },
       {
         path: 'playlists',
@@ -49,12 +51,25 @@ const routes: Routes = [
         loadChildren: async () =>
         (await import('./admin/admin.module'))
           .AdminModule,
+        canActivate: [AdminGuard]
       },
       {
         path: 'category',
         loadChildren: async () =>
-        (await import('./category/category.module'))
-          .CategoryModule,
+        (await import('./categorys/categorys.module'))
+          .CategorysModule,
+      },
+      {
+        path: 'album',
+        loadChildren: async () =>
+        (await import('./ablum-detail/ablum-detail.module'))
+          .AblumDetailModule
+      },
+      {
+        path: 'song',
+        loadChildren: async () =>
+        (await import('./song-detail/song-detail.module'))
+          .SongDetailModule
       }
     ],
   }

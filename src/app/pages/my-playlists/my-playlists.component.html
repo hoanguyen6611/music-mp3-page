@@ -1,6 +1,14 @@
-<div class="grid grid-cols-8 gap-10" *ngIf="song$ | async as songs">
-  <ng-container *ngFor="let item of songs">
-    <app-playlist [title]="item.name" [imageUrl]="item.image" [description]="item.author"></app-playlist>
+<div class="grid grid-cols-6 gap-10" *ngIf="vmPlaylist$ | async as vm">
+  <a class="flex flex-col flex-1">
+    <div class="media-description">
+      <div class="font-bold text-white ellipsis-one-line hover:text-white">
+        <button>Tạo mới playlist</button>
+      </div>
+    </div>
+  </a>
+
+  <ng-container *ngFor="let item of vm.Data">
+    <app-playlist [playlist]="item"></app-playlist>
   </ng-container>
 </div>
 

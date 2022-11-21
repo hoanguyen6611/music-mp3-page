@@ -1,24 +1,23 @@
-<a [routerLink]="routerUrl" class="flex flex-col flex-1">
+<a [routerLink]="playlist.id" class="flex flex-col flex-1">
   <div class="media-cover" [class.is-playing]="">
     <app-media-cover
       class="mb-4"
-      [imageUrl]="imageUrl"
-      [roundedImage]="roundedImage"
+      [imageUrl]="playlist.image"
     ></app-media-cover>
     <app-play-button
       class="play-button-overlay"
       [primary]="true"
       [large]="true"
-      [isPlaying]=""
+      [isPlaying]="false"
       asClickStopPropagation
     ></app-play-button>
   </div>
   <div class="media-description">
     <div class="font-bold text-white ellipsis-one-line hover:text-white">
-      {{ title }}
+      {{ playlist.title }}
     </div>
     <div class="text-description">
-      {{ description }}
+      {{ playlist.description }}
     </div>
   </div>
 </a>

@@ -10,6 +10,9 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { SongModule } from 'src/app/shared/song';
 import { PlaylistModule } from 'src/app/shared/playlist';
+import { CategoryModule } from 'src/app/shared/category/category.module';
+import { HomePageStore } from './home-page.store';
+import { AblumModule } from 'src/app/shared/ablum/ablum.module';
 
 const nzModules = [
   NzGridModule,
@@ -26,8 +29,11 @@ const nzModules = [
     HomePageRoutingModule,
     HeaderModule,
     SongModule,
+    AblumModule,
     PlaylistModule,
+    CategoryModule,
     ...nzModules
-  ]
+  ],
+  providers: [HomePageStore]
 })
 export class HomePageModule { }

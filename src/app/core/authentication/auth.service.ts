@@ -17,16 +17,26 @@ export class AuthService {
   isLoggedIn() {
     return localStorage.getItem('token') != null;
   }
+  isAdmin() {
+    return localStorage.getItem('role') === 'admin';
+  }
 
   getToken() {
     return localStorage.getItem('token') || '';
   }
 
   logout() {
-    // return this.httpClient.post(`${this.apiUrl}/authentication/logout`);
+    return this.httpClient.post(`${this.apiUrl}/authentication/logout`,
+    {}
+    );
   }
 
   register(user: UserRegister) {
     return this.httpClient.post(`${this.apiUrl}/authentication/register`, user);
+  }
+  loginGoogle(token: string) {
+    return this.httpClient.post(`${this.apiUrl}/google-authentication`, {
+      token: token
+    });
   }
 }

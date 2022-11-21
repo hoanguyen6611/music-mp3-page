@@ -29,20 +29,38 @@
   },
   "MENU": {
     "HOME": "Trang chủ",
+    "CATEGORY": "Danh mục",
     "SEARCH": "Tìm kiếm",
     "MY_PLAYLISTS": "Cá nhân",
     "CREATE_PLAYLIST": "Tạo playlist",
-    "LIKED_SONG": "Bài hát yêu thích"
+    "LIKED_SONG": "Bài hát yêu thích",
+    "ADMIN_CATEGORY": "Quản lý thể loại",
+    "ADMIN_ABLUM": "Quản lý ablum",
+    "ADMIN_SONG": "Quản lý bài hát",
+    "ADMIN_USER": "Quản lý người dùng"
   },
   "ACTION": {
-    "LOGIN": "Đăng nhập"
+    "LOGIN": "Đăng nhập",
+    "FORGOT_PASSWORD":"Quên mật khẩu",
+    "CREATE": "Tạo mới",
+    "SAVE": "Lưu",
+    "CANCEL": "Huỷ"
   },
   "USER_MENU": {
     "SETTING": "Cài đặt",
-    "LOGOUT": "Đăng xuất"
+    "LOGOUT": "Đăng xuất",
+    "ADMIN": "Trang quản lý"
   },
   "ME": {
     "INFO": "Thông tin cá nhân",
     "CHANGE_PASSWORD": "Đổi mật khẩu"
+  },
+  "NOTIFICATIONS": {
+    "TITLE": "Thông báo"
+  },
+  "CHANGE_PASSWORD": {
+    "PASSWORD_OLD": "Mật khẩu cũ",
+    "PASSWORD_NEW": "Mật khẩu mới",
+    "PASSWORD_CONFIRM": "Xác nhận mật khẩu"
   }
 }
