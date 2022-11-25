@@ -28,12 +28,6 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'playlists',
-        loadChildren: async () =>
-        (await import('./playlists/playlists.module'))
-          .PlaylistsModule,
-      },
-      {
         path: 'search',
         loadChildren: async () =>
         (await import('./search/search.module'))
@@ -70,6 +64,12 @@ const routes: Routes = [
         loadChildren: async () =>
         (await import('./song-detail/song-detail.module'))
           .SongDetailModule
+      },
+      {
+        path: 'collection',
+        loadChildren: async () =>
+        (await import('./like-songs/like-songs.module'))
+          .LikeSongsModule
       }
     ],
   }

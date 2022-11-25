@@ -1,1 +1,16 @@
-<p>like-songs works!</p>
+<div *ngIf="vm$ | async as vm">
+  <app-detail
+    [imageUrl]="likeSong.image"
+    type="Artist"
+    [description]="likeSong.description"
+    [title]="likeSong.title"
+  ></app-detail>
+  <app-title-list></app-title-list>
+  <div
+    class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10"
+  >
+    <ng-container *ngFor="let song of vm.Song; let i = index">
+      <app-playlist-track [index]="i" [song]="song"></app-playlist-track>
+    </ng-container>
+  </div>
+</div>

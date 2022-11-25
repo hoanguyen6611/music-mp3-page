@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Song } from 'src/app/core/services/categorys/categorys.model';
 import { HomePageStore } from './home-page.store';
 
 @Component({
@@ -13,4 +14,9 @@ export class HomePageComponent {
   constructor(
     private readonly homePageStore: HomePageStore,
   ) {}
+  playMusic(song: Song) {
+    console.log('play');
+    console.log(song);
+    this.homePageStore.setCurrentSong(song);
+  }
 }

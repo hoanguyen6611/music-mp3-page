@@ -1,5 +1,5 @@
 <footer class="now-playing-container">
-  <div class="now-playing-left">
+  <!-- <div class="now-playing-left">
     <app-track-info></app-track-info>
   </div>
   <div class="now-playing-center">
@@ -8,5 +8,17 @@
   </div>
   <div class="flex items-center justify-end">
     <app-player-volume></app-player-volume>
-  </div>
+  </div> -->
+  <audio controls *ngIf="currentSong$ | async as song">
+    <app-track-info [song]="song"></app-track-info>
+    <source
+      [src]="song.link"
+      type="audio/mpeg"
+    />
+    <source src="myAudio.ogg" type="audio/ogg" />
+    <p>
+      Download <a href="myAudio.mp3">MP3</a> or
+      <a href="myAudio.ogg">OGG</a> audio.
+    </p>
+  </audio>
 </footer>

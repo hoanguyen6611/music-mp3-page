@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "music-628b8": {
+      "hosting": {
+        "music-mp3-page": [
+          "music-628b8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "music-628b8"
+  }
+}

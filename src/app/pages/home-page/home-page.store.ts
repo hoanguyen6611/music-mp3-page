@@ -11,6 +11,7 @@ export interface HomePageState {
   IsLoadingAlbum: boolean;
   Song: Song[];
   Album: Album[];
+  Current?: Song;
 }
 const initialState: HomePageState = {
   IsLoadingSong: false,
@@ -31,6 +32,7 @@ export class HomePageStore extends ComponentStore<HomePageState> {
     }),
     { debounce: true },
   );
+  readonly currentSong$ = this.select(state => state.Current);
   constructor(
     private readonly songService: SongsService,
     private readonly albumService: AlbumService,
@@ -51,6 +53,13 @@ export class HomePageStore extends ComponentStore<HomePageState> {
     (state, IsLoadingAlbum): HomePageState => ({
       ...state,
       IsLoadingAlbum,
+    }),
+  );
+
+  readonly setCurrentSong = this.updater<Song>(
+    (state, Current): HomePageState => ({
+      ...state,
+      Current,
     }),
   );
 

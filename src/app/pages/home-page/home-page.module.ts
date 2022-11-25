@@ -3,24 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page.component';
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { HeaderModule } from 'src/app/shared/header';
-import { NzGridModule } from 'ng-zorro-antd/grid';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzCardModule } from 'ng-zorro-antd/card';
 import { SongModule } from 'src/app/shared/song';
 import { PlaylistModule } from 'src/app/shared/playlist';
 import { CategoryModule } from 'src/app/shared/category/category.module';
 import { HomePageStore } from './home-page.store';
 import { AblumModule } from 'src/app/shared/ablum/ablum.module';
-
-const nzModules = [
-  NzGridModule,
-  NzButtonModule,
-  NzIconModule,
-  NzInputModule,
-  NzCardModule,
-];
 
 @NgModule({
   declarations: [HomePageComponent],
@@ -32,8 +19,7 @@ const nzModules = [
     AblumModule,
     PlaylistModule,
     CategoryModule,
-    ...nzModules
   ],
-  providers: [HomePageStore]
+  providers: [HomePageStore],
 })
-export class HomePageModule { }
+export class HomePageModule {}

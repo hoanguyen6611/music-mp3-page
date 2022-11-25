@@ -22,18 +22,14 @@ import { ForgetPasswordPageComponent } from './forget-password-page/forget-passw
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { PlayButtonModule } from '../shared/play-button/play-button.module';
-import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 
 
 const NzModules = [
   NzLayoutModule,
-  NzMenuModule,
-  NzCarouselModule,
   NzButtonModule,
   NzIconModule,
   NzFormModule,
   NzInputModule,
-  NzSelectModule,
   NzMessageModule,
   NzSpinModule,
   NzCheckboxModule,
@@ -55,8 +51,7 @@ const NzModules = [
     ReactiveFormsModule,
     TranslateModule,
     LandingPageRoutingModule,
-    PlayButtonModule,
-    SocialLoginModule,
-  ],
+    PlayButtonModule
+  ]
 })
 export class LandingPageModule {}

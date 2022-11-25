@@ -21,6 +21,15 @@ import { AlbumFormComponent } from './components/album/components/album-form/alb
 import { AlbumTableComponent } from './components/album/components/album-table/album-table.component';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { TitleListModule } from 'src/app/shared/title-list/title-list.module';
+import { PlaylistTrackModule } from 'src/app/shared/playlist-track/playlist-track.module';
+import { TrackInfoModule } from 'src/app/shared/track-info/track-info.module';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [
@@ -34,7 +43,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     SongFormComponent,
     AlbumComponent,
     AlbumFormComponent,
-    AlbumTableComponent
+    AlbumTableComponent,
   ],
   imports: [
     CommonModule,
@@ -45,9 +54,18 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     ReactiveFormsModule,
     NzTableModule,
     NzDrawerModule,
-    NzButtonModule
+    NzButtonModule,
+    TitleListModule,
+    PlaylistTrackModule,
+    TrackInfoModule,
+    NzFormModule,
+    NzSpinModule,
+    NzUploadModule,
+    NzSelectModule,
+    NzDatePickerModule,
+    NzMessageModule
   ],
   exports: [AdminComponent],
-  providers: [AdminPageStore]
+  providers: [AdminPageStore],
 })
-export class AdminModule { }
+export class AdminModule {}

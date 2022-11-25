@@ -21,8 +21,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { IAuthService } from './core/authentication/auth.service.interface';
 import { AuthService } from './core/authentication';
-import { GoogleLoginProvider, FacebookLoginProvider, SocialLoginModule } from '@abacritt/angularx-social-login';
-import { SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(en);
 
@@ -39,7 +39,6 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     NzSpinModule,
     HttpClientModule,
-    // SocialLoginModule,
     BrowserAnimationsModule,
     NzModalModule,
     FormsModule,
@@ -52,30 +51,10 @@ export function createTranslateLoader(http: HttpClient) {
       },
       defaultLanguage: 'vi-VN',
     }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [
     ...interceptorProviders,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '767410924896-17fjn7i3n25p2dqk3dqaga8u7je9n09h.apps.googleusercontent.com'
-            )
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('2f329bd6a64f356161f4adfd82283ea4')
-          }
-        ],
-        onError: (err) => {
-          console.error(err);
-        }
-      } as SocialAuthServiceConfig
-    },
     { provide: IAuthService, useClass: AuthService },
     { provide: NZ_I18N, useValue: en_US },
   ],

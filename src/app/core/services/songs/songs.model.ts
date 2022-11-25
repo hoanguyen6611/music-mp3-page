@@ -4,5 +4,14 @@ export interface Song {
   author: string
   link: string
   image: string
-  description: string
+  description: string,
+}
+export interface songCreate {
+  id: string
+  name: string
+  author: string
+  link: string
+  image: string
+  description: string,
+  category: string[]
 }

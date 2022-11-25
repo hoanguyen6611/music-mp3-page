@@ -2,10 +2,16 @@ import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { finalize, switchMap, tap } from 'rxjs';
 import { Album, AlbumService } from 'src/app/core/services/album';
-import { Category } from 'src/app/core/services/categorys/categorys.model';
+import {
+  Category,
+  createCategory,
+} from 'src/app/core/services/categorys/categorys.model';
 import { CategorysService } from 'src/app/core/services/categorys/categorys.service';
-import { Song } from 'src/app/core/services/songs/songs.model';
+import { Song, songCreate } from 'src/app/core/services/songs/songs.model';
 import { SongsService } from 'src/app/core/services/songs/songs.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface AdminPageState {
   IsLoadingSong: boolean;
@@ -14,9 +20,13 @@ export interface AdminPageState {
   Song: Song[];
   Category: Category[];
   Album: Album[];
-  IsFormSong: boolean;
-  IsFormCategory: boolean;
-  IsFormAlbum: boolean;
+  IsVisibleFormSong: boolean;
+  IsVisibleFormCategory: boolean;
+  IsVisibleFormAlbum: boolean;
+  ListCategory?: Category[];
+  IsFormLoadingSong: boolean;
+  IsFormLoadingCategory: boolean;
+  IsFormLoadingAlbum: boolean;
 }
 const initialState: AdminPageState = {
   IsLoadingSong: false,
@@ -25,9 +35,12 @@ const initialState: AdminPageState = {
   Song: [],
   Category: [],
   Album: [],
-  IsFormSong: false,
-  IsFormCategory: false,
-  IsFormAlbum: false,
+  IsVisibleFormSong: false,
+  IsVisibleFormCategory: false,
+  IsVisibleFormAlbum: false,
+  IsFormLoadingSong: false,
+  IsFormLoadingCategory: false,
+  IsFormLoadingAlbum: false,
 };
 
 @Injectable()
@@ -52,19 +65,29 @@ export class AdminPageStore extends ComponentStore<AdminPageState> {
     { debounce: true },
   );
 
-  readonly isFormSong$ = this.select(state => state.IsFormSong);
-  readonly isFormCategory$ = this.select(state => state.IsFormCategory);
-  readonly isFormAlbum$ = this.select(state => state.IsFormAlbum);
+  readonly isVisibleFormSong$ = this.select(state => state.IsVisibleFormSong);
+  readonly isVisibleFormCategory$ = this.select(
+    state => state.IsVisibleFormCategory,
+  );
+  readonly isVisibleFormAlbum$ = this.select(state => state.IsVisibleFormAlbum);
+  readonly isFormLoadingAlbum$ = this.select(state => state.IsFormLoadingAlbum);
+  readonly isFormLoadingSong$ = this.select(state => state.IsFormLoadingSong);
+  readonly isFormLoadingCategory$ = this.select(
+    state => state.IsFormLoadingCategory,
+  );
 
   constructor(
     private readonly songService: SongsService,
     private readonly categoryService: CategorysService,
     private readonly ablumService: AlbumService,
+    private readonly message: NzMessageService,
+    private readonly translateService: TranslateService,
   ) {
     super(initialState);
     this.loadCategory();
     this.loadSong();
     this.loadAlbum();
+    this.getCategoryList();
   }
 
   readonly setIsLoadingSong = this.updater<boolean>(
@@ -89,23 +112,23 @@ export class AdminPageStore extends ComponentStore<AdminPageState> {
   );
 
   readonly setFormSong = this.updater<boolean>(
-    (state, IsFormSong): AdminPageState => ({
+    (state, IsVisibleFormSong): AdminPageState => ({
       ...state,
-      IsFormSong,
+      IsVisibleFormSong,
     }),
   );
 
   readonly setFormCategory = this.updater<boolean>(
-    (state, IsFormCategory): AdminPageState => ({
+    (state, IsVisibleFormCategory): AdminPageState => ({
       ...state,
-      IsFormCategory,
+      IsVisibleFormCategory,
     }),
   );
 
   readonly setFormAlbum = this.updater<boolean>(
-    (state, IsFormAlbum): AdminPageState => ({
+    (state, IsVisibleFormAlbum): AdminPageState => ({
       ...state,
-      IsFormAlbum,
+      IsVisibleFormAlbum,
     }),
   );
 
@@ -190,6 +213,72 @@ export class AdminPageStore extends ComponentStore<AdminPageState> {
           ),
           finalize(() => {
             this.patchState({ IsLoadingAlbum: false });
+          }),
+        ),
+      ),
+    ),
+  );
+  readonly getCategoryList = this.effect(param$ =>
+    param$.pipe(
+      switchMap(() =>
+        this.categoryService.getAllCategory().pipe(
+          tapResponse(
+            ListCategory => this.patchState({ ListCategory: ListCategory }),
+            (err: HttpErrorResponse) => {
+              this.message.error(err.error.message);
+            },
+          ),
+        ),
+      ),
+    ),
+  );
+  readonly createSong = this.effect<songCreate>(params$ =>
+    params$.pipe(
+      switchMap(param =>
+        this.songService.createSong(param).pipe(
+          tap(() => {
+            this.patchState({ IsFormLoadingSong: true });
+          }),
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.SUCCESS'),
+              );
+              this.setFormSong(false);
+              this.loadSong();
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({ IsFormLoadingSong: false });
+          }),
+        ),
+      ),
+    ),
+  );
+  readonly createCategory = this.effect<createCategory>(params$ =>
+    params$.pipe(
+      switchMap(param =>
+        this.categoryService.createCategory(param).pipe(
+          tap(() => {
+            this.patchState({ IsFormLoadingCategory: true });
+          }),
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.SUCCESS'),
+              );
+              this.setFormCategory(false);
+              this.loadCategory();
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({ IsFormLoadingCategory: false });
           }),
         ),
       ),

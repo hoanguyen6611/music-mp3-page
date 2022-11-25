@@ -1,21 +1,182 @@
 <nz-drawer
-    [nzVisible]="(isFormSong$ | async) || false"
-    [nzFooter]="drawFooter"
-    (nzOnClose)="onClosed()"
-    nzPlacement="right"
-    nzWidth="800px"
-    nzTitle="Thêm bài hát"
-  >
+  [nzVisible]="(isVisibleFormSong$ | async) || false"
+  [nzFooter]="drawFooter"
+  (nzOnClose)="onClosed()"
+  nzPlacement="right"
+  nzWidth="800px"
+  nzTitle="Thêm bài hát"
+>
+  <ng-container *nzDrawerContent>
+    <nz-spin [nzSpinning]="IsFormLoadingSong$ | async">
+      <form nz-form [formGroup]="formGroup" [nzLayout]="'vertical'">
+        <div nz-row>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzRequired="true" nzFor="'name'">
+                {{ 'ADMIN.SONG_FORM.NAME' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate: { field: 'ADMIN.SONG_FORM.NAME' | translate }
+                }}"
+              >
+                <input
+                  type="text"
+                  formControlName="name"
+                  id="name"
+                  nz-input
+                  class="input-form"
+                  placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                  maxLength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzRequired="true" nzFor="'author'">
+                {{ 'ADMIN.SONG_FORM.AUTHOR' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate: { field: 'ADMIN.SONG_FORM.AUTHOR' | translate }
+                }}"
+              >
+                <input
+                  type="text"
+                  formControlName="author"
+                  id="author"
+                  class="input-form border-black px-4 py-2"
+                  placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                  maxLength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzFor="'category'">
+                {{ 'ADMIN.SONG_FORM.CATEGORY' | translate }}
+              </nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  nzId="category"
+                  nzShowSearch
+                  nzMode="multiple"
+                  formControlName="category"
+                  nzPlaceHolder="{{ 'MESSAGE.SELECT_PLACEHOLDER' | translate }}"
+                >
+                  <nz-option
+                    *ngFor="let option of categorys$ | async"
+                    [nzLabel]="option.name"
+                    [nzValue]="option.id"
+                    >11</nz-option
+                  >
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzRequired="true" nzFor="'image'">
+                {{ 'ADMIN.SONG_FORM.IMAGE' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate: { field: 'ADMIN.SONG_FORM.IMAGE' | translate }
+                }}"
+              >
+                <input type="file" (change)="onFileChangeImage($event)" />
+                <button nz-button (click)="upLoadImage()">
+                  <span nz-icon nzType="upload"></span>
+                  Click to Upload
+                </button>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzRequired="true" nzFor="'link'">
+                {{ 'ADMIN.SONG_FORM.LINK_AUDIO' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate
+                      : { field: 'ADMIN.SONG_FORM.LINK_AUDIO' | translate }
+                }}"
+              >
+                <input type="file" (change)="onFileChangeAudio($event)" />
+                <button nz-button (click)="upLoadAudio()">
+                  <span nz-icon nzType="upload"></span>
+                  Click to Upload
+                </button>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <!-- <div nz-row>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzFor="'date_Upload'">
+                {{ 'ADMIN.SONG_FORM.DATE_UPLOAD' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate
+                      : { field: 'ADMIN.SONG_FORM.DATE_UPLOAD' | translate }
+                }}"
+              >
+                <nz-date-picker
+                  formControlName="date_Upload"
+                  nzPlaceHolder="{{ 'MESSAGE.SELECT_PLACEHOLDER' | translate }}"
+                ></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div> -->
+        <div nz-row>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzRequired nzFor="'author'">
+                {{ 'ADMIN.SONG_FORM.DESCRIPTION' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate: { field: 'ADMIN.SONG_FORM.DESCRIPTION' | translate }
+                }}"
+              >
+                <textarea
+                  nz-input
+                  class="input-form"
+                  formControlName="description"
+                  placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                  nzAutosize
+                ></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </form>
+    </nz-spin>
+  </ng-container>
   <ng-template #drawFooter>
     <nz-button-group class="float-right">
-      <button nz-button nzType="default" (click)="onClosed()">
+      <button nz-button nzType="default" (click)="onClosed()" class="mr-2.5">
         {{ 'ACTION.CANCEL' | translate }}
       </button>
-      <button
-        nz-button
-        nzType="primary"
-        class="ml-2"
-      >
+      <button nz-button nzType="primary" class="ml-2" (click)="onSubmit()">
         {{ 'ACTION.SAVE' | translate }}
       </button>
     </nz-button-group>

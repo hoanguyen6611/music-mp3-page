@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Playlists } from './playlists.model';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistsService {
-  private readonly apiUrl = 'http://localhost:5000';
+  private readonly apiUrl = environment.urlBE;
   constructor(private readonly httpClient: HttpClient) { }
 
   getAllPlaylist() {

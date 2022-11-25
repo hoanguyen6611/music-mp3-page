@@ -1,0 +1,11 @@
+<div
+  class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10 playlist-tracks-grid track-row"
+>
+  <ng-container>
+    <app-media-number [index]="index + 1"></app-media-number>
+    <app-track-info [song]="song"></app-track-info>
+  </ng-container>
+  <a class="text-description link-subtle hover:underline"></a>
+  <div class="text-description">{{ song.dateUp }}</div>
+  <div class="text-description">{{ song.time }}</div>
+</div>

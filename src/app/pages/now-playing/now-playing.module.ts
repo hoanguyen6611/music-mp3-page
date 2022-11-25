@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { PlayButtonModule } from 'src/app/shared/play-button/play-button.module';
 import { PlayerPlaybackModule } from 'src/app/shared/player-playback/player-playback.module';
 import { TrackInfoModule } from 'src/app/shared/track-info/track-info.module';
+import { HomePageStore } from '../home-page/home-page.store';
 
 
 
@@ -21,6 +22,7 @@ import { TrackInfoModule } from 'src/app/shared/track-info/track-info.module';
     PlayerPlaybackModule,
     TrackInfoModule
   ],
-  exports: [NowPlayingComponent]
+  exports: [NowPlayingComponent],
+  providers: [HomePageStore]
 })
 export class NowPlayingModule { }

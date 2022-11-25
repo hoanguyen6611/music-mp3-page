@@ -2,11 +2,13 @@
   "MESSAGE": {
     "REQUIRED": "Trường {{field}} là bắt buộc!",
     "INPUT_PLACEHOLDER": "Vui lòng nhập",
+    "SELECT_PLACEHOLDER": "Vui lòng nhập",
     "LOGIN_SUCCESS": "Đăng nhập thành công",
     "LOGOUT_SUCCES": "Đăng xuất",
     "REGISTER_SUCCESS": "Tạo tài khoản thành công",
     "VALIDATOR_PASSWORD": "Mật khẩu chưa đúng định dạng",
-    "VALIDATOR_EMAIL": "Email chưa đúng định dạng"
+    "VALIDATOR_EMAIL": "Email chưa đúng định dạng",
+    "SUCCESS": "Thêm thành công"
   },
   "LOGIN_FORM": {
     "EMAIL": "Email",
@@ -62,5 +64,21 @@
     "PASSWORD_OLD": "Mật khẩu cũ",
     "PASSWORD_NEW": "Mật khẩu mới",
     "PASSWORD_CONFIRM": "Xác nhận mật khẩu"
+  },
+  "ADMIN": {
+    "SONG_FORM": {
+      "NAME": "Tên bài hát",
+      "AUTHOR": "Tác giả",
+      "IMAGE": "Hình ảnh",
+      "LINK_AUDIO": "Audio",
+      "CATEGORY":"Danh mục",
+      "DESCRIPTION": "Thông tin khác",
+      "DATE_UPLOAD": "Ngày thêm"
+    },
+    "CATEGORY_FORM": {
+      "NAME": "Tên thể loại",
+      "IMAGE": "Hình ảnh",
+      "DESCRIPTION": "Thông tin khác"
+    }
   }
 }

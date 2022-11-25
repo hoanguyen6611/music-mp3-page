@@ -5,28 +5,13 @@
     [description]="value.description"
     [title]="value.name"
   ></app-detail>
-  <div class="pb-4 text-white">
-    <div class="playlist-tracks-header">
-      <div class="playlist-tracks-grid">
-        <div>#</div>
-        <div class="text-xs uppercase ellipsis-one-line">Title</div>
-        <div class="text-xs uppercase ellipsis-one-line">Album</div>
-        <div class="text-xs uppercase ellipsis-one-line">Date added</div>
-      </div>
-    </div>
-  </div>
+  <app-title-list></app-title-list>
   <div
     *ngIf="value.listSong as song"
     class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10"
   >
     <div *ngFor="let item of song; let i = index">
-      <ng-container class="my-4">
-        <app-media-number [index]="i + 1"></app-media-number>
-        <app-track-info [song]="item"></app-track-info>
-      </ng-container>
-      <a class="text-description link-subtle hover:underline"> </a>
-      <div class="text-description"></div>
-      <div class="text-description"></div>
+      <app-playlist-track [index]="i" [song]="item"></app-playlist-track>
     </div>
   </div>
 </div>

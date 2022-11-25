@@ -5,28 +5,7 @@
     [description]="song.description"
     [title]="song.name"
   ></app-detail>
-  <div class="pb-4 text-white">
-    <div class="playlist-tracks-header">
-      <div class="playlist-tracks-grid">
-        <div>#</div>
-        <div class="text-xs uppercase ellipsis-one-line">Title</div>
-        <div class="text-xs uppercase ellipsis-one-line">Album</div>
-        <div class="text-xs uppercase ellipsis-one-line">Date added</div>
-      </div>
-    </div>
-  </div>
+  <app-title-list></app-title-list>
   <div  class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10">
-    <div>
-    <ng-container class="my-4">
-      <div class="text-white">1</div>
-      <app-track-info [song]="song"></app-track-info>
-    </ng-container>
-    <a class="text-description link-subtle hover:underline">
-    </a>
-    <div class="text-description" >
-    </div>
-    <div class="text-description">
-    </div>
-  </div>
-  </div>
+    <app-playlist-track [index]="0" [song]="song"></app-playlist-track>
 </div>

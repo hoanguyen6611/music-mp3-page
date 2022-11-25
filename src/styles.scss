@@ -63,8 +63,8 @@
   }
 }
 .img-50 {
-  height: 200px;
-  width: 200px;
+  height: 50px;
+  width: 50px;
 }
 .ant-drawer-header {
   .ant-drawer-close {
@@ -96,4 +96,10 @@
       display: block;
     }
   }
+}
+.input-form {
+  @apply border-black px-4 py-2;
+  border: 1px solid #ccc;
+  width: 100%;
+  border-radius: 5px;
 }

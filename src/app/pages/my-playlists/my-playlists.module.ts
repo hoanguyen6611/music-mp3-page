@@ -9,6 +9,10 @@ import { MyPlaylistDetailComponent } from './components/my-playlist-detail/my-pl
 import { DetailModule } from 'src/app/shared/detail/detail.module';
 import { TrackInfoModule } from 'src/app/shared/track-info/track-info.module';
 import { MediaNumberModule } from 'src/app/shared/media-number/media-number.module';
+import { PlaylistTrackModule } from 'src/app/shared/playlist-track/playlist-track.module';
+import { TitleListModule } from 'src/app/shared/title-list/title-list.module';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import { MediaNumberModule } from 'src/app/shared/media-number/media-number.modu
     PlaylistModule,
     DetailModule,
     TrackInfoModule,
-    MediaNumberModule
+    MediaNumberModule,
+    PlaylistTrackModule,
+    TitleListModule,
+    NzMessageModule,
+    TranslateModule
   ],
   exports: [MyPlaylistsComponent],
   providers: [MyPlayListStore]

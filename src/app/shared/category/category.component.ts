@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Category } from 'src/app/core/services/categorys/categorys.model';
 
 @Component({
   selector: 'app-category',
@@ -6,7 +7,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent {
-  @Input() category: any;
+  @Input() category: Category = {
+    id: '',
+    name: '',
+    image: '',
+    description: '',
+    songs: []
+  };
   constructor() { }
 
   ngOnInit(): void {

@@ -6,6 +6,8 @@ import { DetailModule } from 'src/app/shared/detail/detail.module';
 import { TrackInfoModule } from 'src/app/shared/track-info/track-info.module';
 import { SongDetailComponent } from './song-detail.component';
 import { SongDetailStore } from './song-detail.store';
+import { PlaylistTrackModule } from 'src/app/shared/playlist-track/playlist-track.module';
+import { TitleListModule } from 'src/app/shared/title-list/title-list.module';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { SongDetailStore } from './song-detail.store';
     CommonModule,
     SongDetailRoutingModule,
     DetailModule,
-    TrackInfoModule
+    TrackInfoModule,
+    PlaylistTrackModule,
+    TitleListModule
   ],
   exports: [SongDetailComponent],
   providers: [SongDetailStore]

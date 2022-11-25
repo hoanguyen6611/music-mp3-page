@@ -1,11 +1,88 @@
 <nz-drawer
-    [nzVisible]="(isFormAlbum$ | async) || false"
+    [nzVisible]="(isVisibleFormAlbum$ | async) || false"
     [nzFooter]="drawFooter"
     (nzOnClose)="onClosed()"
     nzPlacement="right"
     nzWidth="800px"
     nzTitle="Thêm album"
   >
+  <ng-container *nzDrawerContent>
+    <nz-spin [nzSpinning]="IsFormLoadingAlbum$ | async">
+      <form nz-form [formGroup]="formGroup" [nzLayout]="'vertical'">
+        <div nz-row>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzRequired="true" nzFor="'name'">
+                {{ 'ADMIN.CATEGORY_FORM.NAME' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate
+                      : { field: 'ADMIN.CATEGORY_FORM.NAME' | translate }
+                }}"
+              >
+                <input
+                  type="text"
+                  formControlName="name"
+                  id="name"
+                  nz-input
+                  class="input-form"
+                  placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                  maxLength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzRequired="true" nzFor="'image'">
+                {{ 'ADMIN.CATEGORY_FORM.IMAGE' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate
+                      : { field: 'ADMIN.CATEGORY_FORM.IMAGE' | translate }
+                }}"
+              >
+                <input type="file" (change)="onFileChangeImage($event)" />
+                <button nz-button (click)="upLoadImage()">
+                  <span nz-icon nzType="upload"></span>
+                  Click to Upload
+                </button>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzRequired nzFor="'author'">
+                {{ 'ADMIN.CATEGORY_FORM.DESCRIPTION' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate: { field: 'ADMIN.CATEGORY_FORM.DESCRIPTION | translate }
+                }}"
+              >
+                <textarea
+                  nz-input
+                  class="input-form"
+                  formControlName="description"
+                  placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                  nzAutosize
+                ></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </form>
+    </nz-spin>
+  </ng-container>
   <ng-template #drawFooter>
     <nz-button-group class="float-right">
       <button nz-button nzType="default" (click)="onClosed()">
@@ -15,6 +92,7 @@
         nz-button
         nzType="primary"
         class="ml-2"
+        (click)="onSubmit()"
       >
         {{ 'ACTION.SAVE' | translate }}
       </button>

@@ -8,7 +8,6 @@
         nz-button
         nzType="default"
         nzSize="large"
-        (click)="loginFacebook()"
       >
         <span nz-icon nzType="music:facebook" nzTheme="outline"></span>
         {{ 'LOGIN_FORM.FACEBOOK' | translate }}
@@ -19,7 +18,8 @@
         nzType="default"
         nzSize="large"
       >
-        <asl-google-signin-button *ngIf="!user"></asl-google-signin-button>
+        <!-- <asl-google-signin-button *ngIf="!user"></asl-google-signin-button> -->
+        <span nz-icon nzType="music:google" nzTheme="outline"></span>
         {{ 'LOGIN_FORM.GOOGLE' | translate }}
       </button>
       <nz-divider nzText="OR"></nz-divider>

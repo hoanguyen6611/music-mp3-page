@@ -111,6 +111,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "music-mp3-page:build:production",
+            "firebaseProject": "music-628b8",
+            "firebaseHostingSite": "music-628b8"
+          }
         }
       }
     }

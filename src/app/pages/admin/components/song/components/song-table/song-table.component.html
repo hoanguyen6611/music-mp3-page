@@ -2,23 +2,26 @@
   <nz-table #basicTable [nzData]="vm.Song" [nzLoading]="vm.IsLoadingSong">
     <thead>
       <tr>
-        <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
-        <th>Tên</th>
+        <th
+          [nzChecked]="checked"
+          [nzIndeterminate]="indeterminate"
+          (nzCheckedChange)="onAllChecked($event)"
+        ></th>
+        <th>Tên bài hát</th>
         <th>Tác giả</th>
-        <th>Hình ảnh</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
         <td></td>
-        <td>{{ data.name }}</td>
-        <td>{{ data.author }}</td>
         <td>
-          <img class="img-50" src={{data.image}} />
+          {{ data.name }}
+          <img class="img-50" src="{{ data.image }}" />
         </td>
+        <td>{{ data.author }}</td>
         <td>{{ data.description }}</td>
       </tr>
     </tbody>
   </nz-table>
-  </div>
+</div>

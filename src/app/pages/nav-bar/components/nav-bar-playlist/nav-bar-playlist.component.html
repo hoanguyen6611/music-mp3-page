@@ -1,0 +1,30 @@
+<h1 class="px-6 pb-1 text-xs font-bold text-white uppercase text-opacity-60">
+  Playlists
+</h1>
+<ul>
+  <li class="px-2">
+    <a
+      routerLink="/main/collection"
+      routerLinkActive="active"
+      class="flex items-center px-4 nav-link link-subtle"
+      >Bài hát yêu thích</a
+    >
+  </li>
+</ul>
+<div class="mx-6 separator"></div>
+<ul class="playlists">
+  <li class="p-2">
+    <a
+      class="playlist-link link-subtle pl-4 pr-2 text-sm flex justify-between items-center"
+      routerLink=""
+      routerLinkActive="active"
+      [title]=""
+      >
+    </a>
+    <app-play-button
+      class="pl-4"
+      [flatIcon]="true"
+      [isShowVolumeIcon]="true"
+    ></app-play-button>
+  </li>
+</ul>

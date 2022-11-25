@@ -1,18 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Song } from './songs.model';
+import { environment } from 'src/environments/environment';
+import { Song, songCreate } from './songs.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SongsService {
-  private readonly apiUrl = 'http://localhost:5000';
+  private readonly apiUrl = environment.urlBE;
   constructor(private readonly httpClient: HttpClient) {}
   getAllSong(): Observable<Song[]> {
     return this.httpClient.get<Song[]>(`${this.apiUrl}/song`);
   }
   getSongByID(id: string) {
     return this.httpClient.get<Song>(`${this.apiUrl}/song/${id}`);
+  }
+  createSong(song: songCreate) {
+    return this.httpClient.post(`${this.apiUrl}/song`, song);
+  }
+  getSongFavoriteByUser() {
+    return this.httpClient.get<Song[]>(`${this.apiUrl}/favoriteSongs`);
   }
 }

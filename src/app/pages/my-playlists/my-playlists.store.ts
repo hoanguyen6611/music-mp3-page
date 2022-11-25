@@ -10,6 +10,9 @@ import { CategorysService } from 'src/app/core/services/categorys/categorys.serv
 import { MyPlaylist } from 'src/app/core/services/my-playlist/my-playlist.model';
 import { MyPlaylistService } from 'src/app/core/services/my-playlist/my-playlist.service';
 import { ListSong } from 'src/app/core/services/album';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { TranslateService } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export interface MyPlaylistsState {
   IsLoading: boolean;
@@ -48,7 +51,11 @@ export class MyPlayListStore extends ComponentStore<MyPlaylistsState> {
 
   readonly value$ = this.select(state => state.Value);
 
-  constructor(private readonly service: MyPlaylistService) {
+  constructor(
+    private readonly service: MyPlaylistService,
+    private readonly message: NzMessageService,
+    private readonly translateService: TranslateService,
+  ) {
     super(initialState);
     this.loadData();
   }
@@ -107,16 +114,44 @@ export class MyPlayListStore extends ComponentStore<MyPlaylistsState> {
         (MyPlaylist: MyPlaylist | undefined) => {
           this.patchState({
             Value: MyPlaylist,
-            IsLoadingDetail: false
+            IsLoadingDetail: false,
           });
         },
         error => {
           this.patchState({
             Value: undefined,
-            IsLoadingDetail: false
-          })
-        }
-      )
+            IsLoadingDetail: false,
+          });
+        },
+      ),
+    ),
+  );
+  readonly createCategory = this.effect<[string, string]>(params$ =>
+    params$.pipe(
+      tap(() =>
+      this.patchState(state => ({
+      }))
+      ),
+      switchMap(([idSong, idPlaylist]) =>
+        this.service.addSongToPlaylist(idSong, idPlaylist).pipe(
+          tap(() => {
+            this.patchState({});
+          }),
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.SUCCESS'),
+              );
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({});
+          }),
+        ),
+      ),
     ),
   );
 }
