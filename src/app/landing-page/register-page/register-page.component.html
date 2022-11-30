@@ -1,16 +1,17 @@
 <nz-layout>
-  <nz-header>
-  </nz-header>
+  <nz-header> </nz-header>
   <nz-content class="mt-6 flex justify-center">
     <div nz-col nzSpan="24" class="h-full p-[20px] max-w-[800px]">
-      <h3 class="text-center font-semibold">Sign up for free to start listening</h3>
+      <h3 class="text-center font-semibold">
+        Sign up for free to start listening
+      </h3>
       <button
-        class="w-full bg-[#1877f2] text-white rounded-full mt-5 font-semibold btn-apply"
+        class="w-full text-[#6a6a6a] rounded-full mt-5 font-semibold btn-apply"
         nz-button
         nzType="default"
         nzSize="large"
       >
-        <span nz-icon nzType="facebook" nzTheme="outline"></span>
+        <span nz-icon nzType="music:facebook" nzTheme="outline"></span>
         {{ 'SIGN_UP_FORM.FACEBOOK' | translate }}
       </button>
       <button
@@ -19,7 +20,7 @@
         nzType="default"
         nzSize="large"
       >
-        <span nz-icon nzType="google" nzTheme="outline"></span>
+        <span nz-icon nzType="music:google" nzTheme="outline"></span>
         {{ 'SIGN_UP_FORM.GOOGLE' | translate }}
       </button>
       <nz-divider nzText="OR"></nz-divider>
@@ -39,7 +40,8 @@
                 <nz-form-control
                   nzErrorTip="{{
                     'MESSAGE.REQUIRED'
-                      | translate: { field: 'SIGN_UP_FORM.FULLNAME' | translate }
+                      | translate
+                        : { field: 'SIGN_UP_FORM.FULLNAME' | translate }
                   }}"
                 >
                   <input
@@ -62,9 +64,7 @@
                 <nz-form-label nzFor="'email'" class="font-semibold text-xl">
                   {{ 'SIGN_UP_FORM.EMAIL' | translate }}
                 </nz-form-label>
-                <nz-form-control
-                [nzErrorTip]="email"
-                >
+                <nz-form-control [nzErrorTip]="email">
                   <input
                     type="email"
                     formControlName="email"
@@ -84,9 +84,7 @@
                 <nz-form-label nzFor="'password'" class="font-semibold text-xl">
                   {{ 'SIGN_UP_FORM.PASSWORD' | translate }}
                 </nz-form-label>
-                <nz-form-control
-                  [nzErrorTip]="password"
-                >
+                <nz-form-control [nzErrorTip]="password">
                   <input
                     type="password"
                     formControlName="password"
@@ -96,6 +94,29 @@
                     maxLength="50"
                     class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
                   />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'confirmpassword'" class="font-semibold text-xl">
+                  {{ 'SIGN_UP_FORM.CONFIRM_PASSWORD' | translate }}
+                </nz-form-label>
+                <nz-form-control [nzErrorTip]="confirmpassword">
+                  <input
+                    type="password"
+                    formControlName="confirmpassword"
+                    id="confirmpassword"
+                    nz-input
+                    placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                    maxLength="50"
+                    class="w-[760px] p-4 border border-gray-100 rounded-lg bg-white outline-none transition-all focus:border-blue-500"
+                  />
+                  <div class="ant-form-item-explain-error" *ngIf="formGroup.errors?.['checkPassword']">
+                    {{ formGroup.errors?.['checkPassword']| translate }}
+                  </div>
                 </nz-form-control>
               </nz-form-item>
             </div>
@@ -112,9 +133,9 @@
           Đăng ký
         </button>
       </div>
-      <div class="flex justify-center mt-5">
+      <div class="flex justify-center mt-6">
         <h3 class="text-lg">Have an account?</h3>
-        <a class="text-lg" routerLink="/login">Log in.</a>
+        <a class="text-lg font-medium ml-2 hover:text-black" routerLink="/login">Log in.</a>
       </div>
     </div>
   </nz-content>
@@ -126,9 +147,18 @@
       }}
     </ng-container>
     <ng-container *ngIf="control.hasError('pattern')">
+      {{ 'MESSAGE.VALIDATOR_PASSWORD' | translate }}
+    </ng-container>
+  </ng-template>
+  <ng-template #confirmpassword let-control>
+    <ng-container *ngIf="control.hasError('required')">
       {{
-        'MESSAGE.VALIDATOR_PASSWORD'| translate
+        'MESSAGE.REQUIRED'
+          | translate: { field: 'SIGN_UP_FORM.CONFIRM_PASSWORD' | translate }
       }}
+    </ng-container>
+    <ng-container *ngIf="control.hasError('pattern')">
+      {{ 'MESSAGE.VALIDATOR_PASSWORD' | translate }}
     </ng-container>
   </ng-template>
   <ng-template #email let-control>
@@ -139,9 +169,7 @@
       }}
     </ng-container>
     <ng-container *ngIf="control.hasError('pattern')">
-      {{
-        'MESSAGE.VALIDATOR_EMAIL'| translate
-      }}
+      {{ 'MESSAGE.VALIDATOR_EMAIL' | translate }}
     </ng-container>
   </ng-template>
 </nz-layout>

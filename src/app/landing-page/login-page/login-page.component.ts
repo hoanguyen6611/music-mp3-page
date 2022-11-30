@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { TranslateService } from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { setUserLogin } from 'src/app/pages/now-playing/store';
 
 @Component({
   selector: 'app-login-page',
@@ -30,6 +32,7 @@ export class LoginPageComponent implements OnInit {
     private readonly route: Router,
     private readonly message: NzMessageService,
     private readonly translateService: TranslateService,
+    private readonly store: Store
   ) {}
   ngOnInit(): void {}
 
@@ -42,6 +45,12 @@ export class LoginPageComponent implements OnInit {
           localStorage.setItem('name', this.responsedata.user.name);
           localStorage.setItem('role', this.responsedata.user.role);
           localStorage.setItem('user', JSON.stringify(this.responsedata.user));
+          const user = {
+            ...this.responsedata,
+          }
+          delete user.token;
+          console.log(user);
+          this.store.dispatch(setUserLogin({value: user.user}));
           this.message.success(
             this.translateService.instant('MESSAGE.LOGIN_SUCCESS'),
           );

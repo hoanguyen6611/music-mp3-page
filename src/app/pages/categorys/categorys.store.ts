@@ -7,6 +7,10 @@ import {
   Song,
 } from 'src/app/core/services/categorys/categorys.model';
 import { CategorysService } from 'src/app/core/services/categorys/categorys.service';
+import { FavoriteService } from 'src/app/core/services/favorite/favorite.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { TranslateService } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export interface CategorysState {
   IsLoading: boolean;
@@ -45,7 +49,12 @@ export class CategorysStore extends ComponentStore<CategorysState> {
 
   readonly value$ = this.select(state => state.Value);
 
-  constructor(private readonly service: CategorysService) {
+  constructor(
+    private readonly service: CategorysService,
+    private readonly favoriteService: FavoriteService,
+    private readonly message: NzMessageService,
+    private readonly translateService: TranslateService,
+  ) {
     super(initialState);
     this.loadData();
   }
@@ -105,16 +114,34 @@ export class CategorysStore extends ComponentStore<CategorysState> {
         (Category: Category | undefined) => {
           this.patchState({
             Value: Category,
-            IsLoadingDetail: false
+            IsLoadingDetail: false,
           });
         },
         error => {
           this.patchState({
             Value: undefined,
-            IsLoadingDetail: false
-          })
-        }
-      )
+            IsLoadingDetail: false,
+          });
+        },
+      ),
+    ),
+  );
+  readonly addSongToFavorite = this.effect<string>(param$ =>
+    param$.pipe(
+      switchMap(param =>
+        this.favoriteService.addSongFavorite(param).pipe(
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.ADD_TO_FAVORITE'),
+              );
+            },
+            (err: HttpErrorResponse) => {
+              this.message.error(err.error.message);
+            },
+          ),
+        ),
+      ),
     ),
   );
 }

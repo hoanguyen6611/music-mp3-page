@@ -4,8 +4,25 @@
     type="Artist"
     [description]="song.description"
     [title]="song.name"
+    [quantity]="1"
   ></app-detail>
+  <app-play-button
+    [song]="song"
+    (playMusic)="playMusic($event)"
+  ></app-play-button>
   <app-title-list></app-title-list>
-  <div  class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10">
-    <app-playlist-track [index]="0" [song]="song"></app-playlist-track>
+  <div
+    class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10"
+  >
+  <div *ngIf="myplaylist$ | async as myplaylist">
+    <app-playlist-track
+      [index]="0"
+      [song]="song"
+      [playlist]="song"
+      (favorite)="addSongFavorite($event)"
+      [playlistUser]="myplaylist"
+      (addMusicToPlaylist)="addMusicToPlaylist($event)"
+    ></app-playlist-track>
+  </div>
+  </div>
 </div>

@@ -30,20 +30,15 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { AlbumModule } from './components/album/album.module';
+import { CategoryModule } from './components/category/category.module';
+import { SongModule } from './components/song/song.module';
 
 @NgModule({
   declarations: [
-    SongComponent,
-    CategoryComponent,
     UserComponent,
     AdminComponent,
-    CategoryTableComponent,
-    CategoryFormComponent,
-    SongTableComponent,
-    SongFormComponent,
-    AlbumComponent,
-    AlbumFormComponent,
-    AlbumTableComponent,
   ],
   imports: [
     CommonModule,
@@ -63,7 +58,11 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzUploadModule,
     NzSelectModule,
     NzDatePickerModule,
-    NzMessageModule
+    NzMessageModule,
+    NzToolTipModule,
+    AlbumModule,
+    CategoryModule,
+    SongModule
   ],
   exports: [AdminComponent],
   providers: [AdminPageStore],

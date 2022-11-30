@@ -4,7 +4,11 @@
   (nzOnClose)="onClosed()"
   nzPlacement="right"
   nzWidth="800px"
-  nzTitle="Thêm bài hát"
+  [nzTitle]="
+    (isEdit$ | async)
+      ? ('ACTION.SONG_EDIT' | translate)
+      : ('ACTION.SONG_CREATE' | translate)
+  "
 >
   <ng-container *nzDrawerContent>
     <nz-spin [nzSpinning]="IsFormLoadingSong$ | async">
@@ -76,8 +80,7 @@
                     *ngFor="let option of categorys$ | async"
                     [nzLabel]="option.name"
                     [nzValue]="option.id"
-                    >11</nz-option
-                  >
+                  ></nz-option>
                 </nz-select>
               </nz-form-control>
             </nz-form-item>
@@ -95,7 +98,12 @@
                     | translate: { field: 'ADMIN.SONG_FORM.IMAGE' | translate }
                 }}"
               >
-                <input type="file" (change)="onFileChangeImage($event)" />
+                <input
+                  type="file"
+                  (change)="onFileChangeImage($event)"
+                  formControlName="image"
+                  id="image"
+                />
                 <button nz-button (click)="upLoadImage()">
                   <span nz-icon nzType="upload"></span>
                   Click to Upload
@@ -115,7 +123,12 @@
                       : { field: 'ADMIN.SONG_FORM.LINK_AUDIO' | translate }
                 }}"
               >
-                <input type="file" (change)="onFileChangeAudio($event)" />
+                <input
+                  type="file"
+                  (change)="onFileChangeAudio($event)"
+                  formControlName="link"
+                  id="link"
+                />
                 <button nz-button (click)="upLoadAudio()">
                   <span nz-icon nzType="upload"></span>
                   Click to Upload
@@ -154,7 +167,8 @@
               <nz-form-control
                 nzErrorTip="{{
                   'MESSAGE.REQUIRED'
-                    | translate: { field: 'ADMIN.SONG_FORM.DESCRIPTION' | translate }
+                    | translate
+                      : { field: 'ADMIN.SONG_FORM.DESCRIPTION' | translate }
                 }}"
               >
                 <textarea

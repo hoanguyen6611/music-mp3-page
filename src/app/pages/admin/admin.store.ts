@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { finalize, switchMap, tap } from 'rxjs';
+import { finalize, of, switchMap, tap } from 'rxjs';
 import { Album, AlbumService } from 'src/app/core/services/album';
 import {
   Category,
@@ -19,6 +19,12 @@ export interface AdminPageState {
   IsLoadingAlbum: boolean;
   Song: Song[];
   Category: Category[];
+  currentCategory: Category;
+  currentAlbum: Album;
+  currentSong: Song;
+  isLoadingFormCategory: boolean;
+  isLoadingFormSong: boolean;
+  isLoadingFormAlbum: boolean;
   Album: Album[];
   IsVisibleFormSong: boolean;
   IsVisibleFormCategory: boolean;
@@ -27,6 +33,9 @@ export interface AdminPageState {
   IsFormLoadingSong: boolean;
   IsFormLoadingCategory: boolean;
   IsFormLoadingAlbum: boolean;
+  IsEditCategory: boolean;
+  IsEditAlbum: boolean;
+  IsEditSong: boolean;
 }
 const initialState: AdminPageState = {
   IsLoadingSong: false,
@@ -34,6 +43,32 @@ const initialState: AdminPageState = {
   IsLoadingAlbum: false,
   Song: [],
   Category: [],
+  currentCategory: {
+    id: '',
+    name: '',
+    image: '',
+    description: '',
+    songs: [],
+  },
+  currentAlbum: {
+    id: '',
+    name: '',
+    state: true,
+    description: '',
+    image: '',
+    listSong: [],
+  },
+  currentSong: {
+    id: '',
+    name: '',
+    author: '',
+    link: '',
+    image: '',
+    description: '',
+  },
+  isLoadingFormCategory: false,
+  isLoadingFormSong: false,
+  isLoadingFormAlbum: false,
   Album: [],
   IsVisibleFormSong: false,
   IsVisibleFormCategory: false,
@@ -41,6 +76,9 @@ const initialState: AdminPageState = {
   IsFormLoadingSong: false,
   IsFormLoadingCategory: false,
   IsFormLoadingAlbum: false,
+  IsEditCategory: false,
+  IsEditAlbum: false,
+  IsEditSong: false,
 };
 
 @Injectable()
@@ -75,6 +113,12 @@ export class AdminPageStore extends ComponentStore<AdminPageState> {
   readonly isFormLoadingCategory$ = this.select(
     state => state.IsFormLoadingCategory,
   );
+  readonly currentCategory$ = this.select(state => state.currentCategory);
+  readonly currentAlbum$ = this.select(state => state.currentAlbum);
+  readonly currentSong$ = this.select(state => state.currentSong);
+  readonly isEditCategory$ = this.select(state => state.IsEditCategory);
+  readonly isEditAlbum$ = this.select(state => state.IsEditAlbum);
+  readonly isEditSong$ = this.select(state => state.IsEditSong);
 
   constructor(
     private readonly songService: SongsService,
@@ -111,6 +155,13 @@ export class AdminPageStore extends ComponentStore<AdminPageState> {
     }),
   );
 
+  readonly setIsLoadingFormCategory = this.updater<boolean>(
+    (state, isLoadingFormCategory): AdminPageState => ({
+      ...state,
+      isLoadingFormCategory,
+    }),
+  );
+
   readonly setFormSong = this.updater<boolean>(
     (state, IsVisibleFormSong): AdminPageState => ({
       ...state,
@@ -129,6 +180,27 @@ export class AdminPageStore extends ComponentStore<AdminPageState> {
     (state, IsVisibleFormAlbum): AdminPageState => ({
       ...state,
       IsVisibleFormAlbum,
+    }),
+  );
+
+  readonly setIsEditCategory = this.updater<boolean>(
+    (state, IsEditCategory): AdminPageState => ({
+      ...state,
+      IsEditCategory,
+    }),
+  );
+
+  readonly setIsEditAlbum = this.updater<boolean>(
+    (state, IsEditAlbum): AdminPageState => ({
+      ...state,
+      IsEditAlbum,
+    }),
+  );
+
+  readonly setIsEditSong = this.updater<boolean>(
+    (state, IsEditSong): AdminPageState => ({
+      ...state,
+      IsEditSong,
     }),
   );
 
@@ -268,7 +340,7 @@ export class AdminPageStore extends ComponentStore<AdminPageState> {
           tapResponse(
             () => {
               this.message.success(
-                this.translateService.instant('MESSAGE.SUCCESS'),
+                this.translateService.instant('MESSAGE.ADD_SUCCESS'),
               );
               this.setFormCategory(false);
               this.loadCategory();
@@ -281,6 +353,110 @@ export class AdminPageStore extends ComponentStore<AdminPageState> {
             this.patchState({ IsFormLoadingCategory: false });
           }),
         ),
+      ),
+    ),
+  );
+  readonly updateCategory = this.effect<createCategory>(params$ =>
+    params$.pipe(
+      switchMap(param =>
+        this.categoryService.updateCategory(param).pipe(
+          tap(() => {
+            this.patchState({ IsFormLoadingCategory: true });
+          }),
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.EDIT_SUCCESS'),
+              );
+              this.setFormCategory(false);
+              this.loadCategory();
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({ IsFormLoadingCategory: false });
+          }),
+        ),
+      ),
+    ),
+  );
+  readonly loadCategoryDetail = this.effect<string | undefined>(params$ =>
+    params$.pipe(
+      tap(() => this.patchState({ isLoadingFormCategory: true })),
+      switchMap((id: string | undefined) => {
+        if (id) {
+          return this.categoryService.getCategoryDetail(id);
+        } else {
+          return of(undefined);
+        }
+      }),
+      tapResponse(
+        (value: Category | undefined) => {
+          this.patchState({
+            currentCategory: value,
+            isLoadingFormCategory: false,
+          });
+        },
+        error => {
+          this.patchState({
+            currentCategory: undefined,
+            isLoadingFormCategory: false,
+          });
+        },
+      ),
+    ),
+  );
+  readonly loadAlbumDetail = this.effect<string | undefined>(params$ =>
+    params$.pipe(
+      tap(() => this.patchState({ isLoadingFormAlbum: true })),
+      switchMap((id: string | undefined) => {
+        if (id) {
+          return this.ablumService.getAlbumDetail(id);
+        } else {
+          return of(undefined);
+        }
+      }),
+      tapResponse(
+        (value: Album | undefined) => {
+          this.patchState({
+            currentAlbum: value,
+            isLoadingFormCategory: false,
+          });
+        },
+        error => {
+          this.patchState({
+            currentCategory: undefined,
+            isLoadingFormCategory: false,
+          });
+        },
+      ),
+    ),
+  );
+  readonly loadSongDetail = this.effect<string | undefined>(params$ =>
+    params$.pipe(
+      tap(() => this.patchState({ isLoadingFormSong: true })),
+      switchMap((id: string | undefined) => {
+        if (id) {
+          return this.songService.getSongByID(id);
+        } else {
+          return of(undefined);
+        }
+      }),
+      tapResponse(
+        (value: Song | undefined) => {
+          this.patchState({
+            currentSong: value,
+            isLoadingFormCategory: false,
+          });
+        },
+        error => {
+          this.patchState({
+            currentCategory: undefined,
+            isLoadingFormCategory: false,
+          });
+        },
       ),
     ),
   );

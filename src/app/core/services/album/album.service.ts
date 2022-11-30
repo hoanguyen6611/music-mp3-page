@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Album } from './album.model';
+import { Album, CreateAlbum } from './album.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -20,5 +20,8 @@ export class AlbumService {
     return this.httpClient.get<Album> (
       `${this.apiUrl}/album/${id}`
     )
+  }
+  createAlbum(album: CreateAlbum) {
+    return this.httpClient.post(`${this.apiUrl}/album/createAlbum`, album);
   }
 }

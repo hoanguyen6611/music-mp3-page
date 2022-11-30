@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AdminPageStore } from 'src/app/pages/admin/admin.store';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { finalize, tap } from 'rxjs';
+import { finalize, Subject, takeUntil, tap } from 'rxjs';
 import { formatDate } from '@angular/common';
+import { SongPageStore } from '../../song.store';
 
 @Component({
   selector: 'app-song-form',
@@ -11,9 +11,11 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./song-form.component.scss'],
 })
 export class SongFormComponent implements OnInit {
+  readonly destroy$ = new Subject<void>();
   readonly isVisibleFormSong$ = this.store.isVisibleFormSong$;
   readonly IsFormLoadingSong$ = this.store.isFormLoadingSong$;
   readonly categorys$ = this.store.select(s => s.ListCategory);
+  readonly isEdit$ = this.store.isEditSong$;
   pathImage: string = '';
   filePathImage: string = '';
   pathAudio: string = '';
@@ -21,7 +23,7 @@ export class SongFormComponent implements OnInit {
   image: string = '';
   link_Audio: string = '';
   readonly formGroup: FormGroup = new FormGroup({
-    // id: new FormControl(null),
+    id: new FormControl(null),
     name: new FormControl('', Validators.required),
     author: new FormControl('', Validators.required),
     image: new FormControl('', Validators.required),
@@ -31,9 +33,14 @@ export class SongFormComponent implements OnInit {
     // date_Upload: new FormControl(new Date()),
   });
   constructor(
-    private readonly store: AdminPageStore,
+    private readonly store: SongPageStore,
     private readonly uploadFileService: AngularFireStorage,
-  ) {}
+  ) {
+    this.store.currentSong$.pipe(takeUntil(this.destroy$)).subscribe(value => {
+      this.formGroup.reset();
+      this.formGroup.patchValue(value);
+    });
+  }
 
   ngOnInit(): void {}
   onClosed() {
@@ -49,17 +56,18 @@ export class SongFormComponent implements OnInit {
     // );
     value.image = this.image;
     value.link = this.link_Audio;
-    // console.log(value);
-    // console.log(typeof value.category);
-    // if (this.formGroup.invalid) {
-    //   console.log('chưa valid');
-    //   Object.values(this.formGroup.controls).forEach(i => {
-    //     i.markAsDirty();
-    //     i.updateValueAndValidity();
-    //   });
-    //   return;
-    // }
-    this.store.createSong(value);
+    if (this.formGroup.invalid) {
+      console.log('chưa valid');
+      Object.values(this.formGroup.controls).forEach(i => {
+        i.markAsDirty();
+        i.updateValueAndValidity();
+      });
+      return;
+    }
+    if(!value.id) {
+      delete value.id;
+      this.store.createSong(value);
+    }
   }
   onFileChangeAudio(event: any) {
     this.pathAudio = event.target.files[0];

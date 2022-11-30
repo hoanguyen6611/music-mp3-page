@@ -13,6 +13,12 @@ import { PlaylistTrackModule } from 'src/app/shared/playlist-track/playlist-trac
 import { TitleListModule } from 'src/app/shared/title-list/title-list.module';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { TranslateModule } from '@ngx-translate/core';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { PlayButtonModule } from 'src/app/shared/play-button/play-button.module';
 
 
 @NgModule({
@@ -27,7 +33,15 @@ import { TranslateModule } from '@ngx-translate/core';
     PlaylistTrackModule,
     TitleListModule,
     NzMessageModule,
-    TranslateModule
+    TranslateModule,
+    NzModalModule,
+    NzFormModule,
+    NzSpinModule,
+    ReactiveFormsModule,
+    NzButtonModule,
+    TranslateModule,
+    NzMessageModule,
+    PlayButtonModule
   ],
   exports: [MyPlaylistsComponent],
   providers: [MyPlayListStore]

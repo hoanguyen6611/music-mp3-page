@@ -1,10 +1,11 @@
 <div class="mb-5 header-component">
   <button
-        class="bg-[#1fdf64] text-black rounded-lg font-semibold p-3"
+        class="bg-[#1fdf64] text-black rounded-lg font-semibold p-3 btn-pt"
         nzType="default"
         nzSize="large"
-        (click)="onForm()"
+        (click)="createForm()"
       >
+      <span class="mr-2" nz-icon nzType="plus" nzTheme="outline"></span>
         {{'ACTION.CREATE' | translate}}
       </button>
 </div>

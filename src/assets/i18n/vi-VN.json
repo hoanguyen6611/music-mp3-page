@@ -8,7 +8,12 @@
     "REGISTER_SUCCESS": "Tạo tài khoản thành công",
     "VALIDATOR_PASSWORD": "Mật khẩu chưa đúng định dạng",
     "VALIDATOR_EMAIL": "Email chưa đúng định dạng",
-    "SUCCESS": "Thêm thành công"
+    "ADD_SUCCESS": "Thêm thành công",
+    "EDIT_SUCCESS": "Cập nhập thành công",
+    "ADD_TO_FAVORITE": "Thêm bài hát vào danh sách yêu thích",
+    "REMOVE_TO_FAVORITE": "Xoá bài hát vào danh sách yêu thích",
+    "CONFIRM_PASSWORD": "Mật khẩu xác thực chưa chính xác",
+    "CONFIRM_EMAIL":"Vui lòng truy cập hộp thư để xác thực email để có thể sử dụng tài khoản"
   },
   "LOGIN_FORM": {
     "EMAIL": "Email",
@@ -19,11 +24,17 @@
     "SIGN_UP_FOR_APP": "Đăng ký tài khoản",
     "SIGN_IN": "Đăng nhập"
   },
+  "FORGET_PASSWORD": {
+    "EMAIL": "Email",
+    "SIGN_IN":"Đăng nhập",
+    "SIGN_UP":"Đăng ký"
+  },
   "SIGN_UP_FORM": {
     "FACEBOOK": "ĐĂNG NHẬP VỚI FACEBOOK",
     "GOOGLE": "ĐĂNG NHẬP VỚI GOOGLE",
     "USERNAME": "Tên đăng nhập",
     "PASSWORD": "Mật khẩu",
+    "CONFIRM_PASSWORD": "Xác nhận mật khẩu",
     "FULLNAME": "Họ và tên",
     "EMAIL": "Email",
     "ADDRESS": "Địa chỉ",
@@ -43,10 +54,17 @@
   },
   "ACTION": {
     "LOGIN": "Đăng nhập",
-    "FORGOT_PASSWORD":"Quên mật khẩu",
+    "FORGOT_PASSWORD": "Quên mật khẩu",
     "CREATE": "Tạo mới",
     "SAVE": "Lưu",
-    "CANCEL": "Huỷ"
+    "CANCEL": "Huỷ",
+    "EDIT": "Chỉnh sửa",
+    "ALBUM_CREATE": "Thêm mới album",
+    "ALBUM_EDIT": "Chỉnh sửa album",
+    "CATEGORY_CREATE": "Thêm mới danh mục",
+    "CATEGORY_EDIT": "Chỉnh sửa danh mục",
+    "SONG_CREATE": "Thêm mới bài hát",
+    "SONG_EDIT": "Chỉnh sửa bài hát"
   },
   "USER_MENU": {
     "SETTING": "Cài đặt",
@@ -71,7 +89,7 @@
       "AUTHOR": "Tác giả",
       "IMAGE": "Hình ảnh",
       "LINK_AUDIO": "Audio",
-      "CATEGORY":"Danh mục",
+      "CATEGORY": "Danh mục",
       "DESCRIPTION": "Thông tin khác",
       "DATE_UPLOAD": "Ngày thêm"
     },
@@ -80,5 +98,10 @@
       "IMAGE": "Hình ảnh",
       "DESCRIPTION": "Thông tin khác"
     }
+  },
+  "MYPLAYLIST": {
+    "NAME": "Tên thể loại",
+    "IMAGE": "Hình ảnh",
+    "DESCRIPTION": "Thông tin khác"
   }
 }

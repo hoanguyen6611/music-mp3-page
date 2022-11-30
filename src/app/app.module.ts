@@ -8,10 +8,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {
   HttpClient,
   HttpClientModule,
-  HttpBackend,
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -23,7 +21,21 @@ import { IAuthService } from './core/authentication/auth.service.interface';
 import { AuthService } from './core/authentication';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+const nzConfig: NzConfig = {
+  message: {
+    nzMaxStack: 3, // The maximum number of messages that can be displayed at the same time
+    nzDuration: 5000, //Duration (milliseconds)
+  },
+  tabs: {
+    nzTabBarGutter: -10,
+  },
+};
 registerLocaleData(en);
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -40,7 +52,6 @@ export function createTranslateLoader(http: HttpClient) {
     NzSpinModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzModalModule,
     FormsModule,
     OAuthModule.forRoot(),
     TranslateModule.forRoot({
@@ -52,11 +63,19 @@ export function createTranslateLoader(http: HttpClient) {
       defaultLanguage: 'vi-VN',
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [
     ...interceptorProviders,
     { provide: IAuthService, useClass: AuthService },
     { provide: NZ_I18N, useValue: en_US },
+    { provide: NZ_CONFIG, useValue: nzConfig },
   ],
   bootstrap: [AppComponent],
 })

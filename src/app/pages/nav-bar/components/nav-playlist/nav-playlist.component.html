@@ -1,0 +1,15 @@
+<a
+  [routerLink]="playlistWithRoute.routeUrl"
+  routerLinkActive="active"
+  [title]="playlistWithRoute.name"
+  class="playlist-link link-subtle"
+>
+  <span class="ellipsis-one-line">
+    {{ playlistWithRoute.name }}
+  </span>
+  <app-play-button
+    class="pl-4"
+    [flatIcon]="true"
+    [isShowVolumeIcon]="true"
+  ></app-play-button>
+</a>

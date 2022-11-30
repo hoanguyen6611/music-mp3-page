@@ -4,10 +4,10 @@
     <app-song [song]="item"(click)="playMusic(item)"></app-song>
   </ng-container>
 </div>
-<h2 class="color-white">Album</h2>
+<h2 class="color-white mt-4">Album</h2>
 <div class="grid grid-cols-6 gap-10 mt-5" *ngIf="vm$ | async as vm">
   <ng-container *ngFor="let item of vm.Album">
-    <app-ablum [album]="item"></app-ablum>
+    <app-ablum [album]="item" (click)="playAlbum(item.listSong)"></app-ablum>
   </ng-container>
 </div>
 

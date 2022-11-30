@@ -5,7 +5,74 @@
     <app-media-number [index]="index + 1"></app-media-number>
     <app-track-info [song]="song"></app-track-info>
   </ng-container>
-  <a class="text-description link-subtle hover:underline"></a>
-  <div class="text-description">{{ song.dateUp }}</div>
-  <div class="text-description">{{ song.time }}</div>
+  <a class="text-description link-subtle hover:underline">{{
+    playlist.name
+  }}</a>
+  <div class="text-description"></div>
+  <div class="text-description">
+    <div class="flex">
+      <div>
+        <div
+          nzTrigger="click"
+          nz-dropdown
+          [nzDropdownMenu]="notificationRef"
+          nz-tooltip
+          nzTooltipTitle="Thông báo"
+        >
+          <nz-badge>
+            <span
+              nz-icon
+              [nzType]="'music:ellipsis'"
+              [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#fff'"
+            ></span>
+          </nz-badge>
+
+          <nz-dropdown-menu #notificationRef="nzDropdownMenu">
+            <ul
+              #notificationLists
+              class="list-notifications"
+              nz-menu
+              nzSelectable
+            >
+              <li class="cursor-pointer flex justify-center">
+                <a nz-dropdown [nzDropdownMenu]="menu">
+                  Playlist
+                  <span nz-icon nzType="down"></span>
+                </a>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                  <ul nz-menu nzSelectable *ngFor="let item of playlistUser">
+                    <li nz-menu-item (click)="addMusicToPlaylist.emit(item.id)">
+                      {{ item.name }}
+                    </li>
+                  </ul>
+                </nz-dropdown-menu>
+              </li>
+            </ul>
+          </nz-dropdown-menu>
+        </div>
+
+        <ng-template #emptyNotifications>
+          <nz-empty
+            class="pt-2"
+            [nzNotFoundContent]="'NOTIFICATION_SYSTEM.NO_CONTENT' | translate"
+          >
+          </nz-empty>
+        </ng-template>
+      </div>
+      <div class="ml-2.5">
+        <button *ngIf="showFavorite" (click)="favorite.emit(song.id)">
+          <span nz-icon [nzType]="'heart'" [nzTheme]="'twotone'"></span>
+        </button>
+        <button *ngIf="deleteFavorite" (click)="favorite.emit(song.id)">
+          <span
+            nz-icon
+            [nzType]="'heart'"
+            [nzTheme]="'twotone'"
+            [nzTwotoneColor]="'#fff'"
+          ></span>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminPageStore } from '../../admin.store';
-import { tap } from 'rxjs';
+import { SongPageStore } from './song.store';
 
 @Component({
   selector: 'app-song',
@@ -8,10 +7,11 @@ import { tap } from 'rxjs';
   styleUrls: ['./song.component.scss'],
 })
 export class SongComponent implements OnInit {
-  constructor(private readonly store: AdminPageStore) {}
+  constructor(private readonly store: SongPageStore) {}
 
   ngOnInit(): void {}
   showFormSong() {
+    this.store.setIsEditSong(false);
     this.store.setFormSong(true);
   }
 }

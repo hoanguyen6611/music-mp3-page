@@ -1,13 +1,17 @@
 <nz-drawer
-    [nzVisible]="(isVisibleFormAlbum$ | async) || false"
-    [nzFooter]="drawFooter"
-    (nzOnClose)="onClosed()"
-    nzPlacement="right"
-    nzWidth="800px"
-    nzTitle="Thêm album"
-  >
+  [nzVisible]="(isVisibleFormAlbum$ | async) || false"
+  [nzFooter]="drawFooter"
+  (nzOnClose)="onClosed()"
+  nzPlacement="right"
+  nzWidth="800px"
+  [nzTitle]="
+    (isEdit$ | async)
+      ? ('ACTION.ALBUM_EDIT' | translate)
+      : ('ACTION.ALBUM_CREATE' | translate)
+  "
+>
   <ng-container *nzDrawerContent>
-    <nz-spin [nzSpinning]="IsFormLoadingAlbum$ | async">
+    <nz-spin [nzSpinning]="isFormLoadingAlbum$ | async">
       <form nz-form [formGroup]="formGroup" [nzLayout]="'vertical'">
         <div nz-row>
           <div nz-col nzSpan="24">
@@ -48,11 +52,26 @@
                       : { field: 'ADMIN.CATEGORY_FORM.IMAGE' | translate }
                 }}"
               >
-                <input type="file" (change)="onFileChangeImage($event)" />
-                <button nz-button (click)="upLoadImage()">
-                  <span nz-icon nzType="upload"></span>
-                  Click to Upload
-                </button>
+                <div class="flex justify-between">
+                  <div class="">
+                    <input
+                      type="file"
+                      placeholder="Chọn file ảnh"
+                      (change)="onFileChangeImage($event)"
+                      formControlName="image"
+                      id="image"
+                    />
+                    <button nz-button (click)="upLoadImage()">
+                      <span nz-icon nzType="upload"></span>
+                      Tải ảnh lên
+                    </button>
+                  </div>
+                  <img
+                    *ngIf="isEdit$ | async"
+                    src="{{ formGroup.get('image')?.value }}"
+                    alt=""
+                  />
+                </div>
               </nz-form-control>
             </nz-form-item>
           </div>
@@ -60,7 +79,7 @@
         <div nz-row>
           <div nz-col nzSpan="24">
             <nz-form-item>
-              <nz-form-label nzRequired nzFor="'author'">
+              <nz-form-label nzRequired nzFor="'description'">
                 {{ 'ADMIN.CATEGORY_FORM.DESCRIPTION' | translate }}
               </nz-form-label>
               <nz-form-control
@@ -85,15 +104,10 @@
   </ng-container>
   <ng-template #drawFooter>
     <nz-button-group class="float-right">
-      <button nz-button nzType="default" (click)="onClosed()">
+      <button nz-button nzType="default" (click)="onClosed()" class="mr-2.5">
         {{ 'ACTION.CANCEL' | translate }}
       </button>
-      <button
-        nz-button
-        nzType="primary"
-        class="ml-2"
-        (click)="onSubmit()"
-      >
+      <button nz-button nzType="primary" (click)="onSubmit()">
         {{ 'ACTION.SAVE' | translate }}
       </button>
     </nz-button-group>

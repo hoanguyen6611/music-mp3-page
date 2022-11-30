@@ -15,3 +15,10 @@ export interface ListSong {
   image: string
   description: string
 }
+export interface CreateAlbum {
+  id: string
+  name: string
+  state: boolean
+  description: string
+  image: string
+}

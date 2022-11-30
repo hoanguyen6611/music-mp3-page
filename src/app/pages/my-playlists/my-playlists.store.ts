@@ -7,15 +7,17 @@ import {
   Song,
 } from 'src/app/core/services/categorys/categorys.model';
 import { CategorysService } from 'src/app/core/services/categorys/categorys.service';
-import { MyPlaylist } from 'src/app/core/services/my-playlist/my-playlist.model';
+import { MyPlaylist, PlaylistCreate } from 'src/app/core/services/my-playlist/my-playlist.model';
 import { MyPlaylistService } from 'src/app/core/services/my-playlist/my-playlist.service';
 import { ListSong } from 'src/app/core/services/album';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { FavoriteService } from 'src/app/core/services/favorite/favorite.service';
 
 export interface MyPlaylistsState {
   IsLoading: boolean;
+  IsFormLoading: boolean;
   IsLoadingDetail: boolean;
   Data: MyPlaylist[];
   Value: {
@@ -29,6 +31,7 @@ export interface MyPlaylistsState {
 const initialState: MyPlaylistsState = {
   Data: [],
   IsLoading: false,
+  IsFormLoading: false,
   IsLoadingDetail: false,
   Value: {
     id: '',
@@ -55,6 +58,7 @@ export class MyPlayListStore extends ComponentStore<MyPlaylistsState> {
     private readonly service: MyPlaylistService,
     private readonly message: NzMessageService,
     private readonly translateService: TranslateService,
+    private readonly favoriteService: FavoriteService,
   ) {
     super(initialState);
     this.loadData();
@@ -126,7 +130,7 @@ export class MyPlayListStore extends ComponentStore<MyPlaylistsState> {
       ),
     ),
   );
-  readonly createCategory = this.effect<[string, string]>(params$ =>
+  readonly addSongToPlaylist = this.effect<[string, string]>(params$ =>
     params$.pipe(
       tap(() =>
       this.patchState(state => ({
@@ -150,6 +154,49 @@ export class MyPlayListStore extends ComponentStore<MyPlaylistsState> {
           finalize(() => {
             this.patchState({});
           }),
+        ),
+      ),
+    ),
+  );
+  readonly createPlaylist = this.effect<PlaylistCreate>(params$ =>
+    params$.pipe(
+      switchMap(param =>
+        this.service.createPlaylist(param).pipe(
+          tap(() => {
+            this.patchState({ IsFormLoading: true });
+          }),
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.SUCCESS'),
+              );
+              this.loadData();
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({ IsFormLoading: false });
+          }),
+        ),
+      ),
+    ),
+  );
+  readonly addSongToFavorite = this.effect<string>(param$ =>
+    param$.pipe(
+      switchMap(param =>
+        this.favoriteService.addSongFavorite(param).pipe(
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.ADD_TO_FAVORITE'),
+              );
+            },
+            (err: HttpErrorResponse) => {
+              this.message.error(err.error.message);
+            },
+          ),
         ),
       ),
     ),

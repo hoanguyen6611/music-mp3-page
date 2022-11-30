@@ -17,4 +17,10 @@ export class LikeSongsComponent implements OnInit {
   constructor(private readonly store: LikeSongStore) {}
 
   ngOnInit(): void {}
+  removeMusicFavorite(id: string) {
+    this.store.removeSongToFavorite(id);
+  }
+  addMusicToPlaylist(id: string) {
+    console.log(id);
+  }
 }

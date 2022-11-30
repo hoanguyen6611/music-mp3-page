@@ -1,16 +1,38 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FavoriteService } from 'src/app/core/services/favorite/favorite.service';
+import { Song } from 'src/app/core/services/songs/songs.model';
 
 @Component({
   selector: 'app-playlist-track',
   templateUrl: './playlist-track.component.html',
-  styleUrls: ['./playlist-track.component.scss']
+  styleUrls: ['./playlist-track.component.scss'],
 })
-export class PlaylistTrackComponent implements OnInit {
-  @Input() index:number = 0;
-  @Input() song:any;
-  constructor() { }
+export class PlaylistTrackComponent {
+  @Input() index: number = 0;
+  @Input() song: Song = {
+    id: '',
+    name: '',
+    author: '',
+    link: '',
+    image: '',
+    description: '',
+  };
+  @Input() playlist: any;
+  @Output() favorite = new EventEmitter<string>();
+  @Output() add = new EventEmitter<string>();
+  @Output() addMusic = new EventEmitter<string>();
+  @Output() addMusicToPlaylist = new EventEmitter<string>();
+  @Input() showFavorite = true;
+  @Input() deleteFavorite = false;
+  @Input() playlistUser: any;
+  show = false;
+  constructor(private readonly service: FavoriteService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  onConfirm() {}
+  onRemove() {}
+  onShow() {
+    this.add.emit(this.song.id);
+    this.show = !this.show;
   }
-
 }

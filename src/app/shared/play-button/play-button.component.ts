@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Song } from 'src/app/core/services/categorys/categorys.model';
 
 @Component({
   selector: 'app-play-button',
@@ -12,6 +13,8 @@ export class PlayButtonComponent implements OnInit {
   @Input() primary = false;
   @HostBinding('class.is-show-volume') @Input() isShowVolumeIcon = false;
   @Output() togglePlay = new EventEmitter<boolean>();
+  @Output() playMusic = new EventEmitter<Song>();
+  @Input() song: any;
   constructor() {
   }
 

@@ -12,19 +12,8 @@
   </li>
 </ul>
 <div class="mx-6 separator"></div>
-<ul class="playlists">
-  <li class="p-2">
-    <a
-      class="playlist-link link-subtle pl-4 pr-2 text-sm flex justify-between items-center"
-      routerLink=""
-      routerLinkActive="active"
-      [title]=""
-      >
-    </a>
-    <app-play-button
-      class="pl-4"
-      [flatIcon]="true"
-      [isShowVolumeIcon]="true"
-    ></app-play-button>
+<ul class="playlists" *ngIf="vm$ | async as vm">
+  <li class="p-2" *ngFor="let item of vm.Data">
+    <app-nav-playlist [playlist]="item"></app-nav-playlist>
   </li>
 </ul>

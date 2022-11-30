@@ -24,4 +24,10 @@ export class CategoryDetailComponent implements OnInit {
     this.categoryDetail$;
   }
   onAllChecked(checked: boolean): void {}
+  addMusicToPlaylist(id: string) {
+    console.log(id);
+  }
+  addMusicFavorite(id: string) {
+    this.store.addSongToFavorite(id);
+  }
 }

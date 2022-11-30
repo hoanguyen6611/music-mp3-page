@@ -4,14 +4,22 @@
     type="Playlist"
     [description]="value.description"
     [title]="value.name"
+    [quantity]="value.listSong.length"
   ></app-detail>
+  <app-play-button></app-play-button>
   <app-title-list></app-title-list>
   <div
     *ngIf="value.listSong as song"
     class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10"
   >
     <div *ngFor="let item of song; let i = index">
-      <app-playlist-track [index]="i" [song]="item"></app-playlist-track>
+      <app-playlist-track
+        [index]="i"
+        [song]="item"
+        [playlist]="value"
+        (favorite)="addMusicFavorite($event)"
+        (addMusic)="addMusicToPlaylist($event)"
+      ></app-playlist-track>
     </div>
   </div>
 </div>

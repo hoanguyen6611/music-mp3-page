@@ -9,6 +9,10 @@ import { TrackInfoModule } from 'src/app/shared/track-info/track-info.module';
 import { MediaNumberModule } from 'src/app/shared/media-number/media-number.module';
 import { PlaylistTrackModule } from 'src/app/shared/playlist-track/playlist-track.module';
 import { TitleListModule } from 'src/app/shared/title-list/title-list.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { PlayButtonModule } from 'src/app/shared/play-button/play-button.module';
 
 @NgModule({
   declarations: [AblumDetailComponent],
@@ -19,7 +23,12 @@ import { TitleListModule } from 'src/app/shared/title-list/title-list.module';
     TrackInfoModule,
     MediaNumberModule,
     PlaylistTrackModule,
-    TitleListModule
+    TitleListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    NzMessageModule,
+    PlayButtonModule
   ],
   exports: [AblumDetailComponent],
   providers: [AlbumDetailStore],

@@ -8,7 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { PlayButtonModule } from 'src/app/shared/play-button/play-button.module';
 import { PlayerPlaybackModule } from 'src/app/shared/player-playback/player-playback.module';
 import { TrackInfoModule } from 'src/app/shared/track-info/track-info.module';
-import { HomePageStore } from '../home-page/home-page.store';
+import { StoreModule } from '@ngrx/store';
+import { nowPlaying } from './store/now-playing.selector';
+import { nowPlayingReducer } from './store/now-playing.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { NowPlayingEffects } from './store/now-playing.effects';
 
 
 
@@ -20,9 +24,10 @@ import { HomePageStore } from '../home-page/home-page.store';
     FormsModule,
     PlayButtonModule,
     PlayerPlaybackModule,
-    TrackInfoModule
+    TrackInfoModule,
+    StoreModule.forFeature(nowPlaying, nowPlayingReducer),
+    EffectsModule.forFeature([NowPlayingEffects])
   ],
-  exports: [NowPlayingComponent],
-  providers: [HomePageStore]
+  exports: [NowPlayingComponent]
 })
 export class NowPlayingModule { }

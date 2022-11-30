@@ -1,28 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AdminPageStore } from 'src/app/pages/admin/admin.store';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { finalize } from 'rxjs';
+import { finalize, Subject, takeUntil } from 'rxjs';
+import { AlbumPageStore } from '../../album.store';
 @Component({
   selector: 'app-album-form',
   templateUrl: './album-form.component.html',
   styleUrls: ['./album-form.component.scss'],
 })
 export class AlbumFormComponent implements OnInit {
+  readonly destroy$ = new Subject<void>();
   readonly isVisibleFormAlbum$ = this.store.isVisibleFormAlbum$;
-  readonly IsFormLoadingAlbum$ = this.store.isFormLoadingAlbum$;
+  readonly isFormLoadingAlbum$ = this.store.isFormLoadingAlbum$;
+  readonly isEdit$ = this.store.isEditAlbum$;
+
   image: string = '';
   pathImage: string = '';
   filePathImage: string = '';
+
   constructor(
-    private readonly store: AdminPageStore,
+    private readonly store: AlbumPageStore,
     private readonly uploadFileService: AngularFireStorage,
-  ) {}
+  ) {
+    this.store.currentAlbum$.pipe(takeUntil(this.destroy$)).subscribe(value => {
+      this.formGroup.reset();
+      this.formGroup.patchValue(value);
+    });
+  }
   readonly formGroup: FormGroup = new FormGroup({
-    // id: new FormControl(null),
+    id: new FormControl(null),
     name: new FormControl('', Validators.required),
     image: new FormControl(''),
     description: new FormControl(''),
+    state: new FormControl(true)
   });
 
   ngOnInit(): void {}
@@ -53,7 +63,16 @@ export class AlbumFormComponent implements OnInit {
   onSubmit() {
     const value = this.formGroup.getRawValue();
     value.image = this.image;
-    console.log(value);
-    // this.store.createCategory(value);
+    if (this.formGroup.invalid) {
+      Object.values(this.formGroup.controls).forEach(i => {
+        i.markAsDirty();
+        i.updateValueAndValidity();
+      });
+      return;
+    }
+    if(!value.id) {
+      delete value.id;
+      this.store.createAlbum(value);
+    }
   }
 }

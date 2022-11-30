@@ -2,7 +2,7 @@
   <a class="flex flex-col flex-1">
     <div class="media-description">
       <div class="font-bold text-white ellipsis-one-line hover:text-white">
-        <button>Tạo mới playlist</button>
+        <button (click)="addPlaylist()">Tạo mới playlist</button>
       </div>
     </div>
   </a>
@@ -11,4 +11,84 @@
     <app-playlist [playlist]="item"></app-playlist>
   </ng-container>
 </div>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Tạo mới playlist cá nhân" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <nz-spin [nzSpinning]="false">
+      <form nz-form [formGroup]="formGroup" [nzLayout]="'vertical'">
+        <div nz-row>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzFor="'name'">
+                {{ 'MYPLAYLIST.NAME' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate
+                      : { field: 'MYPLAYLIST.NAME' | translate }
+                }}"
+              >
+                <input
+                  type="text"
+                  formControlName="name"
+                  id="name"
+                  nz-input
+                  class="input-form"
+                  placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                  maxLength="50"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="'image'">
+                {{ 'MYPLAYLIST.IMAGE' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate
+                      : { field: 'MYPLAYLIST.IMAGE' | translate }
+                }}"
+              >
+                <input type="file" (change)="onFileChangeImage($event)" />
+                <button nz-button (click)="upLoadImage()">
+                  <span nz-icon nzType="upload"></span>
+                  Click to Upload
+                </button>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzFor="'author'">
+                {{ 'MYPLAYLIST.DESCRIPTION' | translate }}
+              </nz-form-label>
+              <nz-form-control
+                nzErrorTip="{{
+                  'MESSAGE.REQUIRED'
+                    | translate
+                      : { field: 'MYPLAYLIST.DESCRIPTION' | translate }
+                }}"
+              >
+                <textarea
+                  nz-input
+                  class="input-form"
+                  formControlName="description"
+                  placeholder="{{ 'MESSAGE.INPUT_PLACEHOLDER' | translate }}"
+                  nzAutosize
+                ></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </form>
+    </nz-spin>
+  </ng-container>
+</nz-modal>
 

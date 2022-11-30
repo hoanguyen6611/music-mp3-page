@@ -1,4 +1,4 @@
-<a routerLink="/main/album/{{album.id}}" class="flex flex-col flex-1">
+<a class="flex flex-col flex-1">
   <div class="media-cover" [class.is-playing]="">
     <app-media-cover
       class="mb-4"
@@ -12,7 +12,7 @@
       asClickStopPropagation
     ></app-play-button>
   </div>
-  <div class="media-description">
+  <div class="media-description" routerLink="/main/album/{{album.id}}">
     <div class="font-bold text-white ellipsis-one-line hover:text-white">
       {{ album.name }}
     </div>

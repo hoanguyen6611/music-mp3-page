@@ -21,7 +21,7 @@
   @apply pt-2 pb-1 px-0 overflow-auto;
 }
 .playlist-link {
-  // @apply pl-4 pr-2 text-sm flex justify-between items-center
+  @apply pl-4 pr-2 text-sm flex justify-between items-center;
 
   &.active {
     @apply text-white;

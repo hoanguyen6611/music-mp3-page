@@ -4,7 +4,11 @@
   (nzOnClose)="onClosed()"
   nzPlacement="right"
   nzWidth="800px"
-  nzTitle="Thêm danh mục"
+  [nzTitle]="
+    (isEdit$ | async)
+      ? ('ACTION.CATEGORY_EDIT' | translate)
+      : ('ACTION.CATEGORY_CREATE' | translate)
+  "
 >
   <ng-container *nzDrawerContent>
     <nz-spin [nzSpinning]="IsFormLoadingCategory$ | async">
@@ -48,7 +52,12 @@
                       : { field: 'ADMIN.CATEGORY_FORM.IMAGE' | translate }
                 }}"
               >
-                <input type="file" (change)="onFileChangeImage($event)" />
+                <input
+                  type="file"
+                  (change)="onFileChangeImage($event)"
+                  formControlName="image"
+                  id="image"
+                />
                 <button nz-button (click)="upLoadImage()">
                   <span nz-icon nzType="upload"></span>
                   Click to Upload
@@ -60,14 +69,16 @@
         <div nz-row>
           <div nz-col nzSpan="24">
             <nz-form-item>
-              <nz-form-label nzRequired nzFor="'author'">
+              <nz-form-label nzRequired nzFor="'description'">
                 {{ 'ADMIN.CATEGORY_FORM.DESCRIPTION' | translate }}
               </nz-form-label>
               <nz-form-control
                 nzErrorTip="{{
                   'MESSAGE.REQUIRED'
                     | translate
-                      : { field: 'ADMIN.CATEGORY_FORM.DESCRIPTION' | translate }
+                      : {
+                          field: 'ADMIN.CATEGORY_FORM.DESCRIPTION' | translate
+                        }
                 }}"
               >
                 <textarea
@@ -89,7 +100,12 @@
       <button nz-button nzType="default" (click)="onClosed()" class="mr-2.5">
         {{ 'ACTION.CANCEL' | translate }}
       </button>
-      <button nz-button nzType="primary" (click)="onSubmit()">
+      <button
+        nz-button
+        nzType="primary"
+        (click)="onSubmit()"
+        [nzLoading]="IsFormLoadingCategory$ | async"
+      >
         {{ 'ACTION.SAVE' | translate }}
       </button>
     </nz-button-group>

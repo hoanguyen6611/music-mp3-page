@@ -4,13 +4,23 @@
     type="Artist"
     [description]="likeSong.description"
     [title]="likeSong.title"
+    [quantity]="vm.Song.length"
   ></app-detail>
+  <app-play-button></app-play-button>
   <app-title-list></app-title-list>
   <div
     class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10"
   >
     <ng-container *ngFor="let song of vm.Song; let i = index">
-      <app-playlist-track [index]="i" [song]="song"></app-playlist-track>
+      <app-playlist-track
+        [index]="i"
+        [song]="song"
+        [showFavorite]="false"
+        [deleteFavorite]="true"
+        [playlist]="vm"
+        (favorite)="removeMusicFavorite($event)"
+        (addMusic)="addMusicToPlaylist($event)"
+      ></app-playlist-track>
     </ng-container>
   </div>
 </div>

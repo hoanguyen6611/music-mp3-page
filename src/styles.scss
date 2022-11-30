@@ -13,6 +13,9 @@
 @import './styles/form';
 @layer components {
   .btn-apply {
+    @apply flex justify-center items-center hover:text-green-400 hover:border-green-400;
+  }
+  .btn-pt {
     @apply flex justify-center items-center;
   }
   .color-white {
@@ -73,16 +76,29 @@
     padding-right: 0;
   }
 }
-// .ant-btn-hover,
-// .ant-btn-focus {
-//   color: var(--ant-primary-color-hover);
-//   border-color: var(--ant-primary-color-hover);
-//   background: #fff;
-// }
+.ant-btn-hover,
+.ant-btn-focus {
+  color: #1fdf64;
+  border-color: #1fdf64;
+  background: #fff;
+}
+.ant-btn-primary {
+  color: #fff;
+  background: #1fdf64;
+  border: 1px solid #1fdf64;
+}
+.ant-btn-primary:hover {
+  color: #fff;
+  background: #1fdf64;
+  border: 1px solid #1fdf64;
+}
 
 .playlist-tracks-grid {
   display: grid;
-  grid-template-columns: [index] 24px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr);
+  grid-template-columns: [index] 24px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
+      120px,
+      1fr
+    );
   gap: 16px;
 }
 
@@ -102,4 +118,7 @@
   border: 1px solid #ccc;
   width: 100%;
   border-radius: 5px;
+}
+.ant-message {
+  @apply flex justify-center items-center;
 }

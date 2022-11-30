@@ -14,7 +14,23 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
-        <td></td>
+        <td>
+          <button
+            nz-button
+            nzType="link"
+            nz-tooltip
+            [nzTooltipTitle]="'ACTION.EDIT' | translate"
+            (click)="onEdit(data.id)"
+          >
+            <span
+              nz-icon
+              class="icon-action"
+              [nzType]="'edit'"
+              [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#52c41a'"
+            ></span>
+          </button>
+        </td>
         <td>
           {{ data.name }}
           <img class="img-50" src="{{ data.image }}" />

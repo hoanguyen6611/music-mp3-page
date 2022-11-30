@@ -2,7 +2,7 @@
   aria-roledescription="button"
   [title]="isPlaying ? 'Pause' : 'Play'"
   [ngClass]="buttonClass"
-  (click)="togglePlay.emit(isPlaying!)"
+  (click)="playMusic.emit(song)"
 >
   <span
     class="play-icon"

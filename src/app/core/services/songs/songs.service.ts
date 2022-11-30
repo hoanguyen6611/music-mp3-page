@@ -19,6 +19,10 @@ export class SongsService {
   createSong(song: songCreate) {
     return this.httpClient.post(`${this.apiUrl}/song`, song);
   }
+  updateSong(song: Song) {}
+  deleteSong(id: string) {
+    return this.httpClient.post(`${this.apiUrl}/song/${id}`, {});
+  }
   getSongFavoriteByUser() {
     return this.httpClient.get<Song[]>(`${this.apiUrl}/favoriteSongs`);
   }

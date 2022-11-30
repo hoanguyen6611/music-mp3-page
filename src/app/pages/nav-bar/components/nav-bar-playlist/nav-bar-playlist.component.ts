@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavBarStore } from '../../nav-bar.store';
 
 @Component({
   selector: 'app-nav-bar-playlist',
@@ -7,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavBarPlaylistComponent implements OnInit {
   @Input() song:any;
-  constructor() { }
+  readonly vm$ = this.store.vm$;
+  constructor(private readonly store: NavBarStore) { }
 
   ngOnInit(): void {
   }
