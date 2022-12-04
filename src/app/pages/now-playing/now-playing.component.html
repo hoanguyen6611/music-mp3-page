@@ -34,22 +34,32 @@
       </button>
     </div>
     <div class="flex items-center justify-between mx-4">
-      <span class="timer-duration">{{ currentTime }}</span>
+      <span class="timer-duration">{{ readCurrentTime }}</span>
       <input
+        class="progress"
+        type="range"
+        min="0"
+        [max]="duration"
+        step="0.01"
+        #seek
+        (input)="setSeek(seek.value)"
+        [value]="currentTime"
+      />
+      <!-- <input
         class="progress"
         type="range"
         min="0"
         [max]="duration"
         [value]="seek"
         (input)="setSeekTo($event)"
-      />
+      /> -->
       <!-- <nz-slider
         class="flex-1 mx-2"
         [ngModel]="seek"
         [nzMax]="duration"
         (input)="setSeekTo($event)"
       ></nz-slider> -->
-      <span class="timer-duration">{{ duration }}</span>
+      <span class="timer-duration">{{ readDuration }}</span>
     </div>
     <!-- <div class="text-white">
       <span>Volume</span>

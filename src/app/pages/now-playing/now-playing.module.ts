@@ -4,7 +4,7 @@ import { NowPlayingComponent } from './now-playing.component';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { PlayerVolumeComponent } from './components/player-volume/player-volume.component';
 import { PlayerControlsComponent } from './components/player-controls/player-controls.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayButtonModule } from 'src/app/shared/play-button/play-button.module';
 import { PlayerPlaybackModule } from 'src/app/shared/player-playback/player-playback.module';
 import { TrackInfoModule } from 'src/app/shared/track-info/track-info.module';
@@ -27,6 +27,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     PlayerPlaybackModule,
     TrackInfoModule,
     NzIconModule,
+    ReactiveFormsModule,
     StoreModule.forFeature(nowPlaying, nowPlayingReducer),
     EffectsModule.forFeature([NowPlayingEffects]),
   ],
