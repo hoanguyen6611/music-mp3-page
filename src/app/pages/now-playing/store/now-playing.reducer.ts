@@ -4,14 +4,6 @@ import * as actions from './now-playing.actions';
 
 const initialState: NowPlayingState = {
   songs: [],
-  // currentSong: {
-  //   id: '',
-  //   name: '',
-  //   author: '',
-  //   link: '',
-  //   image: '',
-  //   description: '',
-  // },
 };
 
 export const nowPlayingReducer = createReducer<NowPlayingState>(
@@ -32,9 +24,27 @@ export const nowPlayingReducer = createReducer<NowPlayingState>(
   ),
   on(
     actions.setUserLogin,
-    (state, {value}) => ({
+    (state, {value}): NowPlayingState => ({
       ...state,
       user: value
+    })
+  ),
+  on(
+    actions.addMusicRecently,
+    (state):NowPlayingState => ({
+      ...state
+    })
+  ),
+  on(
+    actions.addMusicRecentlySuccess,
+    (state): NowPlayingState => ({
+      ...state
+    })
+  ),
+  on(
+    actions.addMusicRecentlyFailure,
+    (state): NowPlayingState => ({
+      ...state
     })
   )
 );

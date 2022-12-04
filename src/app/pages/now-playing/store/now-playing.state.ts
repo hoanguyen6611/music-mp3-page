@@ -2,6 +2,8 @@ import { Song } from 'src/app/core/services/categorys/categorys.model';
 
 export interface NowPlayingState {
   songs: Song[];
+  volume?:number;
+  current?:string;
   currentSong?: {
     id: string;
     name: string;

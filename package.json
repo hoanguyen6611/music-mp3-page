@@ -39,6 +39,7 @@
     "cloudinary": "^1.32.0",
     "cloudinary-core": "^2.13.0",
     "firebase": "^9.14.0",
+    "moment": "^2.29.4",
     "ng-zorro-antd": "^14.0.0",
     "ng2-file-upload": "^1.4.0",
     "ngx-dropzone": "^3.1.0",

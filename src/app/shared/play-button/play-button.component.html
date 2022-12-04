@@ -5,16 +5,18 @@
   (click)="playMusic.emit(song)"
 >
   <span
-    class="play-icon"
+    class="play-icon float-right"
     nz-icon
     [nzType]="isPlaying ? 'music:pause' : 'music:play'"
+    style="font-size: 30px; color: #1fdf64;"
     nzTheme="outline"
   ></span>
   <span
-    class="volume-icon"
+    class="volume-icon float-right"
     nz-icon
-    nzType="snippets"
+    nzType="music:play"
     nzTheme="outline"
     *ngIf="isShowVolumeIcon"
+    style="font-size: 30px; color: #1fdf64; "
   ></span>
 </div>

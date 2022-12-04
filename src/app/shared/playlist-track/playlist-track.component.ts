@@ -22,9 +22,11 @@ export class PlaylistTrackComponent {
   @Output() add = new EventEmitter<string>();
   @Output() addMusic = new EventEmitter<string>();
   @Output() addMusicToPlaylist = new EventEmitter<string>();
+  @Output() playMusic = new EventEmitter<Song>();
   @Input() showFavorite = true;
   @Input() deleteFavorite = false;
   @Input() playlistUser: any;
+  @Input() showButtonAddPlaylist: boolean = true;
   show = false;
   constructor(private readonly service: FavoriteService) {}
 

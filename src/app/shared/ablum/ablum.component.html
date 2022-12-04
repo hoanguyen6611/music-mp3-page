@@ -1,18 +1,19 @@
 <a class="flex flex-col flex-1">
   <div class="media-cover" [class.is-playing]="">
     <app-media-cover
-      class="mb-4"
+      class="mb-4 relative"
       [imageUrl]="album.image"
     ></app-media-cover>
-    <app-play-button
-      class="play-button-overlay"
-      [primary]="true"
-      [large]="true"
-      [isPlaying]="false"
-      asClickStopPropagation
-    ></app-play-button>
+    <div class="flex flex-row-reverse absolute top-0 right-0">
+      <app-play-button
+        class="pl-4 play-button"
+        [flatIcon]="true"
+        [isShowVolumeIcon]="true"
+        [large]="true"
+      ></app-play-button>
+    </div>
   </div>
-  <div class="media-description" routerLink="/main/album/{{album.id}}">
+  <div class="media-description" routerLink="/main/album/{{ album.id }}">
     <div class="font-bold text-white ellipsis-one-line hover:text-white">
       {{ album.name }}
     </div>

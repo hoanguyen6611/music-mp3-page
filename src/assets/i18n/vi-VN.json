@@ -10,10 +10,12 @@
     "VALIDATOR_EMAIL": "Email chưa đúng định dạng",
     "ADD_SUCCESS": "Thêm thành công",
     "EDIT_SUCCESS": "Cập nhập thành công",
-    "ADD_TO_FAVORITE": "Thêm bài hát vào danh sách yêu thích",
+    "ADD_TO_FAVORITE": "Thêm bài hát vào danh sách yêu thích thành công",
     "REMOVE_TO_FAVORITE": "Xoá bài hát vào danh sách yêu thích",
     "CONFIRM_PASSWORD": "Mật khẩu xác thực chưa chính xác",
-    "CONFIRM_EMAIL":"Vui lòng truy cập hộp thư để xác thực email để có thể sử dụng tài khoản"
+    "CONFIRM_EMAIL":"Vui lòng truy cập hộp thư để xác thực email để có thể sử dụng tài khoản",
+    "ADD_SONG_TO_PLAYLIST_SUCCESS":"Thêm bài hát vào playlist thành công",
+    "SUCCESS": "Thêm thành công"
   },
   "LOGIN_FORM": {
     "EMAIL": "Email",

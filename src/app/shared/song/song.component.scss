@@ -37,3 +37,14 @@ $bg-hover: #282828;
     }
   }
 }
+.author-description {
+  min-height: 40px;
+}
+.play-button {
+  display: none;
+}
+:host:hover {
+  .play-button {
+    display: block;
+  }
+}

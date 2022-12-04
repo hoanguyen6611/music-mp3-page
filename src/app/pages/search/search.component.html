@@ -1,12 +1,14 @@
 <div class="flex mb-10">
   <div class="flex-1">
     <input
+      nz-input
       type="text"
-      class="w-full p-4 text-white outline-none rounded-lg"
+      [formControl]="formControl"
+      class="w-full p-4 text-black outline-none rounded-lg"
       placeholder="Bài hát, albums, or playlists"
     />
   </div>
-  <button class="p-4 text-white">
+  <button class="p-4 text-white" (click)="searchQuery()">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-6 w-6"
@@ -22,4 +24,10 @@
       />
     </svg>
   </button>
+</div>
+<div class="grid grid-cols-6 gap-10 mt-5" *ngIf="song">
+  {{ song.count }}
+  <ng-container *ngFor="let item of song.items">
+    <app-song [song]="item"></app-song>
+  </ng-container>
 </div>

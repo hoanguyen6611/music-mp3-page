@@ -34,7 +34,7 @@ const initialState: SongDetailState = {
     link: '',
     description: '',
   },
-  myPlaylist: []
+  myPlaylist: [],
 };
 @Injectable()
 export class SongDetailStore extends ComponentStore<SongDetailState> {
@@ -45,7 +45,7 @@ export class SongDetailStore extends ComponentStore<SongDetailState> {
     private readonly favoriteService: FavoriteService,
     private readonly message: NzMessageService,
     private readonly translateService: TranslateService,
-    private readonly myPlaylistService: MyPlaylistService
+    private readonly myPlaylistService: MyPlaylistService,
   ) {
     super(initialState);
     this.getPlaylist();
@@ -122,10 +122,7 @@ export class SongDetailStore extends ComponentStore<SongDetailState> {
   );
   readonly addSongToPlaylist = this.effect<[string, string]>(params$ =>
     params$.pipe(
-      tap(() =>
-      this.patchState(state => ({
-      }))
-      ),
+      tap(() => this.patchState(state => ({}))),
       switchMap(([idSong, idPlaylist]) =>
         this.myPlaylistService.addSongToPlaylist(idSong, idPlaylist).pipe(
           tap(() => {
@@ -134,7 +131,9 @@ export class SongDetailStore extends ComponentStore<SongDetailState> {
           tapResponse(
             () => {
               this.message.success(
-                this.translateService.instant('MESSAGE.SUCCESS'),
+                this.translateService.instant(
+                  'MESSAGE.ADD_SONG_TO_PLAYLIST_SUCCESS',
+                ),
               );
             },
             (error: HttpErrorResponse) => {

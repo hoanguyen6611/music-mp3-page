@@ -2,6 +2,7 @@
   [nzVisible]="(isVisibleFormSong$ | async) || false"
   [nzFooter]="drawFooter"
   (nzOnClose)="onClosed()"
+  (nzVisible)="isVisible()"
   nzPlacement="right"
   nzWidth="800px"
   [nzTitle]="

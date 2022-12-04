@@ -73,7 +73,6 @@ export class CategoryFormComponent implements OnInit {
         i.markAsDirty();
         i.updateValueAndValidity();
       });
-      console.log('invalid');
       return;
     }
     if (!value.id) {

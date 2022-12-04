@@ -5,6 +5,8 @@ import { SearchRoutingModule } from './search-routing.module';
 import { CategoryModule } from 'src/app/shared/category/category.module';
 import { SearchComponent } from './search.component';
 import { SearchStore } from './search.store';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SongModule } from 'src/app/shared/song';
 
 
 @NgModule({
@@ -12,7 +14,9 @@ import { SearchStore } from './search.store';
   imports: [
     CommonModule,
     SearchRoutingModule,
-    CategoryModule
+    CategoryModule,
+    ReactiveFormsModule,
+    SongModule
   ],
   providers: [SearchStore]
 })

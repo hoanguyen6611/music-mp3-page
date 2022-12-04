@@ -23,6 +23,6 @@ export class CategorysService {
     return this.httpClient.post(`${this.apiUrl}/category`, category);
   }
   updateCategory(category: createCategory) {
-    return this.httpClient.patch(`${this.apiUrl}/category/${category.id}`, category);
+    return this.httpClient.put(`${this.apiUrl}/category/${category.id}`, category);
   }
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Song, songCreate } from './songs.model';
+import { Song, songCreate, SongSearch } from './songs.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +25,9 @@ export class SongsService {
   }
   getSongFavoriteByUser() {
     return this.httpClient.get<Song[]>(`${this.apiUrl}/favoriteSongs`);
+  }
+  searchSong(query: string | null) {
+    console.log(query);
+    return this.httpClient.get<SongSearch>(`${this.apiUrl}/songs/search?search=${query}`)
   }
 }

@@ -1,22 +1,23 @@
 <a class="flex flex-col flex-1">
   <div class="media-cover" [class.is-playing]="">
     <app-media-cover
-      class="mb-4"
+      class="mb-4 relative"
       [imageUrl]="song.image"
     ></app-media-cover>
-    <app-play-button
-      class="play-button-overlay"
-      [primary]="true"
-      [large]="true"
-      [isPlaying]="false"
-      asClickStopPropagation
-    ></app-play-button>
+    <div class="flex flex-row-reverse absolute top-0 right-0">
+      <app-play-button
+        class="pl-4 play-button"
+        [flatIcon]="true"
+        [isShowVolumeIcon]="true"
+        [large]="true"
+      ></app-play-button>
+    </div>
   </div>
-  <div class="media-description" routerLink="/main/song/{{song.id}}">
+  <div class="media-description" routerLink="/main/song/{{ song.id }}">
     <div class="font-bold text-white ellipsis-one-line hover:text-white">
       {{ song.name }}
     </div>
-    <div class="text-description">
+    <div class="text-description author-description">
       {{ song.author }}
     </div>
   </div>

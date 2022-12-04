@@ -18,3 +18,10 @@
   @apply px-4 items-center;
   height: 80px;
 }
+.progress {
+  width: 1000px;
+}
+.timer-duration {
+  transition: all 0.2s;
+  @apply text-xs text-white text-opacity-60;
+}

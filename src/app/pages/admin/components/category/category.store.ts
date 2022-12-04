@@ -97,7 +97,6 @@ export class CategoryPageStore extends ComponentStore<CategoryPageState> {
   readonly loadCategory = this.effect(params$ =>
     params$.pipe(
       tap(() => {
-        console.log('reload data');
         this.patchState({ IsLoadingCategory: true });
       }),
       switchMap(() =>

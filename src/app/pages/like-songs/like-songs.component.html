@@ -6,7 +6,7 @@
     [title]="likeSong.title"
     [quantity]="vm.Song.length"
   ></app-detail>
-  <app-play-button></app-play-button>
+  <app-play-button (click)="playMusicList(vm.Song)"></app-play-button>
   <app-title-list></app-title-list>
   <div
     class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10"
@@ -20,6 +20,7 @@
         [playlist]="vm"
         (favorite)="removeMusicFavorite($event)"
         (addMusic)="addMusicToPlaylist($event)"
+        (playMusic)="playMusicItem($event)"
       ></app-playlist-track>
     </ng-container>
   </div>

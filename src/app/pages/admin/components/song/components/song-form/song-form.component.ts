@@ -49,6 +49,9 @@ export class SongFormComponent implements OnInit {
     this.pathAudio = '';
     this.pathImage = '';
   }
+  isVisible() {
+    this.formGroup.reset();
+  }
   onSubmit() {
     const value = this.formGroup.getRawValue();
     // value.date_Upload = this.getCurrentDateTime(

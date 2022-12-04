@@ -19,17 +19,20 @@ export class SongDetailComponent implements OnInit {
   constructor(
     private readonly songDetailStore: SongDetailStore,
     private readonly route: ActivatedRoute,
-    private readonly store: Store
+    private readonly store: Store,
   ) {}
 
   ngOnInit(): void {}
   addMusicToPlaylist(id: string) {
-    this.songDetailStore.addSongToPlaylist([this.item,id]);
+    this.songDetailStore.addSongToPlaylist([this.item, id]);
   }
   addSongFavorite(id: string) {
     this.songDetailStore.addSongToFavorite(id);
   }
   playMusic(item: Song) {
+    this.store.dispatch(setCurrentSong({ value: item }));
+  }
+  playMusicItem(item: Song) {
     this.store.dispatch(setCurrentSong({ value: item }));
   }
 }

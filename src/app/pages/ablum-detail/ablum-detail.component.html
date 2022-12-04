@@ -6,7 +6,7 @@
     [title]="album.name"
     [quantity]="album.listSong.length"
   ></app-detail>
-  <app-play-button></app-play-button>
+  <app-play-button (click)="playMusicList(album.listSong)"></app-play-button>
   <app-title-list></app-title-list>
   <div
     *ngIf="album.listSong as song"
