@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TrackInfoComponent } from './track-info.component';
 import { RouterModule } from '@angular/router';
 import { MediaCoverModule } from '../media-cover/media-cover.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 
 
@@ -11,7 +12,8 @@ import { MediaCoverModule } from '../media-cover/media-cover.module';
   imports: [
     CommonModule,
     RouterModule,
-    MediaCoverModule
+    MediaCoverModule,
+    NzIconModule
   ],
   exports: [TrackInfoComponent]
 })

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CategorysStore } from '../../categorys.store';
 import { tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Song } from 'src/app/core/services/songs';
+import { Store } from '@ngrx/store';
+import { setCurrentSong } from 'src/app/pages/now-playing/store';
 
 @Component({
   selector: 'app-category-detail',
@@ -9,15 +12,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./category-detail.component.scss'],
 })
 export class CategoryDetailComponent implements OnInit {
-  readonly category$ = this.store.value$;
+  readonly category$ = this.categoryStore.value$;
   readonly id = String(this.route.snapshot.paramMap?.get('id'));
-  readonly categoryDetail$ = this.store.loadCategoryDetail(this.id);
-  readonly value$ = this.store.value$;
+  readonly categoryDetail$ = this.categoryStore.loadCategoryDetail(this.id);
+  readonly value$ = this.categoryStore.value$;
   checked = false;
   indeterminate = false;
   constructor(
-    private readonly store: CategorysStore,
+    private readonly categoryStore: CategorysStore,
     private readonly route: ActivatedRoute,
+    private readonly store: Store
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +32,9 @@ export class CategoryDetailComponent implements OnInit {
     console.log(id);
   }
   addMusicFavorite(id: string) {
-    this.store.addSongToFavorite(id);
+    this.categoryStore.addSongToFavorite(id);
+  }
+  playMusicItem(item: Song) {
+    this.store.dispatch(setCurrentSong({ value: item }));
   }
 }

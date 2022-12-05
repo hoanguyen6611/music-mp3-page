@@ -15,8 +15,7 @@
       <app-playlist-track
         [index]="i"
         [song]="song"
-        [showFavorite]="false"
-        [deleteFavorite]="true"
+        [showFavorite]="true"
         [playlist]="vm"
         (favorite)="removeMusicFavorite($event)"
         (addMusic)="addMusicToPlaylist($event)"

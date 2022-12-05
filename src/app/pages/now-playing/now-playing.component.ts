@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { selectCurrentSong } from './store';
 import * as moment from 'moment';
+import { NowPlayingStore } from './now-playing.store';
+import { Song } from 'src/app/core/services/songs';
 
 @Component({
   selector: 'app-now-playing',
@@ -13,6 +15,8 @@ import * as moment from 'moment';
 export class NowPlayingComponent implements OnInit {
   readonly destroy$ = new Subject<void>();
   readonly song$ = this.store.select(selectCurrentSong);
+  readonly listLikeSong$ = this.nowPlayingStore.listLikeMusic$;
+  listLikeSong: Song[] = [];
   audio = new Audio();
   audioEvents = [
     'ended',
@@ -27,13 +31,18 @@ export class NowPlayingComponent implements OnInit {
   ];
   constructor(
     private readonly store: Store,
+    private readonly nowPlayingStore: NowPlayingStore,
     protected sanitizer: DomSanitizer,
-  ) {}
+  ) {
+    this.listLikeSong$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(value => (this.listLikeSong = value));
+  }
 
   ngOnInit(): void {
     this.song$.pipe().subscribe(value => {
       this.setMusic(value?.link);
-      console.log(this.currentTime);
+      // console.log(this.currentTime);
     });
   }
   play() {
@@ -59,7 +68,7 @@ export class NowPlayingComponent implements OnInit {
       this.audio.load();
       this.audio.play();
       const handler = (event: Event) => {
-        console.log(event);
+        // console.log(event);
         this.seek = this.audio.currentTime;
         this.duration = this.timeFormat(this.audio.duration, this.format);
         this.currentTime = this.timeFormat(this.audio.currentTime, this.format);
@@ -95,5 +104,16 @@ export class NowPlayingComponent implements OnInit {
   setSeekTo(seek: any) {
     this.audio.currentTime = seek.target.value;
   }
-  setSeek(val: any) {}
+  setSeek(val: any) {
+    this.seek = this.audio.currentTime;
+  }
+  checkLikeMusic(id: string) {
+    if (this.listLikeSong?.map(x => x.id).includes(id)) {
+      return true;
+    }
+    return false;
+  }
+  addMusicFavorite(id: string) {
+    this.nowPlayingStore.addSongToFavorite(id);
+  }
 }

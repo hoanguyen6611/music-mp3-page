@@ -21,6 +21,8 @@
           (favorite)="confirmFavorite($event)"
           [playlistUser]="myplaylist"
           (addMusicToPlaylist)="addMusicToPlaylist($event)"
+          [showFavorite]="checkLikeMusic(item.id)"
+          (playMusic)="playMusicItem($event)"
         ></app-playlist-track>
       </div>
     </div>

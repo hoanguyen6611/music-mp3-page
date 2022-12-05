@@ -14,16 +14,17 @@
   <div
     class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10"
   >
-  <div *ngIf="myplaylist$ | async as myplaylist">
-    <app-playlist-track
-      [index]="0"
-      [song]="song"
-      [playlist]="song"
-      (favorite)="addSongFavorite($event)"
-      [playlistUser]="myplaylist"
-      (addMusicToPlaylist)="addMusicToPlaylist($event)"
-      (playMusic)="playMusicItem($event)"
-    ></app-playlist-track>
-  </div>
+    <div *ngIf="myplaylist$ | async as myplaylist">
+      <app-playlist-track
+        [index]="0"
+        [song]="song"
+        [playlist]="song"
+        (favorite)="addSongFavorite($event)"
+        [playlistUser]="myplaylist"
+        (addMusicToPlaylist)="addMusicToPlaylist($event)"
+        (playMusic)="playMusicItem($event)"
+        [showFavorite]="checkLikeMusic(song.id)"
+      ></app-playlist-track>
+    </div>
   </div>
 </div>

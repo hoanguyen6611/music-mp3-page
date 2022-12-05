@@ -24,7 +24,6 @@ export class PlaylistTrackComponent {
   @Output() addMusicToPlaylist = new EventEmitter<string>();
   @Output() playMusic = new EventEmitter<Song>();
   @Input() showFavorite = true;
-  @Input() deleteFavorite = false;
   @Input() playlistUser: any;
   @Input() showButtonAddPlaylist: boolean = true;
   show = false;

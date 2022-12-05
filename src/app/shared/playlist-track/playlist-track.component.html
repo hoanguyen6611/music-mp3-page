@@ -2,8 +2,11 @@
   class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10 playlist-tracks-grid track-row"
 >
   <ng-container>
-    <app-media-number [index]="index + 1" (click)="playMusic.emit(song)"></app-media-number>
-    <app-track-info [song]="song"></app-track-info>
+    <app-media-number
+      [index]="index + 1"
+      (click)="playMusic.emit(song)"
+    ></app-media-number>
+    <app-track-info [song]="song" [show]="false"></app-track-info>
   </ng-container>
   <a class="text-description link-subtle hover:underline">{{
     playlist.name
@@ -13,12 +16,12 @@
     <div class="flex">
       <div>
         <div
-        *ngIf="showButtonAddPlaylist"
+          *ngIf="showButtonAddPlaylist"
           nzTrigger="click"
           nz-dropdown
           [nzDropdownMenu]="notificationRef"
           nz-tooltip
-          nzTooltipTitle="Thông báo"
+          nzTooltipTitle="Thêm bài hát vào playlist"
         >
           <nz-badge>
             <span
@@ -37,8 +40,8 @@
               nzSelectable
             >
               <li class="cursor-pointer flex justify-center">
-                <a nz-dropdown [nzDropdownMenu]="menu">
-                  Playlist
+                <a class="add-playlist" nz-dropdown [nzDropdownMenu]="menu">
+                  {{ 'PLAY_TRACK.ADD_SONG_TO_PLAYLIST' | translate }}
                   <span nz-icon nzType="down"></span>
                 </a>
                 <nz-dropdown-menu #menu="nzDropdownMenu">
@@ -62,15 +65,12 @@
         </ng-template>
       </div>
       <div class="ml-2.5">
-        <button *ngIf="showFavorite" (click)="favorite.emit(song.id)">
-          <span nz-icon [nzType]="'heart'" [nzTheme]="'twotone'"></span>
-        </button>
-        <button *ngIf="deleteFavorite" (click)="favorite.emit(song.id)">
+        <button (click)="favorite.emit(song.id)">
           <span
             nz-icon
             [nzType]="'heart'"
             [nzTheme]="'twotone'"
-            [nzTwotoneColor]="'#fff'"
+            [nzTwotoneColor]="showFavorite ? '#fff' : ''"
           ></span>
         </button>
       </div>

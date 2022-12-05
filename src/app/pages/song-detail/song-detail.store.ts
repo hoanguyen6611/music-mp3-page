@@ -23,6 +23,7 @@ export interface SongDetailState {
     description: string;
   };
   myPlaylist: MyPlaylist[];
+  likeMusic: Song[];
 }
 const initialState: SongDetailState = {
   IsLoadingDetail: false,
@@ -35,10 +36,12 @@ const initialState: SongDetailState = {
     description: '',
   },
   myPlaylist: [],
+  likeMusic: []
 };
 @Injectable()
 export class SongDetailStore extends ComponentStore<SongDetailState> {
   readonly value$ = this.select(state => state.Value);
+  readonly listLikeMusic$ = this.select(state => state.likeMusic);
 
   constructor(
     private readonly service: SongsService,
@@ -49,6 +52,7 @@ export class SongDetailStore extends ComponentStore<SongDetailState> {
   ) {
     super(initialState);
     this.getPlaylist();
+    this.loadSongFavorite();
   }
 
   setIsLoadingDetail = this.updater<boolean>(
@@ -94,6 +98,7 @@ export class SongDetailStore extends ComponentStore<SongDetailState> {
         this.favoriteService.addSongFavorite(param).pipe(
           tapResponse(
             () => {
+              this.loadSongFavorite();
               this.message.success(
                 this.translateService.instant('MESSAGE.ADD_TO_FAVORITE'),
               );
@@ -138,6 +143,32 @@ export class SongDetailStore extends ComponentStore<SongDetailState> {
             },
             (error: HttpErrorResponse) => {
               this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({});
+          }),
+        ),
+      ),
+    ),
+  );
+  readonly loadSongFavorite = this.effect(params$ =>
+    params$.pipe(
+      tap(() => {
+        this.patchState({});
+      }),
+      switchMap(() =>
+        this.favoriteService.getSongFavoriteByUser().pipe(
+          tapResponse(
+            (value: Song[]) => {
+              this.patchState({
+                likeMusic: value,
+              });
+            },
+            error => {
+              this.patchState({
+                likeMusic: [],
+              });
             },
           ),
           finalize(() => {

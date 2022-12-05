@@ -105,5 +105,8 @@
     "NAME": "Tên thể loại",
     "IMAGE": "Hình ảnh",
     "DESCRIPTION": "Thông tin khác"
+  },
+  "PLAY_TRACK": {
+    "ADD_SONG_TO_PLAYLIST": "Thêm bài hát vào playlist"
   }
 }

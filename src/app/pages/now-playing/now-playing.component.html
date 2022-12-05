@@ -11,7 +11,12 @@
   </div> -->
   <div class="flex justify-between">
     <div>
-      <app-track-info class="w-[500px]" [song]="song"></app-track-info>
+      <app-track-info
+        class="w-[500px]"
+        [song]="song"
+        [showFavorite]="checkLikeMusic(song.id)"
+        (favorite)="addMusicFavorite($event)"
+      ></app-track-info>
     </div>
     <div class="flex">
       <button *ngIf="isPlay" (click)="play()" class="text-white p-3">
@@ -42,6 +47,7 @@
         [max]="duration"
         [value]="seek"
         (input)="setSeekTo($event)"
+        (durationchange)="setSeek($event)"
       />
       <!-- <nz-slider
         class="flex-1 mx-2"

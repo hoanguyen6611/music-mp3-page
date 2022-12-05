@@ -14,6 +14,8 @@ import { nowPlayingReducer } from './store/now-playing.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { NowPlayingEffects } from './store/now-playing.effects';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NowPlayingStore } from './now-playing.store';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 
 
@@ -27,9 +29,11 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     PlayerPlaybackModule,
     TrackInfoModule,
     NzIconModule,
+    NzMessageModule,
     StoreModule.forFeature(nowPlaying, nowPlayingReducer),
     EffectsModule.forFeature([NowPlayingEffects]),
   ],
-  exports: [NowPlayingComponent]
+  exports: [NowPlayingComponent],
+  providers: [NowPlayingStore]
 })
 export class NowPlayingModule { }

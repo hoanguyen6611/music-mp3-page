@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   firebaseConfig: {
     apiKey: 'AIzaSyCgbBGWHPBUr6_pZgKuT1NuQvJtazl2WdY',
     authDomain: 'music-mp3-page.firebaseapp.com',

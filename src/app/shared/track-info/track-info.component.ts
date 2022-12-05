@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-track-info',
@@ -7,6 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TrackInfoComponent implements OnInit {
   @Input() song:any;
+  @Input() showFavorite = false;
+  @Input() show = true;
+  @Output() favorite = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {

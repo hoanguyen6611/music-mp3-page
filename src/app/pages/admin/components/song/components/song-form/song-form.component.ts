@@ -70,6 +70,7 @@ export class SongFormComponent implements OnInit {
     if(!value.id) {
       delete value.id;
       this.store.createSong(value);
+      this.formGroup.reset();
     }
   }
   onFileChangeAudio(event: any) {

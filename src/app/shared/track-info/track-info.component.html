@@ -17,4 +17,14 @@
       </ng-container>
     </div>
   </div>
+  <div class="ml-2.5">
+    <button *ngIf="show" (click)="favorite.emit(song.id)">
+      <span
+        nz-icon
+        [nzType]="'heart'"
+        [nzTheme]="'twotone'"
+        [nzTwotoneColor]="showFavorite ? '#fff' : ''"
+      ></span>
+    </button>
+  </div>
 </ng-container>

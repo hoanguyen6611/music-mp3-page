@@ -2,15 +2,21 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 300px;
+  width: 500px;
   height: 400px;
 }
 .list-notifications {
-  width: 150px;
+  width: 170px;
   max-height: 50vh;
   overflow: auto;
 }
 
 li.notification:hover {
   background-color: blueviolet;
+}
+.anticon {
+  color: #fff;
+}
+.add-playlist:hover {
+  color: #1fdf64;
 }

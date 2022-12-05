@@ -13,7 +13,15 @@
     class="items-center px-4 cursor-pointer h-14 hover:bg-white hover:bg-opacity-10"
   >
     <div *ngFor="let item of song; let i = index">
-      <app-playlist-track [index]="i" [song]="item" [playlist]="value" (add)="addMusicToPlaylist($event)" (favorite)="addMusicFavorite($event)"></app-playlist-track>
+      <app-playlist-track
+        [index]="i"
+        [song]="item"
+        [playlist]="value"
+        (add)="addMusicToPlaylist($event)"
+        (favorite)="addMusicFavorite($event)"
+        [showFavorite]="false"
+        (playMusic)="playMusicItem($event)"
+      ></app-playlist-track>
     </div>
   </div>
 </div>
