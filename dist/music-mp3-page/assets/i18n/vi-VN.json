@@ -1,0 +1,112 @@
+{
+  "MESSAGE": {
+    "REQUIRED": "Trường {{field}} là bắt buộc!",
+    "INPUT_PLACEHOLDER": "Vui lòng nhập",
+    "SELECT_PLACEHOLDER": "Vui lòng nhập",
+    "LOGIN_SUCCESS": "Đăng nhập thành công",
+    "LOGOUT_SUCCES": "Đăng xuất",
+    "REGISTER_SUCCESS": "Tạo tài khoản thành công",
+    "VALIDATOR_PASSWORD": "Mật khẩu chưa đúng định dạng",
+    "VALIDATOR_EMAIL": "Email chưa đúng định dạng",
+    "ADD_SUCCESS": "Thêm thành công",
+    "EDIT_SUCCESS": "Cập nhập thành công",
+    "ADD_TO_FAVORITE": "Thêm bài hát vào danh sách yêu thích thành công",
+    "REMOVE_TO_FAVORITE": "Xoá bài hát vào danh sách yêu thích",
+    "CONFIRM_PASSWORD": "Mật khẩu xác thực chưa chính xác",
+    "CONFIRM_EMAIL":"Vui lòng truy cập hộp thư để xác thực email để có thể sử dụng tài khoản",
+    "ADD_SONG_TO_PLAYLIST_SUCCESS":"Thêm bài hát vào playlist thành công",
+    "SUCCESS": "Thêm thành công"
+  },
+  "LOGIN_FORM": {
+    "EMAIL": "Email",
+    "PASSWORD": "Mật khẩu",
+    "FORGOT_PASSWORD": "Quên mật khẩu",
+    "FACEBOOK": "ĐĂNG NHẬP VỚI FACEBOOK",
+    "GOOGLE": "ĐĂNG NHẬP VỚI GOOGLE",
+    "SIGN_UP_FOR_APP": "Đăng ký tài khoản",
+    "SIGN_IN": "Đăng nhập"
+  },
+  "FORGET_PASSWORD": {
+    "EMAIL": "Email",
+    "SIGN_IN":"Đăng nhập",
+    "SIGN_UP":"Đăng ký"
+  },
+  "SIGN_UP_FORM": {
+    "FACEBOOK": "ĐĂNG NHẬP VỚI FACEBOOK",
+    "GOOGLE": "ĐĂNG NHẬP VỚI GOOGLE",
+    "USERNAME": "Tên đăng nhập",
+    "PASSWORD": "Mật khẩu",
+    "CONFIRM_PASSWORD": "Xác nhận mật khẩu",
+    "FULLNAME": "Họ và tên",
+    "EMAIL": "Email",
+    "ADDRESS": "Địa chỉ",
+    "PHONE_NUMBER": "Số điện thoại"
+  },
+  "MENU": {
+    "HOME": "Trang chủ",
+    "CATEGORY": "Danh mục",
+    "SEARCH": "Tìm kiếm",
+    "MY_PLAYLISTS": "Cá nhân",
+    "CREATE_PLAYLIST": "Tạo playlist",
+    "LIKED_SONG": "Bài hát yêu thích",
+    "ADMIN_CATEGORY": "Quản lý thể loại",
+    "ADMIN_ABLUM": "Quản lý ablum",
+    "ADMIN_SONG": "Quản lý bài hát",
+    "ADMIN_USER": "Quản lý người dùng"
+  },
+  "ACTION": {
+    "LOGIN": "Đăng nhập",
+    "FORGOT_PASSWORD": "Quên mật khẩu",
+    "CREATE": "Tạo mới",
+    "SAVE": "Lưu",
+    "CANCEL": "Huỷ",
+    "EDIT": "Chỉnh sửa",
+    "ALBUM_CREATE": "Thêm mới album",
+    "ALBUM_EDIT": "Chỉnh sửa album",
+    "CATEGORY_CREATE": "Thêm mới danh mục",
+    "CATEGORY_EDIT": "Chỉnh sửa danh mục",
+    "SONG_CREATE": "Thêm mới bài hát",
+    "SONG_EDIT": "Chỉnh sửa bài hát"
+  },
+  "USER_MENU": {
+    "SETTING": "Cài đặt",
+    "LOGOUT": "Đăng xuất",
+    "ADMIN": "Trang quản lý"
+  },
+  "ME": {
+    "INFO": "Thông tin cá nhân",
+    "CHANGE_PASSWORD": "Đổi mật khẩu"
+  },
+  "NOTIFICATIONS": {
+    "TITLE": "Thông báo"
+  },
+  "CHANGE_PASSWORD": {
+    "PASSWORD_OLD": "Mật khẩu cũ",
+    "PASSWORD_NEW": "Mật khẩu mới",
+    "PASSWORD_CONFIRM": "Xác nhận mật khẩu"
+  },
+  "ADMIN": {
+    "SONG_FORM": {
+      "NAME": "Tên bài hát",
+      "AUTHOR": "Tác giả",
+      "IMAGE": "Hình ảnh",
+      "LINK_AUDIO": "Audio",
+      "CATEGORY": "Danh mục",
+      "DESCRIPTION": "Thông tin khác",
+      "DATE_UPLOAD": "Ngày thêm"
+    },
+    "CATEGORY_FORM": {
+      "NAME": "Tên thể loại",
+      "IMAGE": "Hình ảnh",
+      "DESCRIPTION": "Thông tin khác"
+    }
+  },
+  "MYPLAYLIST": {
+    "NAME": "Tên thể loại",
+    "IMAGE": "Hình ảnh",
+    "DESCRIPTION": "Thông tin khác"
+  },
+  "PLAY_TRACK": {
+    "ADD_SONG_TO_PLAYLIST": "Thêm bài hát vào playlist"
+  }
+}
