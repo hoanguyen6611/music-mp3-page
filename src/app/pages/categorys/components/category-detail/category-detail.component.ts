@@ -4,7 +4,7 @@ import { tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from 'src/app/core/services/songs';
 import { Store } from '@ngrx/store';
-import { setCurrentSong } from 'src/app/pages/now-playing/store';
+import { resetCurrentSong, setCurrentSong, setPlaying, setSongs } from 'src/app/pages/now-playing/store';
 
 @Component({
   selector: 'app-category-detail',
@@ -36,5 +36,11 @@ export class CategoryDetailComponent implements OnInit {
   }
   playMusicItem(item: Song) {
     this.store.dispatch(setCurrentSong({ value: item }));
+  }
+  playAlbum(item: Song[]) {
+    this.store.dispatch(setSongs({ value: item }));
+    this.store.dispatch(setPlaying({ value: true }));
+    this.store.dispatch(resetCurrentSong());
+    this.store.dispatch(setCurrentSong({ value: item[0] }));
   }
 }

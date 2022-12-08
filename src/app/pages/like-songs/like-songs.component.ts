@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Song } from 'src/app/core/services/categorys';
-import { setCurrentSong, setSongs } from '../now-playing/store';
+import { resetCurrentSong, resetListSong, setCurrentSong, setPlaying, setSongs } from '../now-playing/store';
 import { LikeSongStore } from './like-songs.store';
 
 @Component({
@@ -30,10 +30,16 @@ export class LikeSongsComponent implements OnInit {
     console.log(id);
   }
   playMusicItem(item: Song) {
+    this.store.dispatch(setPlaying({ value: true }));
+    // this.store.dispatch(resetListSong());
+    this.store.dispatch(resetCurrentSong());
     this.store.dispatch(setCurrentSong({ value: item }));
   }
   playMusicList(item: Song[]) {
+    console.log(item);
     this.store.dispatch(setSongs({ value: item }));
+    this.store.dispatch(setPlaying({ value: true }));
+    this.store.dispatch(resetCurrentSong());
     this.store.dispatch(setCurrentSong({ value: item[0] }));
   }
 }

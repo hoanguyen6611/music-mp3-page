@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Song } from 'src/app/core/services/songs/songs.model';
 import { LikeSongStore } from '../like-songs/like-songs.store';
-import { setCurrentSong } from '../now-playing/store';
+import { resetCurrentSong, resetListSong, setCurrentSong, setPlaying } from '../now-playing/store';
 import { SongDetailStore } from './song-detail.store';
 
 @Component({
@@ -39,9 +39,13 @@ export class SongDetailComponent implements OnInit {
     this.songDetailStore.addSongToFavorite(id);
   }
   playMusic(item: Song) {
+    this.store.dispatch(setPlaying({ value: true }));
     this.store.dispatch(setCurrentSong({ value: item }));
   }
   playMusicItem(item: Song) {
+    this.store.dispatch(setPlaying({ value: true }));
+    this.store.dispatch(resetListSong());
+    this.store.dispatch(resetCurrentSong());
     this.store.dispatch(setCurrentSong({ value: item }));
   }
   checkLikeMusic(id: string) {

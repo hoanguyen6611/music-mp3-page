@@ -17,3 +17,7 @@ export const selectUserLogin = createSelector(
   selectNowPlayingState,
   state => state.user
 )
+export const selectPlaying = createSelector(
+  selectNowPlayingState,
+  state => state.playing
+)

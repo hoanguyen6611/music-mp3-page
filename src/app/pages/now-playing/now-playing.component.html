@@ -1,14 +1,4 @@
 <footer class="now-playing-container" *ngIf="song$ | async as song">
-  <!-- <div class="now-playing-left">
-    <app-track-info></app-track-info>
-  </div>
-  <div class="now-playing-center">
-    <app-player-controls></app-player-controls>
-    <app-player-playback></app-player-playback>
-  </div>
-  <div class="flex items-center justify-end">
-    <app-player-volume></app-player-volume>
-  </div> -->
   <div class="flex justify-between">
     <div>
       <app-track-info
@@ -18,47 +8,75 @@
         (favorite)="addMusicFavorite($event)"
       ></app-track-info>
     </div>
-    <div class="flex">
-      <button *ngIf="isPlay" (click)="play()" class="text-white p-3">
-        <span
-          class="volume-icon float-right"
-          nz-icon
-          nzType="music:play"
-          nzTheme="outline"
-          style="font-size: 30px; color: #ffff"
-        ></span>
-      </button>
-      <button *ngIf="!isPlay" (click)="pause()" class="text-white p-3">
-        <span
-          class="volume-icon float-right"
-          nz-icon
-          nzType="music:pause"
-          nzTheme="outline"
-          style="font-size: 30px; color: #ffff"
-        ></span>
-      </button>
+    <div class="">
+      <div class="flex">
+        <button
+          nz-button
+          (click)="previous()"
+          class="text-white p-3"
+          [disabled]="listSongAlbum.length === 0"
+        >
+          <span
+            class="volume-icon float-right"
+            nz-icon
+            nzType="music:previous"
+            nzTheme="outline"
+            style="font-size: 30px; color: #ffff"
+          ></span>
+        </button>
+        <button nz-button (click)="isPlayMusic()" class="text-white p-3">
+          <span
+            class="volume-icon float-right"
+            nz-icon
+            [nzType]="!(isPlay$ | async) ? 'music:play' : 'music:pause'"
+            nzTheme="outline"
+            style="font-size: 30px; color: #ffff"
+          ></span>
+        </button>
+        <button
+          nz-button
+          (click)="next()"
+          class="text-white p-3"
+          [disabled]="listSongAlbum.length === 0"
+        >
+          <span
+            class="volume-icon float-right"
+            nz-icon
+            nzType="music:next"
+            nzTheme="outline"
+            style="font-size: 30px; color: #ffff"
+          ></span>
+        </button>
+      </div>
+      <div class="flex items-center justify-between mx-4">
+        <span class="timer-duration">{{ currentTime }}</span>
+        <input
+          class="progress"
+          type="range"
+          min="0"
+          [max]="duration"
+          [value]="seek"
+          (input)="setSeekTo($event)"
+        />
+        <nz-slider
+          class="flex-1 mx-2"
+          [ngModel]="seek"
+          [nzMax]="duration"
+          [nzTooltipVisible]="'never'"
+          (nzOnAfterChange)="seeks($event)"
+          (ngModelChange)="onChange()"
+        ></nz-slider>
+        <span class="timer-duration">{{ duration }}</span>
+      </div>
     </div>
-    <div class="flex items-center justify-between mx-4">
-      <span class="timer-duration">{{ currentTime }}</span>
-      <input
-        class="progress"
-        type="range"
-        min="0"
-        [max]="duration"
-        [value]="seek"
-        (input)="setSeekTo($event)"
-        (durationchange)="setSeek($event)"
-      />
-      <!-- <nz-slider
-        class="flex-1 mx-2"
-        [ngModel]="seek"
-        [nzMax]="duration"
-        (input)="setSeekTo($event)"
-      ></nz-slider> -->
-      <span class="timer-duration">{{ duration }}</span>
-    </div>
-    <!-- <div class="text-white">
-      <span>Volume</span>
+    <div class="text-white float-right">
+      <span
+        class="volume-icon float-right"
+        nz-icon
+        nzType="music:volume"
+        nzTheme="outline"
+        style="font-size: 30px; color: #ffff"
+      ></span>
       <input
         type="range"
         min="0"
@@ -67,6 +85,6 @@
         value="0.5"
         (input)="setVolume($event)"
       />
-    </div> -->
+    </div>
   </div>
 </footer>

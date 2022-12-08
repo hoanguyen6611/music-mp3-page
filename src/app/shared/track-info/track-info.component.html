@@ -21,6 +21,7 @@
     <button *ngIf="show" (click)="favorite.emit(song.id)">
       <span
         nz-icon
+        style="color: hotpink;"
         [nzType]="'heart'"
         [nzTheme]="'twotone'"
         [nzTwotoneColor]="showFavorite ? '#fff' : ''"

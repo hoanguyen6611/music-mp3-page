@@ -3,7 +3,7 @@ import { AlbumDetailStore } from './ablum-detail.store';
 import { ActivatedRoute } from '@angular/router';
 import { ListSong } from 'src/app/core/services/album';
 import { Store } from '@ngrx/store';
-import { setCurrentSong, setSongs } from '../now-playing/store';
+import { resetCurrentSong, resetListSong, setCurrentSong, setPlaying, setSongs } from '../now-playing/store';
 import { Song } from 'src/app/core/services/songs';
 
 @Component({
@@ -34,17 +34,20 @@ export class AblumDetailComponent implements OnInit {
     this.albumDetailStore.addSongToPlaylist([this.id, id]);
   }
   playMusicList(item: ListSong[]) {
+    this.store.dispatch(setPlaying({ value: true }));
     this.store.dispatch(setSongs({ value: item }));
     this.store.dispatch(setCurrentSong({ value: item[0] }));
   }
   checkLikeMusic(id: string) {
-    console.log(this.listLikeSong);
     if (this.listLikeSong?.map(x => x.id).includes(id)) {
       return true;
     }
     return false;
   }
   playMusicItem(item: Song) {
+    this.store.dispatch(setPlaying({ value: true }));
+    this.store.dispatch(resetListSong());
+    this.store.dispatch(resetCurrentSong());
     this.store.dispatch(setCurrentSong({ value: item }));
   }
 }

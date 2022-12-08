@@ -26,7 +26,6 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { SafePipe } from './shared/pipe/safe.pipe';
 
 const nzConfig: NzConfig = {
   message: {

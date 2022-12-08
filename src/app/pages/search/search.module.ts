@@ -7,6 +7,7 @@ import { SearchComponent } from './search.component';
 import { SearchStore } from './search.store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SongModule } from 'src/app/shared/song';
+import { AblumModule } from 'src/app/shared/ablum/ablum.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SongModule } from 'src/app/shared/song';
     SearchRoutingModule,
     CategoryModule,
     ReactiveFormsModule,
-    SongModule
+    SongModule,
+    AblumModule
   ],
   providers: [SearchStore]
 })

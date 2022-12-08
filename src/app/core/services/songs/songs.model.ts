@@ -15,14 +15,22 @@ export interface songCreate {
   description: string,
   category: string[]
 }
-export interface SongSearch {
-  items: Item[]
-  count: number
+export interface Search {
+  itemsSong: ItemsSong[]
+  countSong: number
+  itemsAlbum: ItemsAlbum[]
+  countAlbum: number
 }
 
-export interface Item {
+export interface ItemsSong {
   id: string
   name: string
   author: string
+  description: string
+}
+
+export interface ItemsAlbum {
+  id: string
+  name: string
   description: string
 }

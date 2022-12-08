@@ -1,11 +1,15 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Song } from 'src/app/core/services/categorys/categorys.model';
 import { selectCurrentSong } from '../now-playing/store';
-import { addMusicRecently, setCurrentSong, setSongs } from '../now-playing/store/now-playing.actions';
+import {
+  resetCurrentSong,
+  resetListSong,
+  setCurrentSong,
+  setPlaying,
+  setSongs,
+} from '../now-playing/store/now-playing.actions';
 import { HomePageStore } from './home-page.store';
-import { Subject, take, takeUntil, tap } from 'rxjs';
-import { Album } from 'src/app/core/services/album';
 
 @Component({
   selector: 'app-home-page',
@@ -22,11 +26,15 @@ export class HomePageComponent {
     private readonly store: Store,
   ) {}
   playMusic(item: Song) {
+    this.store.dispatch(setPlaying({ value: true }));
+    this.store.dispatch(resetListSong());
+    this.store.dispatch(resetCurrentSong());
     this.store.dispatch(setCurrentSong({ value: item }));
-    // this.store.dispatch(addMusicRecently(item.id));
   }
   playAlbum(item: Song[]) {
-    this.store.dispatch(setSongs({value: item}))
+    this.store.dispatch(setSongs({ value: item }));
+    this.store.dispatch(setPlaying({ value: true }));
+    this.store.dispatch(resetCurrentSong());
     this.store.dispatch(setCurrentSong({ value: item[0] }));
   }
 }

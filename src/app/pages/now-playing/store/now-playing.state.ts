@@ -4,11 +4,12 @@ export interface NowPlayingState {
   songs: Song[];
   volume?:number;
   current?:string;
+  playing: boolean;
   currentSong?: {
     id: string;
     name: string;
     author: string;
-    link: string;
+    link?: string;
     image: string;
     description: string;
   };
