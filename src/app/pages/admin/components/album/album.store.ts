@@ -164,4 +164,29 @@ export class AlbumPageStore extends ComponentStore<AlbumPageState> {
       ),
     ),
   );
+  readonly deleteAlbum = this.effect<string>(params$ =>
+    params$.pipe(
+      switchMap(params =>
+        this.ablumService.deleteAlbum(params).pipe(
+          tap(() => {
+            this.patchState({ IsLoadingAlbum: true });
+          }),
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.DELETE_SUCCESS', ),
+              );
+              this.loadAlbum();
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({ IsLoadingAlbum: false });
+          }),
+        ),
+      ),
+    ),
+  );
 }

@@ -2,11 +2,7 @@
   <nz-table #basicTable [nzData]="vm.Song" [nzLoading]="vm.IsLoadingSong">
     <thead>
       <tr>
-        <th
-          [nzChecked]="checked"
-          [nzIndeterminate]="indeterminate"
-          (nzCheckedChange)="onAllChecked($event)"
-        ></th>
+        <th></th>
         <th>Tên bài hát</th>
         <th>Tác giả</th>
         <th>Description</th>
@@ -15,21 +11,101 @@
     <tbody>
       <tr *ngFor="let data of basicTable.data">
         <td>
-          <button
-            nz-button
-            nzType="link"
-            nz-tooltip
-            [nzTooltipTitle]="'ACTION.EDIT' | translate"
-            (click)="onEdit(data.id)"
-          >
-            <span
-              nz-icon
-              class="icon-action"
-              [nzType]="'edit'"
-              [nzTheme]="'twotone'"
-              [nzTwotoneColor]="'#52c41a'"
-            ></span>
-          </button>
+          <div class="flex">
+            <button
+              nz-button
+              nzType="link"
+              nz-tooltip
+              [nzTooltipTitle]="'ACTION.EDIT' | translate"
+              (click)="onEdit(data.id)"
+            >
+              <span
+                nz-icon
+                class="icon-action"
+                [nzType]="'edit'"
+                [nzTheme]="'twotone'"
+                [nzTwotoneColor]="'#52c41a'"
+              ></span>
+            </button>
+            <button
+              nz-button
+              nzType="link"
+              nz-tooltip
+              [nzTooltipTitle]="'ACTION.DELETE' | translate"
+              (click)="onDelete(data.id)"
+            >
+              <span
+                nz-icon
+                class="icon-action"
+                [nzType]="'delete'"
+                [nzTheme]="'twotone'"
+                [nzTwotoneColor]="'red'"
+              ></span>
+            </button>
+            <div>
+              <div
+                nzTrigger="click"
+                nz-dropdown
+                [nzDropdownMenu]="notificationRef"
+                nz-tooltip
+                nzTooltipTitle="Thêm bài hát vào album"
+              >
+                <nz-badge class="format-re">
+                  <span
+                    nz-icon
+                    class="icon-action"
+                    [nzType]="'info-circle'"
+                    [nzTheme]="'twotone'"
+                    [nzTwotoneColor]="'#52c41a'"
+                  ></span>
+                </nz-badge>
+
+                <nz-dropdown-menu #notificationRef="nzDropdownMenu">
+                  <ul
+                    #notificationLists
+                    class="list-notifications"
+                    nz-menu
+                    nzSelectable
+                  >
+                    <li class="cursor-pointer flex justify-center">
+                      <a
+                        class="add-playlist"
+                        nz-dropdown
+                        [nzDropdownMenu]="menu"
+                      >
+                        Thêm bài hát vào album
+                        <span nz-icon nzType="down"></span>
+                      </a>
+                      <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul
+                          nz-menu
+                          nzSelectable
+                          *ngFor="let item of listAlbum$ | async"
+                        >
+                          <li
+                            nz-menu-item
+                            (click)="addMusicToAlbum(item.id, data.id)"
+                          >
+                            {{ item.name }}
+                          </li>
+                        </ul>
+                      </nz-dropdown-menu>
+                    </li>
+                  </ul>
+                </nz-dropdown-menu>
+              </div>
+
+              <ng-template #emptyNotifications>
+                <nz-empty
+                  class="pt-2"
+                  [nzNotFoundContent]="
+                    'NOTIFICATION_SYSTEM.NO_CONTENT' | translate
+                  "
+                >
+                </nz-empty>
+              </ng-template>
+            </div>
+          </div>
         </td>
         <td>
           {{ data.name }}

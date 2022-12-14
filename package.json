@@ -2,13 +2,14 @@
   "name": "music-mp3-page",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+    "ng": "nx",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "aot": "node --max-old-space-size=8192 node_modules/@angular/cli/bin/ng serve",
-    "generate-icons": "svg-generator"
+    "generate-icons": "svg-generator",
+    "postinstall": "node ./decorate-angular-cli.js"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +35,7 @@
     "@ngrx/store-devtools": "^14.3.1",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "@nrwl/angular": "15.1.1",
     "@types/gapi.auth2": "^0.0.56",
     "angular-oauth2-oidc": "^13.0.1",
     "cloudinary": "^1.32.0",
@@ -52,6 +54,8 @@
     "@angular/cli": "~14.0.5",
     "@angular/compiler-cli": "^14.0.0",
     "@ngneat/svg-generator": "^4.0.0",
+    "@nrwl/nx-cloud": "15.0.0",
+    "@nrwl/workspace": "15.1.1",
     "@types/jasmine": "~4.0.0",
     "autoprefixer": "^10.4.12",
     "jasmine-core": "~4.1.0",
@@ -60,6 +64,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "nx": "15.1.1",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.8",
     "typescript": "~4.7.2"

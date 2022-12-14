@@ -8,3 +8,4 @@ export interface User {
   IsAdmin: boolean;
   Image: string;
 }
+

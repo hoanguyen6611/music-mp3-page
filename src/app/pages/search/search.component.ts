@@ -4,7 +4,13 @@ import { Store } from '@ngrx/store';
 import { map, startWith, switchAll, switchMap, tap } from 'rxjs';
 import { CategorysService } from 'src/app/core/services/categorys/categorys.service';
 import { Song, SongsService } from 'src/app/core/services/songs';
-import { resetCurrentSong, resetListSong, setCurrentSong, setPlaying, setSongs } from '../now-playing/store';
+import {
+  resetCurrentSong,
+  resetListSong,
+  setCurrentSong,
+  setPlaying,
+  setSongs,
+} from '../now-playing/store';
 import { SearchStore } from './search.store';
 
 @Component({
@@ -18,25 +24,9 @@ export class SearchComponent {
   constructor(
     private readonly searchStore: SearchStore,
     private readonly songsService: SongsService,
-    private readonly store: Store
-  ) {
-    // this.formControl.valueChanges
-    //   .pipe(
-    //     tap((value) => {console.log(value)}),
-    //     startWith(""),
-    //     switchMap(query => this.songsService.searchSong(query).pipe(
-    //       tap(() => {
-    //         console.log(query);
-    //       })
-    //       )),
-    //   )
-    //   .subscribe(song => {
-    //     console.log(song);
-    //     this.song = song;
-    //   });
-  }
+    private readonly store: Store,
+  ) {}
   searchQuery() {
-    // console.log(this.formControl.getRawValue());
     this.songsService
       .searchSong(this.formControl.getRawValue())
       .subscribe(song => {

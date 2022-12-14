@@ -8,6 +8,7 @@ import { SongsService } from 'src/app/core/services/songs/songs.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { TranslateService } from '@ngx-translate/core';
+import { Album, AlbumService } from 'src/app/core/services/album';
 
 export interface SongPageState {
   IsLoadingSong: boolean;
@@ -18,6 +19,7 @@ export interface SongPageState {
   IsFormLoadingSong: boolean;
   IsEditSong: boolean;
   ListCategory?: Category[];
+  ListAlbum?:Album[],
 }
 const initialState: SongPageState = {
   IsLoadingSong: false,
@@ -52,16 +54,19 @@ export class SongPageStore extends ComponentStore<SongPageState> {
 
   readonly currentSong$ = this.select(state => state.currentSong);
   readonly isEditSong$ = this.select(state => state.IsEditSong);
+  readonly listAlbum$ = this.select(state => state.ListAlbum);
 
   constructor(
     private readonly songService: SongsService,
     private readonly categoryService: CategorysService,
     private readonly message: NzMessageService,
     private readonly translateService: TranslateService,
+    private readonly albumService: AlbumService
   ) {
     super(initialState);
     this.loadSong();
     this.getCategoryList();
+    this.getAlbumList();
   }
 
   readonly setIsLoadingSong = this.updater<boolean>(
@@ -128,6 +133,20 @@ export class SongPageStore extends ComponentStore<SongPageState> {
       ),
     ),
   );
+  readonly getAlbumList = this.effect(param$ =>
+    param$.pipe(
+      switchMap(() =>
+        this.albumService.getAllAlbum().pipe(
+          tapResponse(
+            ListCategory => this.patchState({ ListAlbum: ListCategory }),
+            (err: HttpErrorResponse) => {
+              this.message.error(err.error.message);
+            },
+          ),
+        ),
+      ),
+    ),
+  );
   readonly createSong = this.effect<songCreate>(params$ =>
     params$.pipe(
       switchMap(param =>
@@ -149,6 +168,31 @@ export class SongPageStore extends ComponentStore<SongPageState> {
           ),
           finalize(() => {
             this.patchState({ IsFormLoadingSong: false });
+          }),
+        ),
+      ),
+    ),
+  );
+  readonly deleteSong = this.effect<string>(params$ =>
+    params$.pipe(
+      switchMap(params =>
+        this.songService.deleteSong(params).pipe(
+          tap(() => {
+            this.patchState({ IsLoadingSong: true });
+          }),
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.DELETE_SUCCESS', ),
+              );
+              this.loadSong();
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({ IsLoadingSong: false });
           }),
         ),
       ),
@@ -177,6 +221,33 @@ export class SongPageStore extends ComponentStore<SongPageState> {
             isLoadingFormSong: false,
           });
         },
+      ),
+    ),
+  );
+  readonly addSongToPlaylist = this.effect<[string, string]>(params$ =>
+    params$.pipe(
+      tap(() => this.patchState(state => ({}))),
+      switchMap(([idSong, idAlbum]) =>
+        this.songService.addSongToAlbum(idSong, idAlbum).pipe(
+          tap(() => {
+            this.patchState({});
+          }),
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant(
+                  'MESSAGE.ADD_SONG_TO_ALBUM_SUCCESS',
+                ),
+              );
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({});
+          }),
+        ),
       ),
     ),
   );

@@ -20,4 +20,7 @@ export class CategoryTableComponent implements OnInit {
     this.store.setFormCategory(true);
     this.store.loadCategoryDetail(id);
   }
+  onDelete(id: string) {
+    this.store.deleteCategory(id);
+  }
 }

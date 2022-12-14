@@ -5,12 +5,13 @@ import { SongPageStore } from '../../song.store';
 @Component({
   selector: 'app-song-table',
   templateUrl: './song-table.component.html',
-  styleUrls: ['./song-table.component.scss']
+  styleUrls: ['./song-table.component.scss'],
 })
 export class SongTableComponent implements OnInit {
   checked = false;
   indeterminate = false;
   readonly vm$ = this.store.vm$;
+  readonly listAlbum$ = this.store.listAlbum$;
   constructor(private readonly store: SongPageStore) {}
 
   ngOnInit(): void {}
@@ -19,5 +20,11 @@ export class SongTableComponent implements OnInit {
     this.store.setIsEditSong(true);
     this.store.setFormSong(true);
     this.store.loadSongDetail(id);
+  }
+  onDelete(id: string) {
+    this.store.deleteSong(id);
+  }
+  addMusicToAlbum(idAlbum: string, idSong: string) {
+    this.store.addSongToPlaylist([idSong, idAlbum]);
   }
 }

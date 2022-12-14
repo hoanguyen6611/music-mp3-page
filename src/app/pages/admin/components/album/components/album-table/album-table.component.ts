@@ -42,4 +42,7 @@ export class AlbumTableComponent implements OnInit {
     this.store.setFormAlbum(true);
     this.store.loadAlbumDetail(id);
   }
+  onDelete(id: string) {
+    this.store.deleteAlbum(id);
+  }
 }

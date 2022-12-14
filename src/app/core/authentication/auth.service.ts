@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserLogin, UserRegister } from '../data';
+import { environment } from 'src/environments/environment';
+import { ChangePassWord, Profile } from './models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly apiUrl = 'http://localhost:5000';
+  private readonly apiUrl = environment.urlBE;
 
   constructor(private readonly httpClient: HttpClient) {}
 
@@ -38,5 +40,23 @@ export class AuthService {
     return this.httpClient.post(`${this.apiUrl}/google-authentication`, {
       token: token,
     });
+  }
+  forgetPassword(email: any) {
+    return this.httpClient.post(
+      `${this.apiUrl}authentication/forgotPassword`,
+      email,
+    );
+  }
+  changePassword(item: ChangePassWord) {
+    return this.httpClient.post(
+      `${this.apiUrl}/authentication/rePassword`,
+      item,
+    );
+  }
+  updateProfile(item: Profile) {
+    return this.httpClient.post(
+      `${this.apiUrl}/authentication/editProfile`,
+      item,
+    );
   }
 }

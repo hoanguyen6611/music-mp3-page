@@ -1,21 +1,11 @@
-import { User } from "./user.model";
-
-export interface PlatformVendorModel {
-  ID: string;
-  Name: string;
-  Code: string;
-  ShortName: string;
-  // PlatformCode: PlatformCode;
+export interface ChangePassWord {
+  password: string;
+  congirmationPassword: string;
 }
-
-export interface PlatformSettingsModel {
-  Vendors: PlatformVendorModel[];
-}
-
-export interface ProfileModel {
-  User: User;
-  // Permissions: SYSFunction[];
-  UnreadNotifications: number;
-  PlatformSettings: PlatformSettingsModel;
-  ActionCodes: string[];
+export interface Profile {
+  email: string;
+  name: string;
+  sex: string;
+  dateOfBirth: string;
+  country: string;
 }

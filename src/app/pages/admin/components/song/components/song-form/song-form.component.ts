@@ -60,7 +60,6 @@ export class SongFormComponent implements OnInit {
     value.image = this.image;
     value.link = this.link_Audio;
     if (this.formGroup.invalid) {
-      console.log('chưa valid');
       Object.values(this.formGroup.controls).forEach(i => {
         i.markAsDirty();
         i.updateValueAndValidity();

@@ -6,6 +6,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { setUserLogin } from 'src/app/pages/now-playing/store';
+import { AccountStore } from 'src/app/pages/account/account.store';
 
 @Component({
   selector: 'app-login-page',
@@ -22,9 +23,9 @@ export class LoginPageComponent implements OnInit {
     ]),
     password: new FormControl('', [
       Validators.required,
-      // Validators.pattern(
-      //   '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}',
-      // ),
+      Validators.pattern(
+        '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}',
+      ),
     ]),
   });
   constructor(
@@ -32,8 +33,11 @@ export class LoginPageComponent implements OnInit {
     private readonly route: Router,
     private readonly message: NzMessageService,
     private readonly translateService: TranslateService,
-    private readonly store: Store
-  ) {}
+    private readonly store: Store,
+    private readonly accountStore: AccountStore,
+  ) {
+    this.accountStore.user$.pipe().subscribe(value => console.log(value));
+  }
   ngOnInit(): void {}
 
   loginUser() {
@@ -47,10 +51,11 @@ export class LoginPageComponent implements OnInit {
           localStorage.setItem('user', JSON.stringify(this.responsedata.user));
           const user = {
             ...this.responsedata,
-          }
+          };
           delete user.token;
           console.log(user);
-          this.store.dispatch(setUserLogin({value: user.user}));
+          this.store.dispatch(setUserLogin({ value: user.user }));
+          this.accountStore.setUser(user.user);
           this.message.success(
             this.translateService.instant('MESSAGE.LOGIN_SUCCESS'),
           );

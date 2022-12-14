@@ -28,7 +28,7 @@ const initialState: CategoryPageState = {
     name: '',
     image: '',
     description: '',
-    songs: []
+    songs: [],
   },
   isLoadingFormCategory: false,
   IsVisibleFormCategory: false,
@@ -40,10 +40,7 @@ const initialState: CategoryPageState = {
 export class CategoryPageStore extends ComponentStore<CategoryPageState> {
   readonly vm$ = this.select(
     this.state$,
-    ({
-      IsLoadingCategory,
-      Category,
-    }) => ({
+    ({ IsLoadingCategory, Category }) => ({
       IsLoadingCategory,
       Category,
     }),
@@ -175,6 +172,31 @@ export class CategoryPageStore extends ComponentStore<CategoryPageState> {
       ),
     ),
   );
+  readonly deleteCategory = this.effect<string>(params$ =>
+    params$.pipe(
+      switchMap(params =>
+        this.categoryService.deleteCategory(params).pipe(
+          tap(() => {
+            this.patchState({ IsLoadingCategory: true });
+          }),
+          tapResponse(
+            () => {
+              this.message.success(
+                this.translateService.instant('MESSAGE.DELETE_SUCCESS'),
+              );
+              this.loadCategory();
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            },
+          ),
+          finalize(() => {
+            this.patchState({ IsLoadingCategory: false });
+          }),
+        ),
+      ),
+    ),
+  );
   readonly loadCategoryDetail = this.effect<string | undefined>(params$ =>
     params$.pipe(
       tap(() => this.patchState({ isLoadingFormCategory: true })),
@@ -203,5 +225,4 @@ export class CategoryPageStore extends ComponentStore<CategoryPageState> {
       ),
     ),
   );
-
 }

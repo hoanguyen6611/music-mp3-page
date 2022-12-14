@@ -2,14 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LandingPageComponent } from './landing-page.component';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageModule } from 'ng-zorro-antd/message';
-import { NzSelectModule } from 'ng-zorro-antd/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { LandingPageRoutingModule } from './landing-page-routing.module';
@@ -22,6 +19,7 @@ import { ForgetPasswordPageComponent } from './forget-password-page/forget-passw
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { PlayButtonModule } from '../shared/play-button/play-button.module';
+import { AccountStore } from '../pages/account/account.store';
 
 
 const NzModules = [
@@ -52,6 +50,7 @@ const NzModules = [
     TranslateModule,
     LandingPageRoutingModule,
     PlayButtonModule
-  ]
+  ],
+  providers: [AccountStore]
 })
 export class LandingPageModule {}

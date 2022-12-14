@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { combineLatest, map, Observable, ReplaySubject } from "rxjs";
 import { Tenant } from "./models";
-import { ProfileModel } from "./models/profile.model";
 
 @Injectable()
 export abstract class IAuthService {
@@ -23,7 +22,6 @@ export abstract class IAuthService {
     abstract refreshToken(): void;
     abstract hasVaidToken():boolean;
 
-    abstract getProfile(): Observable<ProfileModel>;
 
     abstract getTenants(): Observable<Tenant[]>;
 

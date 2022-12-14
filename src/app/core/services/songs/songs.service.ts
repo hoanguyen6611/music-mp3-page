@@ -21,7 +21,7 @@ export class SongsService {
   }
   updateSong(song: Song) {}
   deleteSong(id: string) {
-    return this.httpClient.post(`${this.apiUrl}/song/${id}`, {});
+    return this.httpClient.delete(`${this.apiUrl}/song/${id}`, {});
   }
   getSongFavoriteByUser() {
     return this.httpClient.get<Song[]>(`${this.apiUrl}/favoriteSongs`);
@@ -29,5 +29,11 @@ export class SongsService {
   searchSong(query: string | null) {
     console.log(query);
     return this.httpClient.get<Search>(`${this.apiUrl}/songs/search?search=${query}`)
+  }
+  addSongToAlbum(idSong: string, idAlbum: string) {
+    return this.httpClient.post(
+      `${this.apiUrl}/album/addSongToAlbum/${idSong}/${idAlbum}`,
+      {},
+    );
   }
 }

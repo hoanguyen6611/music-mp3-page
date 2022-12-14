@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/authentication';
 
 @Component({
   selector: 'app-forget-password-page',
@@ -13,10 +14,13 @@ export class ForgetPasswordPageComponent implements OnInit {
       Validators.required,
     ]),
   });
-  constructor() {}
+  constructor(private readonly authService: AuthService) {}
 
   ngOnInit(): void {}
   forgetPassword() {
-
+    const value = this.formGroup.getRawValue();
+    this.authService.forgetPassword(value).subscribe(value => {
+      console.log(value);
+    });
   }
 }

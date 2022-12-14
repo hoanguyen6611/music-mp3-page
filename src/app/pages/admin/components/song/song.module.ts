@@ -14,6 +14,9 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { SongPageStore } from './song.store';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 @NgModule({
   declarations: [SongComponent, SongTableComponent, SongFormComponent],
@@ -28,7 +31,11 @@ import { SongPageStore } from './song.store';
     NzFormModule,
     NzSpinModule,
     ReactiveFormsModule,
-    NzSelectModule
+    NzSelectModule,
+    NzEmptyModule,
+    NzSelectModule,
+    NzDropDownModule,
+    NzBadgeModule
   ],
   exports: [SongComponent],
   providers: [SongPageStore],

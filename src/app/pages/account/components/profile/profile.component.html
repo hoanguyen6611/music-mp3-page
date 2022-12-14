@@ -11,13 +11,13 @@
           <nz-form-item>
             <nz-form-label nzFor="'name'">
               <div class="text-white">
-                {{ 'SIGN_UP_FORM.FULLNAME' | translate }}
+                {{ 'PROFILE.FULLNAME' | translate }}
               </div>
             </nz-form-label>
             <nz-form-control
               nzErrorTip="{{
                 'MESSAGE.REQUIRED'
-                  | translate: { field: 'SIGN_UP_FORM.FULLNAME' | translate }
+                  | translate : { field: 'PROFILE.FULLNAME' | translate }
               }}"
             >
               <input
@@ -39,12 +39,10 @@
           <nz-form-item>
             <nz-form-label nzFor="'email'">
               <div class="text-white">
-                {{ 'SIGN_UP_FORM.EMAIL' | translate }}
+                {{ 'PROFILE.EMAIL' | translate }}
               </div>
             </nz-form-label>
-            <nz-form-control
-              [nzErrorTip]="email"
-            >
+            <nz-form-control [nzErrorTip]="email">
               <input
                 type="email"
                 formControlName="email"
@@ -59,14 +57,67 @@
           </nz-form-item>
         </div>
       </div>
+      <div nz-row [nzGutter]="16">
+        <div nz-col nzSpan="20">
+          <nz-form-item>
+            <nz-form-label nzFor="'dateOfBirth'">
+              <div class="text-white">
+                {{ 'PROFILE.BIRTHDAY' | translate }}
+              </div>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-date-picker formControlName="dateOfBirth"></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'sex'">
+                  <div class="text-white">
+                    {{ 'PROFILE.SEX' | translate }}
+                  </div>
+                </nz-form-label>
+                <nz-form-control>
+                  <nz-radio-group formControlName="sex" >
+                    <label class="text-white" nz-radio nzValue="Nam">Nam</label>
+                    <label class="text-white" nz-radio nzValue="Nữ">Nữ</label>
+                  </nz-radio-group>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="20">
+              <nz-form-item>
+                <nz-form-label nzFor="'country'">
+                  <div class="text-white">
+                    {{ 'PROFILE.COUNTRY' | translate }}
+                  </div>
+                </nz-form-label>
+                <nz-form-control>
+                  <nz-select formControlName="country">
+                    <nz-option nzValue="vietnam" nzLabel="Việt Nam"></nz-option>
+                    <nz-option nzValue="lao" nzLabel="Lào"></nz-option>
+                    <nz-option nzValue="campuchia" nzLabel="Campuchia"></nz-option>
+                    <nz-option nzValue="america" nzLabel="Hoa Kỳ"></nz-option>
+                    <nz-option nzValue="malaysia" nzLabel="Malaysia"></nz-option>
+                    <nz-option nzValue="indonesia" nzLabel="Indonesia"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
     <div class="flex justify-center">
       <button
-        class="bg-[#1fdf64] text-black rounded-lg mt-5 font-semibold"
+        class="bg-[#1fdf64] text-black rounded-lg mt-6 mr-6 font-semibold"
         nzSize="large"
         nz-button
+        (click)="updateProfile()"
       >
-        Cập nhập
+        Cập nhập thông tin cá nhân
       </button>
     </div>
   </div>
@@ -76,14 +127,11 @@
   <ng-template #email let-control>
     <ng-container *ngIf="control.hasError('required')">
       {{
-        'MESSAGE.REQUIRED'
-          | translate: { field: 'SIGN_UP_FORM.EMAIL' | translate }
+        'MESSAGE.REQUIRED' | translate : { field: 'PROFILE.EMAIL' | translate }
       }}
     </ng-container>
     <ng-container *ngIf="control.hasError('pattern')">
-      {{
-        'MESSAGE.VALIDATOR_EMAIL'| translate
-      }}
+      {{ 'MESSAGE.VALIDATOR_EMAIL' | translate }}
     </ng-container>
   </ng-template>
 </div>

@@ -25,4 +25,7 @@ export class CategorysService {
   updateCategory(category: createCategory) {
     return this.httpClient.put(`${this.apiUrl}/category/${category.id}`, category);
   }
+  deleteCategory(id: string) {
+    return this.httpClient.delete(`${this.apiUrl}/category/${id}`, {});
+  }
 }

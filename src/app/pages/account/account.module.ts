@@ -12,6 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 const nzModules = [NzButtonModule, NzIconModule, NzFormModule, NzInputModule];
 @NgModule({
@@ -22,7 +25,10 @@ const nzModules = [NzButtonModule, NzIconModule, NzFormModule, NzInputModule];
     NzTabsModule,
     TranslateModule,
     NzIconModule,
+    NzRadioModule,
+    NzSelectModule,
     NzAvatarModule,
+    NzDatePickerModule,
     ReactiveFormsModule,
     ...nzModules,
   ],

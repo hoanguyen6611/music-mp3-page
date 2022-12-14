@@ -13,9 +13,13 @@
     "ADD_TO_FAVORITE": "Thêm bài hát vào danh sách yêu thích thành công",
     "REMOVE_TO_FAVORITE": "Xoá bài hát vào danh sách yêu thích",
     "CONFIRM_PASSWORD": "Mật khẩu xác thực chưa chính xác",
-    "CONFIRM_EMAIL":"Vui lòng truy cập hộp thư để xác thực email để có thể sử dụng tài khoản",
-    "ADD_SONG_TO_PLAYLIST_SUCCESS":"Thêm bài hát vào playlist thành công",
-    "SUCCESS": "Thêm thành công"
+    "CONFIRM_EMAIL": "Vui lòng truy cập hộp thư để xác thực email để có thể sử dụng tài khoản",
+    "ADD_SONG_TO_PLAYLIST_SUCCESS": "Thêm bài hát vào playlist thành công",
+    "ADD_SONG_TO_ALBUM_SUCCESS": "Thêm bài hát vào album thành công",
+    "SUCCESS": "Thêm thành công",
+    "CHANGEPASSWORD_SUCCESS": "Đổi mật khẩu thành công",
+    "UPDATE_PROFILE_SUCCESS": "Cập nhập thông tin cá nhân thành công",
+    "DELETE_SUCCESS": "Xoá thành công"
   },
   "LOGIN_FORM": {
     "EMAIL": "Email",
@@ -28,8 +32,8 @@
   },
   "FORGET_PASSWORD": {
     "EMAIL": "Email",
-    "SIGN_IN":"Đăng nhập",
-    "SIGN_UP":"Đăng ký"
+    "SIGN_IN": "Đăng nhập",
+    "SIGN_UP": "Đăng ký"
   },
   "SIGN_UP_FORM": {
     "FACEBOOK": "ĐĂNG NHẬP VỚI FACEBOOK",
@@ -61,6 +65,7 @@
     "SAVE": "Lưu",
     "CANCEL": "Huỷ",
     "EDIT": "Chỉnh sửa",
+    "DELETE": "Xoá",
     "ALBUM_CREATE": "Thêm mới album",
     "ALBUM_EDIT": "Chỉnh sửa album",
     "CATEGORY_CREATE": "Thêm mới danh mục",
@@ -108,5 +113,19 @@
   },
   "PLAY_TRACK": {
     "ADD_SONG_TO_PLAYLIST": "Thêm bài hát vào playlist"
+  },
+  "PROFILE": {
+    "FACEBOOK": "ĐĂNG NHẬP VỚI FACEBOOK",
+    "GOOGLE": "ĐĂNG NHẬP VỚI GOOGLE",
+    "USERNAME": "Tên đăng nhập",
+    "PASSWORD": "Mật khẩu",
+    "CONFIRM_PASSWORD": "Xác nhận mật khẩu",
+    "FULLNAME": "Họ và tên",
+    "EMAIL": "Email",
+    "ADDRESS": "Địa chỉ",
+    "PHONE_NUMBER": "Số điện thoại",
+    "BIRTHDAY": "Ngày sinh",
+    "SEX": "Giới tính",
+    "COUNTRY": "Country"
   }
 }

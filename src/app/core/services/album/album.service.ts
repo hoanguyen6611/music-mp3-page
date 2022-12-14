@@ -24,4 +24,7 @@ export class AlbumService {
   createAlbum(album: CreateAlbum) {
     return this.httpClient.post(`${this.apiUrl}/album/createAlbum`, album);
   }
+  deleteAlbum(id: string) {
+    return this.httpClient.delete(`${this.apiUrl}/album/${id}`, {});
+  }
 }
