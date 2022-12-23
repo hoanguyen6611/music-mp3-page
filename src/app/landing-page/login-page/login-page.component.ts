@@ -5,7 +5,11 @@ import { AuthService } from 'src/app/core/authentication/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
-import { setUserLogin } from 'src/app/pages/now-playing/store';
+import {
+  resetCurrentSong,
+  resetListSong,
+  setUserLogin,
+} from 'src/app/pages/now-playing/store';
 import { AccountStore } from 'src/app/pages/account/account.store';
 
 @Component({
@@ -53,15 +57,17 @@ export class LoginPageComponent implements OnInit {
             ...this.responsedata,
           };
           delete user.token;
-          console.log(user);
           this.store.dispatch(setUserLogin({ value: user.user }));
           this.accountStore.setUser(user.user);
           this.message.success(
             this.translateService.instant('MESSAGE.LOGIN_SUCCESS'),
           );
           this.route.navigate(['/main/home']);
+          this.store.dispatch(resetListSong());
+          this.store.dispatch(resetCurrentSong());
         } else {
-          this.message.error(this.responsedata.message);
+          console.log("Login Failed");
+          this.message.error(this.translateService.instant('MESSAGE.LOGIN_FAILED'));
         }
       });
     }

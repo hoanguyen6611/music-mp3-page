@@ -19,7 +19,10 @@
     "SUCCESS": "Thêm thành công",
     "CHANGEPASSWORD_SUCCESS": "Đổi mật khẩu thành công",
     "UPDATE_PROFILE_SUCCESS": "Cập nhập thông tin cá nhân thành công",
-    "DELETE_SUCCESS": "Xoá thành công"
+    "DELETE_SUCCESS": "Xoá thành công",
+    "FORGET_PASSWORD_SUCCESS": "Đặt lại mật khẩu thành công",
+    "NOTIFICATION_EMAIL":"Mật khẩu mới đã được gửi về email",
+    "LOGIN_FAILED": "Thông tin đăng nhập không hợp lệ. Vui lòng kiểm tra lại"
   },
   "LOGIN_FORM": {
     "EMAIL": "Email",

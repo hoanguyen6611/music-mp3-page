@@ -9,3 +9,6 @@ export interface UserRegister {
   customerPhone: string;
   customerUsername: string;
 }
+export interface ForgetPassword {
+  email: string;
+}

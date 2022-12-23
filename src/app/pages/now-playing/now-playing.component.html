@@ -8,13 +8,13 @@
         (favorite)="addMusicFavorite($event)"
       ></app-track-info>
     </div>
-    <div class="">
+    <div class="w-[500px]">
       <div class="flex">
         <button
           nz-button
           (click)="previous()"
           class="text-white p-3"
-          [disabled]="listSongAlbum.length === 0"
+          [disabled]="listSongAlbum.length === 1"
         >
           <span
             class="volume-icon float-right"
@@ -37,7 +37,7 @@
           nz-button
           (click)="next()"
           class="text-white p-3"
-          [disabled]="listSongAlbum.length === 0"
+          [disabled]="listSongAlbum.length === 1"
         >
           <span
             class="volume-icon float-right"
@@ -69,11 +69,11 @@
         <span class="timer-duration">{{ duration }}</span>
       </div> -->
     </div>
-    <div class="text-white float-right">
+    <div class="text-white float-right flex justify-between">
       <span
         class="volume-icon float-right"
         nz-icon
-        nzType="music:volume"
+        nzType="music:volume1"
         nzTheme="outline"
         style="font-size: 30px; color: #ffff"
       ></span>

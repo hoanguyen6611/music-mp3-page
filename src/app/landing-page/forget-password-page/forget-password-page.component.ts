@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { AuthService } from 'src/app/core/authentication';
+import { AccountStore } from 'src/app/pages/account/account.store';
 
 @Component({
   selector: 'app-forget-password-page',
@@ -14,13 +19,26 @@ export class ForgetPasswordPageComponent implements OnInit {
       Validators.required,
     ]),
   });
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly route: Router,
+    private readonly message: NzMessageService,
+    private readonly translateService: TranslateService,
+    private readonly store: Store,
+    private readonly accountStore: AccountStore,
+  ) {}
 
   ngOnInit(): void {}
   forgetPassword() {
     const value = this.formGroup.getRawValue();
     this.authService.forgetPassword(value).subscribe(value => {
-      console.log(value);
+      this.message.success(
+        this.translateService.instant('MESSAGE.FORGET_PASSWORD_SUCCESS'),
+      );
+      this.message.success(
+        this.translateService.instant('MESSAGE.NOTIFICATION_EMAIL'),
+      );
+      this.route.navigate(['/login']);
     });
   }
 }

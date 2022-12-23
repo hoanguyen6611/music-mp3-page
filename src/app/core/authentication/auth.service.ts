@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserLogin, UserRegister } from '../data';
+import { ForgetPassword, UserLogin, UserRegister } from '../data';
 import { environment } from 'src/environments/environment';
 import { ChangePassWord, Profile } from './models';
 
@@ -41,10 +41,10 @@ export class AuthService {
       token: token,
     });
   }
-  forgetPassword(email: any) {
+  forgetPassword(item: ForgetPassword) {
     return this.httpClient.post(
-      `${this.apiUrl}authentication/forgotPassword`,
-      email,
+      `${this.apiUrl}/authentication/forgotPassword`,
+      item,
     );
   }
   changePassword(item: ChangePassWord) {

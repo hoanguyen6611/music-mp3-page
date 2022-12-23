@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Song } from 'src/app/core/services/categorys/categorys.model';
 import { selectCurrentSong } from '../now-playing/store';
 import {
+  addMusicRecently,
   resetCurrentSong,
   resetListSong,
   setCurrentSong,
@@ -29,6 +30,7 @@ export class HomePageComponent {
     this.store.dispatch(setPlaying({ value: true }));
     this.store.dispatch(resetListSong());
     this.store.dispatch(resetCurrentSong());
+    this.store.dispatch(addMusicRecently({value: item}));
     this.store.dispatch(setCurrentSong({ value: item }));
   }
   playAlbum(item: Song[]) {
